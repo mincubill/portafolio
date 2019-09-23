@@ -15,7 +15,7 @@ namespace SigloXXI.Models
         [Display(Name = "Contraseña: ")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        public int AccessLevel { get; set; }
+        public int Privilege { get; set; }
 
     }
 }
