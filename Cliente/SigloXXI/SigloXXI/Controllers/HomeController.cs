@@ -9,8 +9,13 @@ namespace SigloXXI.Controllers
     public class HomeController : Controller
     {
         // GET: Home
+
         public ActionResult Index()
         {
+            if(Session["Rol"] == null)
+            {
+                Session["Rol"] = "";
+            }
             return View();
         }
     }

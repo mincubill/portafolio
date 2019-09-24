@@ -43,7 +43,27 @@ namespace SigloXXI.Data
             {
                 ConexionHelper.Cliente.BaseAddress = new Uri(Url);
                 var content = new FormUrlEncodedContent(param);
-                var res = ConexionHelper.Cliente.PostAsync(Url + metodo, content).Result
+                //var res = ConexionHelper.Cliente.PostAsync(Url + metodo, content).Result
+                //.Content.ReadAsStringAsync().Result;
+                var res = ConexionHelper.Cliente.PostAsync(Url + metodo, content).Result;
+                //if (res == System.Net.HttpStatusCode.Created)
+                //    return true;
+                //else
+                //    return false;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public static bool Put(Dictionary<string, string> param, string metodo)
+        {
+            try
+            {
+                ConexionHelper.Cliente.BaseAddress = new Uri(Url);
+                var content = new FormUrlEncodedContent(param);
+                var res = ConexionHelper.Cliente.PutAsync(Url + metodo, content).Result
                 .Content.ReadAsStringAsync().Result;
                 if (res == "1")
                     return true;
@@ -55,6 +75,5 @@ namespace SigloXXI.Data
                 return false;
             }
         }
-
     }
 }

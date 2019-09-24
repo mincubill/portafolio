@@ -11,7 +11,7 @@ namespace SigloXXI.Tests
     public class UnitTest1
     {
         public object JsonConvert { get; private set; }
-
+        /*
         [TestMethod]
         public void RestPostTest()
         {
@@ -26,13 +26,14 @@ namespace SigloXXI.Tests
                 .Content.ReadAsStringAsync().Result;
             Assert.AreEqual("1", res);
         }
+        */
         [TestMethod]
         public void RestGetTest()
         {
-            var url = new UriBuilder("http://127.0.0.1:3000");
-            ConexionHelper.Cliente.BaseAddress = new Uri("http://127.0.0.1:3000");
-            JsonHelper<LoginModel>.Url = "http://127.0.0.1:3000";
-            var result = JsonHelper<LoginModel>.GetList("/user");
+            var url = new UriBuilder("http://127.0.0.1:8080");
+            ConexionHelper.Cliente.BaseAddress = new Uri("http://127.0.0.1:8080");
+            JsonHelper<Users>.Url = "http://127.0.0.1:8080";
+            var result = JsonHelper<Users>.GetList("/usuarios/obtener-usuarios");
             Assert.AreEqual(3, result.Count);
         }
     }
