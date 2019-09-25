@@ -17,7 +17,7 @@ namespace SigloXXI.Data
         public string Url { get; set; }
         public Productos()
         {
-            Url = "http://192.168.1.13:8082";
+            Url = "http://weasdf.ddns.net:8082";
         }
 
         public bool CrearProducto(Productos producto)

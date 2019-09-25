@@ -21,7 +21,7 @@ namespace SigloXXI.Data
 
         public Users()
         {
-            Url = "http://192.168.1.13:8082";
+            Url = "http://weasdf.ddns.net:8082";
         }
 
         public Users IniciarSesion (string userName, string password)

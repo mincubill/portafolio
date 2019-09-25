@@ -21,7 +21,7 @@ namespace SigloXXI.Controllers
         {
             var user = new Users
             {
-                Url = "http://192.168.1.13:8082",
+                Url = "http://weasdf.ddns.net:8082",
                 Apellido = model.Apellido,
                 Correo = model.Correo,
                 Dv = model.Dv,
@@ -39,7 +39,7 @@ namespace SigloXXI.Controllers
         [HttpGet]
         public ActionResult VerUsuarios()
         {
-            var user = new Users() { Url = "http://192.168.1.13:8082" };
+            var user = new Users() { Url = "http://weasdf.ddns.net:8082" };
             ViewData["Usuarios"] = user.ObtenerUsuarios();
             return View();
         }
@@ -47,7 +47,7 @@ namespace SigloXXI.Controllers
         [HttpGet]
         public ActionResult EditarUsuarios(string rut)
         {
-            var user = new Users() { Url = "http://192.168.1.13:8082" };
+            var user = new Users() { Url = "http://weasdf.ddns.net:8082" };
             user = user.ObtenerUsuario(int.Parse(rut));
             ViewData["Usuario"] = user;
             UsuarioModel model = new UsuarioModel()
@@ -70,7 +70,7 @@ namespace SigloXXI.Controllers
         {
             var user = new Users
             {
-                Url = "http://192.168.1.13:8082",
+                Url = "http://weasdf.ddns.net:8082",
                 Apellido = model.Apellido,
                 Correo = model.Correo,
                 Dv = model.Dv,
@@ -88,7 +88,7 @@ namespace SigloXXI.Controllers
         
         public ActionResult EliminarUsuarios(string rut)
         {
-            var user = new Users() { Url = "http://192.168.1.13:8082" };
+            var user = new Users() { Url = "http://weasdf.ddns.net:8082" };
             user.EliminarUsuario(int.Parse(rut));
             return RedirectToAction("VerUsuarios");
 

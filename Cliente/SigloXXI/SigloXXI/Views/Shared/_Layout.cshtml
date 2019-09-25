@@ -22,7 +22,7 @@
                         <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
                     </li>
                     @*@if (Session["Rol"].ToString() == "1")*@
-                    @if (true)
+                    @if (Session["Rol"].ToString() == "1")
                     {
                         <!-- Productos -->
                         <li class="nav-item dropdown">
@@ -93,7 +93,7 @@
                 <form class="form-inline my-2 my-lg-0">
                     @*<a href="login.html" class="btn btn-outline-primary my-2 my-sm-0">Login</a>*@
                     @*@if (string.IsNullOrEmpty(Session["Rol"].ToString()))*@
-                    @if (true)
+                    @if (string.IsNullOrEmpty(Session["Rol"].ToString()))
                     {
                         @Html.ActionLink("Iniciar sesion", "Login", "Login",
                         new { area = "" }, new { @class = "btn btn-outline-primary my-2 my-sm-0" })
