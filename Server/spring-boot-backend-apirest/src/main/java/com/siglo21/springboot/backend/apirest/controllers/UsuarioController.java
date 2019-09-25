@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.siglo21.springboot.backend.apirest.models.entity.Usuario;
 import com.siglo21.springboot.backend.apirest.models.services.IUsuarioService;
 
-@CrossOrigin(origins = {"http://localhost"})
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioController {
@@ -44,7 +44,7 @@ public class UsuarioController {
 	
 	@PutMapping("/actualizar-usuario/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Usuario ActualizarUsuario(@RequestBody Usuario usuario, @PathVariable int id) {
+	public Usuario ActualizarUsuario(Usuario usuario, @PathVariable int id) {
 		Usuario usuarioActual = usuarioService.findById(id);
 		usuarioActual.setPassword(usuario.getPassword());
 		usuarioActual.setNombre(usuario.getNombre());
