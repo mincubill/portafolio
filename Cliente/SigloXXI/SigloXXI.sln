@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SigloXXI", "SigloXXI\SigloX
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SigloXXI.Tests", "SigloXXI.Tests\SigloXXI.Tests.csproj", "{C59010E5-DD62-4D42-99DF-D5AC59EFD998}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SigloXXI.Data", "SigloXXI.Data\SigloXXI.Data.csproj", "{7312B207-5B7F-4FE2-85CE-6710FE79F796}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C59010E5-DD62-4D42-99DF-D5AC59EFD998}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C59010E5-DD62-4D42-99DF-D5AC59EFD998}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C59010E5-DD62-4D42-99DF-D5AC59EFD998}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7312B207-5B7F-4FE2-85CE-6710FE79F796}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7312B207-5B7F-4FE2-85CE-6710FE79F796}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7312B207-5B7F-4FE2-85CE-6710FE79F796}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7312B207-5B7F-4FE2-85CE-6710FE79F796}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

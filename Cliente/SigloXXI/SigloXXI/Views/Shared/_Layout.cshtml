@@ -21,78 +21,89 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
                     </li>
-                    <!-- Productos -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Productos
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="productos/productos_ingresar.html">Ingresar producto</a>
-                            <a class="dropdown-item" href="productos/productos_actualizar.html">Actualizar producto</a>
-                            <a class="dropdown-item" href="productos/productos_eliminar.html">Eliminar producto</a>
-                            <a class="dropdown-item" href="productos/productos_lista.html">Lista de productos</a>
-                        </div>
-                    </li>
-                    <!-- Caja -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Caja
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="caja/caja_ingresar.html">Emitir boleta</a>
-                        </div>
-                    </li>
-                    <!-- Platillos -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Platillos
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="platillos/platillos_ingresar.html">Ingresar platillo</a>
-                            <a class="dropdown-item" href="platillos/platillos_actualizar.html">Actualizar platillo</a>
-                            <a class="dropdown-item" href="platillos/platillos_eliminar.html">Eliminar platillo</a>
-                            <a class="dropdown-item" href="platillos/platillos_lista.html">Lista de platillos</a>
-                        </div>
-                    </li>
-                    <!-- Pedidos prov. -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Pedidos prov.
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="pedidos_prov/pedidos_prov_ingresar.html">Emitir pedido</a>
-                            <a class="dropdown-item" href="pedidos_prov/pedidos_prov_lista.html">Lista de pedidos</a>
-                        </div>
-                    </li>
-                    <!-- Mesas -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Mesas
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="mesas/mesas_ingresar.html">Ingresar mesas</a>
-                            <a class="dropdown-item" href="mesas/mesas_actualizar.html">Actualizar mesas</a>
-                            <a class="dropdown-item" href="mesas/mesas_eliminar.html">Eliminar mesas</a>
-                            <a class="dropdown-item" href="mesas/mesas_lista.html">Lista de mesas</a>
-                        </div>
-                    </li>
-                    <!-- Usuarios -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Usuarios
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="usuario/usuario_ingresar.html">Ingresar usuario</a>
-                            <a class="dropdown-item" href="usuario/usuario_actualizar.html">Actualizar usuario</a>
-                            <a class="dropdown-item" href="usuario/usuario_eliminar.html">Eliminar usuario</a>
-                            <a class="dropdown-item" href="usuario/usuario_lista.html">Lista de usuario</a>
-                        </div>
-                    </li>
+                    @*@if (Session["Rol"].ToString() == "1")*@
+                    @if (Session["Rol"].ToString() == "1")
+                    {
+                        <!-- Productos -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Productos
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @Html.ActionLink("Ingresar producto", "AgregarProductos", "Producto", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Lista de productos", "VerProductos", "Producto", new { area = "" }, new { @class = "dropdown-item" })
+                            </div>
+                        </li>
+                        <!-- Caja -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Caja
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="caja/caja_ingresar.html">Emitir boleta</a>
+                            </div>
+                        </li>
+                        <!-- Platillos -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Platillos
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="platillos/platillos_ingresar.html">Ingresar platillo</a>
+                                <a class="dropdown-item" href="platillos/platillos_actualizar.html">Actualizar platillo</a>
+                                <a class="dropdown-item" href="platillos/platillos_eliminar.html">Eliminar platillo</a>
+                                <a class="dropdown-item" href="platillos/platillos_lista.html">Lista de platillos</a>
+                            </div>
+                        </li>
+                        <!-- Pedidos prov. -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Pedidos prov.
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="pedidos_prov/pedidos_prov_ingresar.html">Emitir pedido</a>
+                                <a class="dropdown-item" href="pedidos_prov/pedidos_prov_lista.html">Lista de pedidos</a>
+                            </div>
+                        </li>
+                        <!-- Mesas -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Mesas
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="mesas/mesas_ingresar.html">Ingresar mesas</a>
+                                <a class="dropdown-item" href="mesas/mesas_actualizar.html">Actualizar mesas</a>
+                                <a class="dropdown-item" href="mesas/mesas_eliminar.html">Eliminar mesas</a>
+                                <a class="dropdown-item" href="mesas/mesas_lista.html">Lista de mesas</a>
+                            </div>
+                        </li>
+                        <!-- Usuarios -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Usuarios
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @Html.ActionLink("Agregar Usuario", "AgregarUsuario", "Usuario", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Ver usuarios", "VerUsuarios", "Usuario", new { area = "" }, new { @class = "dropdown-item" })
+                            </div>
+                        </li>
+                    }
+
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     @*<a href="login.html" class="btn btn-outline-primary my-2 my-sm-0">Login</a>*@
-                    @Html.ActionLink("Iniciar sesion", "Login", "Login", 
-                   new { area = "" }, new { @class = "btn btn-outline-primary my-2 my-sm-0" })
+                    @*@if (string.IsNullOrEmpty(Session["Rol"].ToString()))*@
+                    @if (string.IsNullOrEmpty(Session["Rol"].ToString()))
+                    {
+                        @Html.ActionLink("Iniciar sesion", "Login", "Login",
+                        new { area = "" }, new { @class = "btn btn-outline-primary my-2 my-sm-0" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Cerrar sesion", "Logout", "Login",
+                        new { area = "" }, new { @class = "btn btn-outline-primary my-2 my-sm-0" })
+                    }
+
                 </form>
             </div>
         </nav>
