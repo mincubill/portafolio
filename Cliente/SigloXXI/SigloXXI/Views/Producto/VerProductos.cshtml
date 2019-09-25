@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "VerProductos";
+    var data = (List<SigloXXI.Data.Productos>)ViewData["Productos"];
+}
+
+<h2>Ver Productos</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Categoria</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        @foreach (var producto in data)
+        {
+            <tr>
+                <td>@producto.Id</td>
+                <td>@producto.Nombre</td>
+                <td>@producto.Descripcion</td>
+                <td>@producto.Cantidad</td>
+                <td>@producto.Precio</td>
+                <td>@producto.Categoria</td>
+                <td>
+                    @Html.ActionLink(" ", "EditarProductos", "Producto",
+                       new { id = producto.Id }, new { @class = "far fa-edit" })
+                    @Html.ActionLink(" ", "EliminarProductos", "Producto",
+                       new { id = producto.Id }, new { @class = "far fa-trash-alt" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

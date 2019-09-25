@@ -21,7 +21,8 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
                     </li>
-                    @if (Session["Rol"].ToString() == "1")
+                    @*@if (Session["Rol"].ToString() == "1")*@
+                    @if (true)
                     {
                         <!-- Productos -->
                         <li class="nav-item dropdown">
@@ -29,10 +30,8 @@
                                 Productos
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="productos/productos_ingresar.html">Ingresar producto</a>
-                                <a class="dropdown-item" href="productos/productos_actualizar.html">Actualizar producto</a>
-                                <a class="dropdown-item" href="productos/productos_eliminar.html">Eliminar producto</a>
-                                <a class="dropdown-item" href="productos/productos_lista.html">Lista de productos</a>
+                                @Html.ActionLink("Ingresar producto", "AgregarProductos", "Producto", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Lista de productos", "VerProductos", "Producto", new { area = "" }, new { @class = "dropdown-item" })
                             </div>
                         </li>
                         <!-- Caja -->
@@ -84,10 +83,8 @@
                                 Usuarios
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="usuario/usuario_ingresar.html">Ingresar usuario</a>
-                                <a class="dropdown-item" href="usuario/usuario_actualizar.html">Actualizar usuario</a>
-                                <a class="dropdown-item" href="usuario/usuario_eliminar.html">Eliminar usuario</a>
-                                <a class="dropdown-item" href="usuario/usuario_lista.html">Lista de usuario</a>
+                                @Html.ActionLink("Agregar Usuario", "AgregarUsuario", "Usuario", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Ver usuarios", "VerUsuarios", "Usuario", new { area = "" }, new { @class = "dropdown-item" })
                             </div>
                         </li>
                     }
@@ -95,7 +92,8 @@
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     @*<a href="login.html" class="btn btn-outline-primary my-2 my-sm-0">Login</a>*@
-                    @if (string.IsNullOrEmpty(Session["Rol"].ToString()))
+                    @*@if (string.IsNullOrEmpty(Session["Rol"].ToString()))*@
+                    @if (true)
                     {
                         @Html.ActionLink("Iniciar sesion", "Login", "Login",
                         new { area = "" }, new { @class = "btn btn-outline-primary my-2 my-sm-0" })

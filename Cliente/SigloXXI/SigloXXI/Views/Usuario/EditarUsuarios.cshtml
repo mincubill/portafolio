@@ -1,11 +1,12 @@
 ﻿@model SigloXXI.Models.UsuarioModel
 
 @{
-    ViewBag.Title = "AgregarUsuario";
+    ViewBag.Title = "EditarUsuarios";
 }
 
-<h2>Agregar Usuario</h2>
-@using (Html.BeginForm())
+<h2>EditarUsuarios</h2>
+
+@using (Html.BeginForm() )
 {
     @Html.AntiForgeryToken()
 
@@ -36,7 +37,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                <input type="password" value="@Model.Password" name="Password"  class="form-control"/>
+                @*@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </div>
         </div>

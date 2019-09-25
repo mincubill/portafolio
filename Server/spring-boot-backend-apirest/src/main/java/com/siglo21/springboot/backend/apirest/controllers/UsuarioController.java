@@ -38,7 +38,7 @@ public class UsuarioController {
 	
 	@PostMapping("/crear-usuario")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Usuario CrearUsuario(@RequestBody Usuario usuario) {
+	public Usuario CrearUsuario(Usuario usuario) {
 		return usuarioService.save(usuario);
 	}
 	

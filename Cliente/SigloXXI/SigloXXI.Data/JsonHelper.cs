@@ -16,9 +16,9 @@ namespace SigloXXI.Data
         {
             ConexionHelper.Cliente.BaseAddress = new Uri(Url);
             var content = new FormUrlEncodedContent(queryParams);
-            var res = ConexionHelper.Cliente.PostAsync(Url + metodo, content).Result
+            var res = ConexionHelper.Cliente.GetAsync(Url + metodo).Result
                 .Content.ReadAsStringAsync().Result;
-            return JsonConvert.DeserializeObject<List<T>>(res)[0];
+            return JsonConvert.DeserializeObject<T>(res);
         }
 
         public static List<T> GetList(string metodo)
@@ -43,14 +43,12 @@ namespace SigloXXI.Data
             {
                 ConexionHelper.Cliente.BaseAddress = new Uri(Url);
                 var content = new FormUrlEncodedContent(param);
-                //var res = ConexionHelper.Cliente.PostAsync(Url + metodo, content).Result
-                //.Content.ReadAsStringAsync().Result;
                 var res = ConexionHelper.Cliente.PostAsync(Url + metodo, content).Result;
-                //if (res == System.Net.HttpStatusCode.Created)
-                //    return true;
-                //else
-                //    return false;
-                return true;
+                if (res.StatusCode == System.Net.HttpStatusCode.Created)
+                    return true;
+                else
+                    return false;
+                //return true;
             }
             catch (Exception ex)
             {
@@ -63,9 +61,8 @@ namespace SigloXXI.Data
             {
                 ConexionHelper.Cliente.BaseAddress = new Uri(Url);
                 var content = new FormUrlEncodedContent(param);
-                var res = ConexionHelper.Cliente.PutAsync(Url + metodo, content).Result
-                .Content.ReadAsStringAsync().Result;
-                if (res == "1")
+                var res = ConexionHelper.Cliente.PutAsync(Url + metodo, content).Result;
+                if (res.StatusCode == System.Net.HttpStatusCode.Created)
                     return true;
                 else
                     return false;
@@ -74,6 +71,19 @@ namespace SigloXXI.Data
             {
                 return false;
             }
+        }
+
+        public static bool Delete(Dictionary<string, string> param, string metodo)
+        {
+
+            ConexionHelper.Cliente.BaseAddress = new Uri(Url);
+            var content = new FormUrlEncodedContent(param);
+            var res = ConexionHelper.Cliente.DeleteAsync(Url + metodo).Result;
+            if (res.StatusCode == System.Net.HttpStatusCode.NoContent)
+                return true;
+            else
+                return false;
+
         }
     }
 }

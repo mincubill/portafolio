@@ -22,15 +22,20 @@
     <tbody>
         @foreach (var usuario in data)
         {
-        <tr>
-            <td>@usuario.Nombre</td>
-            <td>@usuario.Apellido</td>
-            <td>@usuario.Correo</td>
-            <td>@usuario.UserName</td>
-            <td>@usuario.rol</td>
-            <td>@usuario.FechaNacimiento.ToShortDateString()</td>
-
-        </tr>
+            <tr>
+                <td>@usuario.Nombre</td>
+                <td>@usuario.Apellido</td>
+                <td>@usuario.Correo</td>
+                <td>@usuario.UserName</td>
+                <td>@usuario.rol</td>
+                <td>@usuario.FechaNacimiento.ToShortDateString()</td>
+                <td>
+                    @Html.ActionLink(" ", "EditarUsuarios", "Usuario", 
+                       new { rut = usuario.Rut }, new { @class = "far fa-edit" })
+                    @Html.ActionLink(" ", "EliminarUsuarios", "Usuario",
+                       new { rut = usuario.Rut }, new { @class = "far fa-trash-alt" })
+                </td>
+            </tr>
         }
     </tbody>
 </table>
