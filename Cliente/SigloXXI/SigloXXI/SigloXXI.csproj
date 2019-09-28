@@ -110,8 +110,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CajaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MesasController.cs" />
+    <Compile Include="Controllers\PedidoController.cs" />
+    <Compile Include="Controllers\PlatilloController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -154,6 +158,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Caja\" />
+    <Folder Include="Views\Mesas\" />
+    <Folder Include="Views\Pedido\" />
+    <Folder Include="Views\Platillo\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SigloXXI.Data\SigloXXI.Data.csproj">
