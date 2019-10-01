@@ -38,13 +38,14 @@ public class UsuarioController {
 	
 	@PostMapping("/crear-usuario")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Usuario CrearUsuario(Usuario usuario) {
+	public Usuario CrearUsuario(@RequestBody Usuario usuario) {
+		System.out.println(usuario);
 		return usuarioService.save(usuario);
 	}
 	
 	@PutMapping("/actualizar-usuario/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Usuario ActualizarUsuario(Usuario usuario, @PathVariable int id) {
+	public Usuario ActualizarUsuario(@RequestBody Usuario usuario, @PathVariable int id) {
 		Usuario usuarioActual = usuarioService.findById(id);
 		usuarioActual.setPassword(usuario.getPassword());
 		usuarioActual.setNombre(usuario.getNombre());
