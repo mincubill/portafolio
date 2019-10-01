@@ -111,10 +111,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CajaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\DocumentoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IngredienteController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MesasController.cs" />
+    <Compile Include="Controllers\Orden_HController.cs" />
     <Compile Include="Controllers\PedidoController.cs" />
+    <Compile Include="Controllers\Pedido_HController.cs" />
     <Compile Include="Controllers\PlatilloController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
@@ -123,7 +127,11 @@
     </Compile>
     <Compile Include="Models\ClienteModel.cs" />
     <Compile Include="Models\CustomAuthenticationFilter.cs" />
+    <Compile Include="Models\DocumentoModel.cs" />
+    <Compile Include="Models\IngredienteModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\Orden_HModel.cs" />
+    <Compile Include="Models\Pedido_HModel.cs" />
     <Compile Include="Models\ProductoModel.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -150,7 +158,6 @@
     <Content Include="Views\Producto\AgregarProductos.cshtml" />
     <Content Include="Views\Producto\EditarProductos.cshtml" />
     <Content Include="Views\Producto\VerProductos.cshtml" />
-    <Content Include="Views\Cliente\sadsa.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -161,9 +168,13 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Caja\" />
+    <Folder Include="Views\Cliente\" />
+    <Folder Include="Views\Documentos\" />
+    <Folder Include="Views\Ingrediente\" />
     <Folder Include="Views\Login\" />
     <Folder Include="Views\Mesas\" />
-    <Folder Include="Views\Pedido\" />
+    <Folder Include="Views\Orden_H\" />
+    <Folder Include="Views\Pedido_H\" />
     <Folder Include="Views\Platillo\" />
   </ItemGroup>
   <ItemGroup>

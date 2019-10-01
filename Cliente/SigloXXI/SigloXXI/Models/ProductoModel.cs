@@ -9,7 +9,7 @@ namespace SigloXXI.Models
     public class ProductoModel
     {
         [Required(ErrorMessage = "Campo obligatorio")]
-        [Display(Name = "Codigo: ")]
+        [Display(Name = "Código: ")]
         public int Id { get; set; }
         [Required(ErrorMessage = "Campo obligatorio")]
         [Display(Name = "Nombre: ")]
