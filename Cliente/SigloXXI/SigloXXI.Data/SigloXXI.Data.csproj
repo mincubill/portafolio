@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Caja.cs" />
+    <Compile Include="Clientes.cs" />
     <Compile Include="ConexionHelper.cs" />
     <Compile Include="JsonHelper.cs" />
     <Compile Include="Mesas.cs" />

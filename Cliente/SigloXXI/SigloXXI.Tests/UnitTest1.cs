@@ -32,7 +32,26 @@ namespace SigloXXI.Tests
             //user.ObtenerUsuario(18732997);
             //user.EliminarUsuario(12321);
             user.ActualizarUsuario(user);
+
+            var cliente = new Clientes()
+            {
+                Url = "http://192.168.1.13:8082",
+                Apellido = "retamal",
+                Correo = "alanageorgina@gmail.com",
+                Dv = '4',
+                FechaNacimiento = DateTime.Now,
+                Nombre = "andres",
+                PassWord = "asdsadsa",
+                rol = 1,
+                Rut = 17287315,
+                UserName = "mincubill",
+            };
+            //user.CrearUsuario(user);
+            //user.ObtenerUsuario(18732997);
+            //user.EliminarUsuario(12321);
+            user.ActualizarUsuario(user);
         }
+
 
         //[TestMethod]
         //public void RestGetTest()

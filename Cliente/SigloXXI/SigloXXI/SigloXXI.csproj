@@ -106,11 +106,11 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
-    <Content Include="Views\Login\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CajaController.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MesasController.cs" />
@@ -121,6 +121,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ClienteModel.cs" />
     <Compile Include="Models\CustomAuthenticationFilter.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ProductoModel.cs" />
@@ -149,6 +150,7 @@
     <Content Include="Views\Producto\AgregarProductos.cshtml" />
     <Content Include="Views\Producto\EditarProductos.cshtml" />
     <Content Include="Views\Producto\VerProductos.cshtml" />
+    <Content Include="Views\Cliente\sadsa.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -159,6 +161,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Caja\" />
+    <Folder Include="Views\Login\" />
     <Folder Include="Views\Mesas\" />
     <Folder Include="Views\Pedido\" />
     <Folder Include="Views\Platillo\" />
