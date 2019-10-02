@@ -26,57 +26,51 @@ namespace SigloXXI.Controllers
         public ActionResult AgregarIngredientes(IngredienteModel model)
         {
             var ingredientes = new Ingredientes()
-            {
-                Precio = model.Precio,
+            {       
                 Id = model.Id,
-                Categoria = model.Categoria,
                 Cantidad = model.Cantidad,
-                Descripcion = model.Descripcion,
-                Nombre = model.Nombre,
+                Platillo_Id = model.Platillo_Id,
+                Producto_Id = model.Producto_Id,
             };
-            prod.CrearProducto(prod);
-            return RedirectToAction("VerProductos");
+            ingredientes.CrearIngrediente(ingredientes);
+            return RedirectToAction("VerIngredientes");
         }
 
         [HttpGet]
-        public ActionResult EditarProductos(int id)
+        public ActionResult EditarIngrediente(int id)
         {
-            var prod = new Productos();
-            prod = prod.ObtenerProducto(id);
-            ProductoModel model = new ProductoModel
+            var ingredientes = new Ingredientes();
+            ingredientes = ingredientes.ObtenerIngrediente(id);
+            IngredienteModel model = new IngredienteModel
             {
-                Nombre = prod.Nombre,
-                Cantidad = prod.Cantidad,
-                Categoria = prod.Categoria,
-                Descripcion = prod.Descripcion,
-                Id = prod.Id,
-                Precio = prod.Precio,
+                Id = ingredientes.Id,
+                Cantidad = ingredientes.Cantidad,
+                Platillo_Id = ingredientes.Platillo_Id,
+                Producto_Id = ingredientes.Producto_Id,
             };
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult EditarProductos(ProductoModel model)
+        public ActionResult EditarIngredientes(IngredienteModel model)
         {
-            var prod = new Productos()
+            var ingredientes = new Ingredientes()
             {
-                Precio = model.Precio,
                 Id = model.Id,
-                Categoria = model.Categoria,
                 Cantidad = model.Cantidad,
-                Descripcion = model.Descripcion,
-                Nombre = model.Nombre,
+                Platillo_Id = model.Platillo_Id,
+                Producto_Id = model.Producto_Id,
             };
-            prod.ActualizarProducto(prod);
-            return RedirectToAction("VerProductos");
+            ingredientes.ActualizarIngrediente(ingredientes);
+            return RedirectToAction("VerIngredientes");
 
         }
 
-        public ActionResult EliminarProductos(int id)
+        public ActionResult EliminarIngredientes(int id)
         {
-            var prod = new Productos();
-            prod.EliminarProducto(id);
-            return RedirectToAction("VerProductos");
+            var ingredientes = new Ingredientes();
+            ingredientes.EliminarIngrediente(id);
+            return RedirectToAction("VerIngredientes");
         }
     }
 }
