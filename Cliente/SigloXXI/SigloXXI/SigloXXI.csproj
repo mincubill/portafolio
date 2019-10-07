@@ -113,7 +113,7 @@
     <Compile Include="Controllers\CajaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\MesasController.cs" />
+    <Compile Include="Controllers\MesaController.cs" />
     <Compile Include="Controllers\PedidoController.cs" />
     <Compile Include="Controllers\PlatilloController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
@@ -121,6 +121,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\MesaModel.cs" />
     <Compile Include="Models\CustomAuthenticationFilter.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ProductoModel.cs" />
