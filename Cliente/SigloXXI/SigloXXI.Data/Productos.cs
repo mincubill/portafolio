@@ -14,20 +14,13 @@ namespace SigloXXI.Data
         public int Cantidad { get; set; }
         public int Precio { get; set; }
         public string Categoria { get; set; }
-        public string Url { get; set; }
-        public Productos()
-        {
-            Url = "http://192.168.1.13:8082";
-        }
+        public string Token { get; set; }
 
         public bool CrearProducto(Productos producto)
         {
-            var url = new UriBuilder(Url);
-            ConexionHelper.Cliente.BaseAddress = new Uri(Url);
-            JsonHelper<Users>.Url = Url;
             var queryParams = new Dictionary<string, string>
             {
-                {"id", producto.Id.ToString() },
+                //{"id", producto.Id.ToString() },
                 {"nombre",  producto.Nombre},
                 {"descripcion",  producto.Descripcion},
                 {"cantidad",  producto.Cantidad.ToString()},
@@ -35,14 +28,12 @@ namespace SigloXXI.Data
                 {"categoria",  Categoria},
                
             };
+            JsonHelper<Productos>.Token = this.Token;
             return JsonHelper<Productos>.Post(queryParams, "/productos/crear-producto");
         }
 
         public bool ActualizarProducto(Productos producto)
         {
-            var url = new UriBuilder(Url);
-            ConexionHelper.Cliente.BaseAddress = new Uri(Url);
-            JsonHelper<Users>.Url = Url;
             var queryParams = new Dictionary<string, string>
             {
                 {"id", producto.Id.ToString() },
@@ -52,34 +43,29 @@ namespace SigloXXI.Data
                 {"precio",  producto.Precio.ToString()},
                 {"categoria",  Categoria},
             };
+            JsonHelper<Productos>.Token = this.Token;
             return JsonHelper<Users>.Put(queryParams, "/productos/actualizar-producto/" + producto.Id);
         }
 
         public List<Productos> ObtenerProductos()
         {
-            var url = new UriBuilder(Url);
-            ConexionHelper.Cliente.BaseAddress = new Uri(Url);
-            JsonHelper<Productos>.Url = Url;
+            JsonHelper<Productos>.Token = Token;
             var result = JsonHelper<Productos>.GetList("/productos/obtener-productos");
             return result;
         }
 
         public Productos ObtenerProducto(int id)
         {
-            var url = new UriBuilder(Url);
-            ConexionHelper.Cliente.BaseAddress = new Uri(Url);
-            JsonHelper<Productos>.Url = Url;
             var queryParams = new Dictionary<string, string>();
+            JsonHelper<Productos>.Token = Token;
             var res = JsonHelper<Productos>.Get(queryParams, "/productos/buscar-producto/" + id.ToString());
             return res;
         }
 
         public bool EliminarProducto(int id)
         {
-            var url = new UriBuilder(Url);
-            ConexionHelper.Cliente.BaseAddress = new Uri(Url);
-            JsonHelper<Productos>.Url = Url;
             var queryParams = new Dictionary<string, string>();
+            JsonHelper<Productos>.Token = Token;
             return JsonHelper<Productos>.Delete(queryParams, "/productos/eliminar-producto/" + id.ToString());
         }
     }

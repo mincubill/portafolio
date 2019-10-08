@@ -14,6 +14,8 @@ namespace SigloXXI.Controllers
         public ActionResult Login()
         {
             Session["Access"] = "";
+            if(Session["Token"] == null)
+                Session["Token"] = "";
             return View();
         }
         [HttpPost]
@@ -36,12 +38,13 @@ namespace SigloXXI.Controllers
                     //Store the Username in session
                     Session["UserName"] = tempUser.UserName;
                     Session["Rol"] = tempUser.rol;
+                    Session["Token"] = tempUser.Token;
                     //Then redirect to the Index Action method of Home Controller
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Invalid User Name or Password");
+                    ModelState.AddModelError("", "Nombre de usuario o contraseña incorrecto");
                     return View(model);
                 }
             }
@@ -55,6 +58,7 @@ namespace SigloXXI.Controllers
         {
             Session["UserName"] = null;
             Session["Rol"] = null;
+            Session["Token"] = null;
             return RedirectToAction("Index", "Home");
         }
     }

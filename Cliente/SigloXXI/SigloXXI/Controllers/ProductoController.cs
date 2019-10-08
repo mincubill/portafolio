@@ -10,15 +10,19 @@ namespace SigloXXI.Controllers
 {
     public class ProductoController : Controller
     {
+        private string _token;
         public ActionResult VerProductos()
         {
-            var prod = new Productos();
+            _token = Session["Token"].ToString();
+            var prod = new Productos() { Token = _token };
             ViewData["Productos"] = prod.ObtenerProductos();
             return View();
         }
         [HttpGet]
         public ActionResult AgregarProductos()
         {
+            _token = Session["Token"].ToString();
+            var prod = new Productos() { Token = _token };
             return View();
         }
 
@@ -27,8 +31,8 @@ namespace SigloXXI.Controllers
         {
             var prod = new Productos()
             {
+                Token = _token,
                 Precio = model.Precio,
-                Id = model.Id,
                 Categoria = model.Categoria,
                 Cantidad = model.Cantidad,
                 Descripcion = model.Descripcion,
@@ -69,7 +73,6 @@ namespace SigloXXI.Controllers
             };
             prod.ActualizarProducto(prod);
             return RedirectToAction("VerProductos");
-
         }
 
         public ActionResult EliminarProductos(int id)

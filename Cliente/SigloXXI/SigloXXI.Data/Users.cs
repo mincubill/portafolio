@@ -17,27 +17,26 @@ namespace SigloXXI.Data
         public int rol { get; set; }
         public string Correo { get; set; }
         public DateTime FechaNacimiento { get; set; }
-        public string  Url { get; set; }
 
-        public Users()
-        {
-            Url = "http://192.168.1.13:8082";
-        }
+        public string Token{ get; set; }
 
         public Users IniciarSesion (string userName, string password)
         {
-            var url = new UriBuilder(Url);
-            ConexionHelper.Cliente.BaseAddress = new Uri(Url);
-            JsonHelper<Users>.Url = Url;
-            var result = JsonHelper<Users>.GetList("/usuarios/obtener-usuarios");
-            return result.FirstOrDefault(u => u.UserName == userName && u.PassWord == password);
+            if(JsonHelper<Users>.GetToken(userName, password))
+            {
+                Token = JsonHelper<Users>.Token;
+                var result = JsonHelper<Users>.GetList("/usuarios/obtener-usuarios");
+                var temp = result.FirstOrDefault(u => u.UserName == userName);
+                temp.Token = this.Token;
+                return temp;
+            }
+            return null;
         }
+
+        
 
         public bool CrearUsuario (Users usuario)
         {
-            var url = new UriBuilder(Url);
-            ConexionHelper.Cliente.BaseAddress = new Uri(Url);
-            JsonHelper<Users>.Url = Url;
             var queryParams = new Dictionary<string, string>
             {
                 {"rut", usuario.Rut.ToString() },
@@ -48,16 +47,13 @@ namespace SigloXXI.Data
                 {"apellido",  usuario.Apellido},
                 {"rol",  usuario.rol.ToString() },
                 {"correo",  usuario.Correo},
-                {"fechaNacimiento",  usuario.FechaNacimiento.ToShortDateString() },
+                {"fechaNacimiento",  usuario.FechaNacimiento.ToString("yyyy-MM-dd") },
             };
             return JsonHelper<Users>.Post(queryParams, "/usuarios/crear-usuario");
         }
 
         public bool ActualizarUsuario(Users usuario)
         {
-            var url = new UriBuilder(Url);
-            ConexionHelper.Cliente.BaseAddress = new Uri(Url);
-            JsonHelper<Users>.Url = Url;
             var queryParams = new Dictionary<string, string>
             {
                 {"rut", usuario.Rut.ToString() },
@@ -68,25 +64,19 @@ namespace SigloXXI.Data
                 {"apellido",  usuario.Apellido},
                 {"rol",  usuario.rol.ToString() },
                 {"correo",  usuario.Correo},
-                {"fechaNacimiento",  usuario.FechaNacimiento.ToShortDateString() },
+                {"fechaNacimiento",  usuario.FechaNacimiento.ToString("yyyy-MM-dd") },
             };
             return JsonHelper<Users>.Put(queryParams, "/usuarios/actualizar-usuario/"+usuario.Rut);
         }
 
         public List<Users> ObtenerUsuarios()
         {
-            var url = new UriBuilder(Url);
-            ConexionHelper.Cliente.BaseAddress = new Uri(Url);
-            JsonHelper<Users>.Url = Url;
             var result = JsonHelper<Users>.GetList("/usuarios/obtener-usuarios");
             return result;
         }
 
         public Users ObtenerUsuario(int rut)
         {
-            var url = new UriBuilder(Url);
-            ConexionHelper.Cliente.BaseAddress = new Uri(Url);
-            JsonHelper<Users>.Url = Url;
             var queryParams = new Dictionary<string, string>();
             var res = JsonHelper<Users>.Get(queryParams, "/usuarios/buscar-usuario/" + rut.ToString());
             return res;
@@ -94,14 +84,8 @@ namespace SigloXXI.Data
 
         public bool EliminarUsuario(int rut)
         {
-            var url = new UriBuilder(Url);
-            ConexionHelper.Cliente.BaseAddress = new Uri(Url);
-            JsonHelper<Users>.Url = Url;
             var queryParams = new Dictionary<string, string>();
             return JsonHelper<Users>.Delete(queryParams, "/usuarios/eliminar-usuario/"+rut);
-            
         }
-
-
     }
 }
