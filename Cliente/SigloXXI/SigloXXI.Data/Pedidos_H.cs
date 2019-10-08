@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SigloXXI.Data
 {
-    class Pedidos_H
+    public class Pedidos_H
     {
         public int Id { get; set; }
         public int Total { get; set; }

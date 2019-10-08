@@ -17,7 +17,7 @@ namespace SigloXXI.Controllers
         }
 
         [HttpPost]
-        public ActionResult AgregarOrden_H(Orden_HModel model)
+        public ActionResult AgregarOrden_H(OrdenHModel model)
         {
             var orden_h = new Orden_H
             {
@@ -27,8 +27,8 @@ namespace SigloXXI.Controllers
                 Estado = model.Estado,
                 Documento_Id = model.Documento_Id,
                 Mesa_Id = model.Mesa_Id,
-    };
-            orden_h.CrearOrdenH(orden_h);
+            };    
+            orden_h.CrearOrden_H(orden_h);
             return RedirectToAction("VerOrden_H");
         }
 
@@ -36,7 +36,7 @@ namespace SigloXXI.Controllers
         public ActionResult VerOrden_H()
         {
             var orden_h = new Orden_H() { Url = "http://weasdf.ddns.net:8082" };
-            ViewData["Orden_H"] = orden_h.ObtenerOrden_H();
+            ViewData["Orden_H"] = orden_h.Obtenerorden_H();
             return View();
         }
 
@@ -44,9 +44,9 @@ namespace SigloXXI.Controllers
         public ActionResult Editarorden_H(int Id)
         {
             var orden_h = new Orden_H() { Url = "http://weasdf.ddns.net:8082" };
-            orden_h = orden_h.ObtenerOrden_H(int.Parse(Id));
+            orden_h = orden_h.ObtenerOrdenH(Id);
             ViewData["Orden H"] = orden_h;
-            Orden_HModel model = new Orden_HModel()
+            OrdenHModel model = new OrdenHModel()
             {
                 Id = orden_h.Id,
                 Total = orden_h.Total,
@@ -58,7 +58,7 @@ namespace SigloXXI.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditarOrden_H(Orden_HModel model)
+        public ActionResult EditarOrden_H(OrdenHModel model)
         {
             var orden_h = new Orden_H
             {
@@ -69,7 +69,7 @@ namespace SigloXXI.Controllers
                 Documento_Id = model.Documento_Id,
                 Mesa_Id = model.Mesa_Id,
             };
-            ordenh.ActualizarOrdenH(orden_h);
+            orden_h.ActualizarOrden_H(orden_h);
             return RedirectToAction("VerOrden_H");
         }
 
@@ -77,7 +77,7 @@ namespace SigloXXI.Controllers
         public ActionResult EliminarOrden_H(int Id)
         {
             var ordenh = new Orden_H() { Url = "http://weasdf.ddns.net:8082" };
-            ordenh.EliminarOrden_H(int.Parse(Id));
+            ordenh.EliminarOrdenH(Id);
             return RedirectToAction("VerOrden_H");
 
         }

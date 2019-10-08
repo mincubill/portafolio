@@ -48,7 +48,7 @@ namespace SigloXXI.Data
             return JsonHelper<Users>.Put(queryParams, "/documentos/actualizar-documento/" + documento.Id);
         }
 
-        public List<Documentos> ObtenerProductos()
+        public List<Documentos> ObtenerDocumentos()
         {
             var url = new UriBuilder(Url);
             ConexionHelper.Cliente.BaseAddress = new Uri(Url);

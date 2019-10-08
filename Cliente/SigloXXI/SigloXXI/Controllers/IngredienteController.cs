@@ -13,7 +13,7 @@ namespace SigloXXI.Controllers
         public ActionResult VerIngredientes()
         {
             var ingredientes = new Ingredientes();
-            ViewData["Ingredientes"] = prod.ObtenerIngredientes();
+            ViewData["Ingredientes"] = ingredientes.ObtenerIngredientes();
             return View();
         }
         [HttpGet]

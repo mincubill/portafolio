@@ -22,7 +22,6 @@ namespace SigloXXI.Controllers
             var cliente = new Clientes
             {
                 Url = "http://weasdf.ddns.net:8082",
-                Apellido = model.Apellido,
                 Correo = model.Correo,
                 Dv = model.Dv,   
                 Nombre = model.Nombre,
@@ -37,7 +36,7 @@ namespace SigloXXI.Controllers
         public ActionResult VerClientes()
         {
             var cliente = new Clientes() { Url = "http://weasdf.ddns.net:8082" };
-            ViewData["Clientes"] = user.ObtenerClientes();
+            ViewData["Clientes"] = cliente.ObtenerClientes();
             return View();
         }
 
@@ -49,7 +48,6 @@ namespace SigloXXI.Controllers
             ViewData["Cliente"] = cliente;
             ClienteModel model = new ClienteModel()
             {
-                Apellido = cliente.Apellido,
                 Correo = cliente.Correo,
                 Dv = cliente.Dv,
                 Nombre = cliente.Nombre,
@@ -65,14 +63,13 @@ namespace SigloXXI.Controllers
             var cliente = new Clientes
             {
                 Url = "http://weasdf.ddns.net:8082",
-                Apellido = model.Apellido,
                 Correo = model.Correo,
                 Dv = model.Dv,
                 Nombre = model.Nombre,
                 Rut = model.Rut,
                 Telefono = model.Telefono,
             };
-            cliente.ActualizarCliente(cliente);
+            cliente.ActualizarClientes(cliente);
             return RedirectToAction("VerClientes");
         }
 

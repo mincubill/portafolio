@@ -9,12 +9,12 @@ using System.Web.Mvc;
 
 namespace SigloXXI.Controllers
 {
-    public class Pedido_HController : Controller
+    public class PedidoHController : Controller
     {
         public ActionResult VerPedido_H()
         {
-            var pedido_h = new Pedido_H();
-            ViewData["Pedido H"] = pedido_h.ObtenerPedidos_H();
+            var pedido_h = new Pedidos_H();
+            ViewData["PedidoH"] = pedido_h.ObtenerPedidos_H();
             return View();
         }
         [HttpGet]
@@ -24,7 +24,7 @@ namespace SigloXXI.Controllers
         }
 
         [HttpPost]
-        public ActionResult AgregarPedidos_H(Pedidos_HModel model)
+        public ActionResult AgregarPedidos_H(PedidoHModel model)
         {
             var pedidos_h = new Pedidos_H()
             {
@@ -41,8 +41,8 @@ namespace SigloXXI.Controllers
         public ActionResult EditarPedidos_H(int id)
         {
             var pedidos_h = new Pedidos_H();
-            pedidos_h = pedidos_h.ObtenerPedido_H(id);
-            ProductoModel model = new Pedido_HModel
+            pedidos_h = pedidos_h.ObtenerPedidos_H(id);
+            PedidoHModel model = new PedidoHModel
             {
                 Id = pedidos_h.Id,
                 Total = pedidos_h.Total,
@@ -53,7 +53,7 @@ namespace SigloXXI.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditarPedidos_H(Pedido_HModel model)
+        public ActionResult EditarPedidos_H(PedidoHModel model)
         {
             var pedidos_h = new Pedidos_H()
             {

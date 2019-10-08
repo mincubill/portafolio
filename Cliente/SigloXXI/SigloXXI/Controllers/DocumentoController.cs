@@ -13,7 +13,7 @@ namespace SigloXXI.Controllers
         public ActionResult VerDocumentos()
         {
             var documento = new Documentos();
-            ViewData["Productos"] = documento.ObtenerDocumentos();
+            ViewData["Documentos"] = documento.ObtenerDocumentos();
             return View();
         }
         [HttpGet]
@@ -41,8 +41,8 @@ namespace SigloXXI.Controllers
         public ActionResult EditarDocumentos(int id)
         {
             var documentos = new Documentos();
-            documentos = prod.ObtenerDocumento(id);
-            ProductoModel model = new DocumentoModel
+            documentos = documentos.ObtenerDocumento(id);
+            DocumentoModel model = new DocumentoModel
             {
                 Id = documentos.Id,
                 Fecha = documentos.Fecha,
@@ -62,7 +62,7 @@ namespace SigloXXI.Controllers
                 Hora = model.Hora,
                 Tipo = model.Tipo,
             };
-            prod.ActualizarDocumento(documentos);
+            documentos.ActualizarDocumento(documentos);
             return RedirectToAction("VerDocumentos");
 
         }

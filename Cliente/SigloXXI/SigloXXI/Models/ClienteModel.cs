@@ -14,16 +14,16 @@ namespace SigloXXI.Models
         public int Rut{ get; set; }
         [Required(ErrorMessage = "Campo obligatorio")]
         [Display(Name = "Dv: ")]
-        public string Dv { get; set; }
+        public char Dv { get; set; }
         [Required(ErrorMessage = "Campo obligatorio")]
         [Display(Name = "Nombre: ")]
         public string Nombre { get; set; }
         [Required(ErrorMessage = "Campo obligatorio")]
         [Display(Name = "Apellido: ")]
-        public int Correo { get; set; }
+        public string Correo { get; set; }
         [Required(ErrorMessage = "Campo obligatorio")]
         [Display(Name = "Correo: ")]
-        public int Telefono { get; set; }
+        public string Telefono { get; set; }
         [Required(ErrorMessage = "Campo obligatorio")]
         [Display(Name = "Telefono: ")]
         public string Categoria { get; set; }

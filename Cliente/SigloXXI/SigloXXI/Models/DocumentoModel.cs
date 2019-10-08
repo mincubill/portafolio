@@ -7,14 +7,14 @@ using System.Web;
 
 namespace SigloXXI.Models
 {
-    public class Documento
+    public class DocumentoModel
     {
         [Required(ErrorMessage = "Campo obligatorio")]
         [Display(Name = "Código: ")]
         public int Id { get; set; }
         [Required(ErrorMessage = "Campo obligatorio")]
         [Display(Name = "Fecha: ")]
-        public string Fecha { get; set; }
+        public DateTime Fecha { get; set; }
         [Required(ErrorMessage = "Campo obligatorio")]
         [Display(Name = "Hora: ")]
         public string Hora { get; set; }

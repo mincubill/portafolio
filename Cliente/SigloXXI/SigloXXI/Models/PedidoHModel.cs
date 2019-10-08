@@ -6,7 +6,7 @@ using System.Web;
 
 namespace SigloXXI.Models
 {
-    public class Pedido_H
+    public class PedidoHModel
     {
         [Required(ErrorMessage = "Campo obligatorio")]
         [Display(Name = "Código: ")]

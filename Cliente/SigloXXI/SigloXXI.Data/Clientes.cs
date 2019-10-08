@@ -64,13 +64,13 @@ namespace SigloXXI.Data
             return result;
         }
 
-        public Users ObtenerCliente(int rut)
+        public Clientes ObtenerCliente(int rut)
         {
             var url = new UriBuilder(Url);
             ConexionHelper.Cliente.BaseAddress = new Uri(Url);
             JsonHelper<Clientes>.Url = Url;
             var queryParams = new Dictionary<string, string>();
-            var res = JsonHelper<Users>.Get(queryParams, "/clientes/buscar-clientes/" + rut.ToString());
+            var res = JsonHelper<Clientes>.Get(queryParams, "/clientes/buscar-clientes/" + rut.ToString());
             return res;
         }
 
