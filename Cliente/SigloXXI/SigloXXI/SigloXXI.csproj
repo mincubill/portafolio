@@ -150,6 +150,9 @@
     <Content Include="Views\Producto\AgregarProductos.cshtml" />
     <Content Include="Views\Producto\EditarProductos.cshtml" />
     <Content Include="Views\Producto\VerProductos.cshtml" />
+    <Content Include="Views\Mesa\VerMesas.cshtml" />
+    <Content Include="Views\Mesa\AgregarMesas.cshtml" />
+    <Content Include="Views\Mesa\EditarMesas.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

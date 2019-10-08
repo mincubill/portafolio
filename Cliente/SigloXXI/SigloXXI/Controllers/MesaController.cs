@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace SigloXXI.Controllers
 {
-    public class MesaController : Controllers
+    public class MesaController : Controller
     {
         public ActionResult VerMesas()
         {
@@ -19,7 +19,7 @@ namespace SigloXXI.Controllers
         }
 
         [HttpGet]
-        public actionResult AgregarMesas()
+        public ActionResult AgregarMesas()
         {
             return View();
         }

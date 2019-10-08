@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SigloXXI.Data
 {
-    class Mesas
+    public class Mesas
     {
         public int Id { get; set; }
         public int Numero { get; set; }
