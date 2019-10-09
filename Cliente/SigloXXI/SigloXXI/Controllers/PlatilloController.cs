@@ -53,7 +53,7 @@ namespace SigloXXI.Controllers
         [HttpPost]
         public ActionResult EditarPlatillo(PlatilloModel model)
         {
-            var plat = new Productos()
+            var plat = new Platillo()
             {
                 Id = model.Id,
                 Nombre = model.Nombre,
