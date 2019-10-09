@@ -22,7 +22,7 @@ namespace SigloXXI.Data
         {
             var url = new UriBuilder(Url);
             ConexionHelper.Cliente.BaseAddress = new Uri(Url);
-            JsonHelper<Users>.Url = Url;
+            JsonHelper<Platillo>.Url = Url;
             var queryParams = new Dictionary<string, string>
             {
                 {"id", platillo.Id.ToString() },
@@ -30,21 +30,21 @@ namespace SigloXXI.Data
                 {"tiempo",  platillo.Tiempo.ToString()},
 
             };
-            return JsonHelper<Productos>.Post(queryParams, "/platillos/crear-platillo");
+            return JsonHelper<Platillo>.Post(queryParams, "/platillos/crear-platillo");
         }
 
         public bool ActualizarPlatillo(Platillo platillo)
         {
             var url = new UriBuilder(Url);
             ConexionHelper.Cliente.BaseAddress = new Uri(Url);
-            JsonHelper<Users>.Url = Url;
+            JsonHelper<Platillo>.Url = Url;
             var queryParams = new Dictionary<string, string>
             {
                 {"id", platillo.Id.ToString() },
                 {"nombre",  platillo.Nombre},
                 {"tiempo",  platillo.Tiempo.ToString()},
             };
-            return JsonHelper<Users>.Put(queryParams, "/productos/actualizar-producto/" + platillo.Id);
+            return JsonHelper<Platillo>.Put(queryParams, "/platillos/actualizar-platillo/" + platillo.Id);
         }
 
         public List<Platillo> ObtenerPlatillos()
