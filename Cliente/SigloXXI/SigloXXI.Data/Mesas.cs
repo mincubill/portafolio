@@ -21,28 +21,28 @@ namespace SigloXXI.Data
         {
             var url = new UriBuilder(Url);
             ConexionHelper.Cliente.BaseAddress = new Uri(Url);
-            JsonHelper<Users>.Url = Url;
+            JsonHelper<Mesas>.Url = Url;
             var queryParams = new Dictionary<string, string>
             {
                 {"id", mesa.Id.ToString() },
                 { "numero",  mesa.Numero.ToString() },
                 {"capacidad",  mesa.Capacidad.ToString() },
             };
-            return JsonHelper<Productos>.Post(queryParams, "/mesas/crear-mesa");
+            return JsonHelper<Mesas>.Post(queryParams, "/mesas/crear-mesa");
         }
 
         public bool ActualizarMesa(Mesas mesa)
         {
             var url = new UriBuilder(Url);
             ConexionHelper.Cliente.BaseAddress = new Uri(Url);
-            JsonHelper<Users>.Url = Url;
+            JsonHelper<Mesas>.Url = Url;
             var queryParams = new Dictionary<string, string>
             {
                 {"id", mesa.Id.ToString() },
                 { "numero",  mesa.Numero.ToString() },
                 {"capacidad",  mesa.Capacidad.ToString() },
             };
-            return JsonHelper<Users>.Put(queryParams, "/mesas/actualizar-mesa/" + mesa.Id);
+            return JsonHelper<Mesas>.Put(queryParams, "/mesas/actualizar-mesa/" + mesa.Id);
         }
 
         public List<Mesas> ObtenerMesas()
