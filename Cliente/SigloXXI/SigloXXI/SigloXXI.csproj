@@ -44,6 +44,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -99,6 +102,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Fakes Include="Fakes\SigloXXI.Data.fakes" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -111,21 +115,31 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CajaController.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\DocumentoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IngredienteController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MesasController.cs" />
     <Compile Include="Controllers\PedidoController.cs" />
     <Compile Include="Controllers\PlatilloController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
+    <Compile Include="Controllers\ProveedorController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ClienteModel.cs" />
     <Compile Include="Models\CustomAuthenticationFilter.cs" />
+    <Compile Include="Models\DocumentoModel.cs" />
+    <Compile Include="Models\IngredienteModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MesaModel.cs" />
+    <Compile Include="Models\OrdenHModel.cs" />
+    <Compile Include="Models\PedidoHModel.cs" />
     <Compile Include="Models\PlatilloModel.cs" />
     <Compile Include="Models\ProductoModel.cs" />
+    <Compile Include="Models\ProveedorModel.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -167,7 +181,11 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Caja\" />
+    <Folder Include="Views\Clientee\" />
+    <Folder Include="Views\Documento\" />
+    <Folder Include="Views\Ingrediente\" />
     <Folder Include="Views\Pedido\" />
+    <Folder Include="Views\Proveedor\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SigloXXI.Data\SigloXXI.Data.csproj">
