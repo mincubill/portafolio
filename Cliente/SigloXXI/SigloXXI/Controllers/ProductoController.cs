@@ -32,11 +32,11 @@ namespace SigloXXI.Controllers
             var prod = new Productos()
             {
                 Token = _token,
-                Precio = model.Precio,
-                Categoria = model.Categoria,
-                Cantidad = model.Cantidad,
-                Descripcion = model.Descripcion,
-                Nombre = model.Nombre,
+                precio = model.Precio,
+                categoria = model.Categoria,
+                cantidad = model.Cantidad,
+                descripcion = model.Descripcion,
+                nombre = model.Nombre,
             };
             prod.CrearProducto(prod);
             return RedirectToAction("VerProductos");
@@ -49,12 +49,12 @@ namespace SigloXXI.Controllers
             prod = prod.ObtenerProducto(id);
             ProductoModel model = new ProductoModel
             {
-                Nombre = prod.Nombre,
-                Cantidad = prod.Cantidad,
-                Categoria = prod.Categoria,
-                Descripcion = prod.Descripcion,
-                Id = prod.Id,
-                Precio = prod.Precio,
+                Nombre = prod.nombre,
+                Cantidad = prod.cantidad,
+                Categoria = prod.categoria,
+                Descripcion = prod.descripcion,
+                Id = prod.id,
+                Precio = prod.precio,
             };
             return View(model);
         }
@@ -64,12 +64,12 @@ namespace SigloXXI.Controllers
         {
             var prod = new Productos()
             {
-                Precio = model.Precio,
-                Id = model.Id,
-                Categoria = model.Categoria,
-                Cantidad = model.Cantidad,
-                Descripcion = model.Descripcion,
-                Nombre = model.Nombre,
+                precio = model.Precio,
+                id = model.Id,
+                categoria = model.Categoria,
+                cantidad = model.Cantidad,
+                descripcion = model.Descripcion,
+                nombre = model.Nombre,
             };
             prod.ActualizarProducto(prod);
             return RedirectToAction("VerProductos");

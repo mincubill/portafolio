@@ -34,9 +34,9 @@ namespace SigloXXI.Controllers
             var mesa = new Mesas()
             {
                 Token = _token,
-                Id = model.Id,
-                Numero = model.Numero,
-                Capacidad = model.Capacidad,
+                id = model.Id,
+                numero = model.Numero,
+                capacidad = model.Capacidad,
             };
             mesa.CrearMesa(mesa);
             return RedirectToAction("VerMesas");
@@ -50,9 +50,9 @@ namespace SigloXXI.Controllers
             mesa = mesa.ObtenerMesa(id);
             MesaModel model = new MesaModel
             {
-                Id = mesa.Id,
-                Numero = mesa.Numero,
-                Capacidad = mesa.Capacidad,
+                Id = mesa.id,
+                Numero = mesa.numero,
+                Capacidad = mesa.capacidad,
             };
             return View(model);
         }
@@ -64,9 +64,9 @@ namespace SigloXXI.Controllers
             var mesa = new Mesas()
             {
                 Token = _token,
-                Id = model.Id,
-                Numero = model.Numero,
-                Capacidad = model.Capacidad,
+                id = model.Id,
+                numero = model.Numero,
+                capacidad = model.Capacidad,
             };
             mesa.ActualizarMesa(mesa);
             return RedirectToAction("VerMesas");

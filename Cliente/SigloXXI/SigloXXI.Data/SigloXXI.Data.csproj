@@ -48,16 +48,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Caja.cs" />
     <Compile Include="Clientes.cs" />
     <Compile Include="ConexionHelper.cs" />
     <Compile Include="Documentos.cs" />
     <Compile Include="Ingredientes.cs" />
     <Compile Include="JsonHelper.cs" />
     <Compile Include="Mesas.cs" />
-    <Compile Include="Orden_H.cs" />
+    <Compile Include="OrdenBody.cs" />
+    <Compile Include="OrdenH.cs" />
     <Compile Include="Pedido.cs" />
-    <Compile Include="Pedidos_H.cs" />
+    <Compile Include="PedidoBody.cs" />
+    <Compile Include="PedidoHeader.cs" />
     <Compile Include="Platillo.cs" />
     <Compile Include="Productos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

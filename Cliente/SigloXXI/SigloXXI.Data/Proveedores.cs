@@ -8,22 +8,22 @@ namespace SigloXXI.Data
 {
     public class Proveedores
     {
-        public string Rut { get; set; }
-        public string Nombre { get; set; }
-        public string Telefono { get; set; }
-        public string Direccion { get; set; }
-        public string Correo { get; set; }
+        public string rut { get; set; }
+        public string nombre { get; set; }
+        public string telefono { get; set; }
+        public string direccion { get; set; }
+        public string correo { get; set; }
         public string Token { get; set; }
 
         public bool CrearProveedor(Proveedores proveedor)
         {
             var queryParams = new Dictionary<string, string>
             {
-                {"Rut", proveedor.Rut },
-                {"Nombre",  proveedor.Nombre},
-                {"Telefono",  proveedor.Telefono},
-                {"Direccion",  proveedor.Direccion},
-                {"Correo",  proveedor.Correo},
+                {"Rut", proveedor.rut },
+                {"Nombre",  proveedor.nombre},
+                {"Telefono",  proveedor.telefono},
+                {"Direccion",  proveedor.direccion},
+                {"Correo",  proveedor.correo},
             };
             JsonHelper<Proveedores>.Token = this.Token;
             return JsonHelper<Proveedores>.Post(queryParams, "/proveedores/crear-proveedor");
@@ -33,14 +33,14 @@ namespace SigloXXI.Data
         {
             var queryParams = new Dictionary<string, string>
             {
-                {"Rut", proveedor.Rut },
-                {"Nombre",  proveedor.Nombre},
-                {"Telefono",  proveedor.Telefono},
-                {"Direccion",  proveedor.Direccion},
-                {"Correo",  proveedor.Correo},
+                {"Rut", proveedor.rut },
+                {"Nombre",  proveedor.nombre},
+                {"Telefono",  proveedor.telefono},
+                {"Direccion",  proveedor.direccion},
+                {"Correo",  proveedor.correo},
             };
             JsonHelper<Proveedores>.Token = this.Token;
-            return JsonHelper<Proveedores>.Put(queryParams, "/proveedores/actualizar-proveedor/" + proveedor.Rut);
+            return JsonHelper<Proveedores>.Put(queryParams, "/proveedores/actualizar-proveedor/" + proveedor.rut);
         }
 
         public List<Proveedores> ObtenerProveedores()

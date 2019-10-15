@@ -31,11 +31,7 @@ namespace SigloXXI.Controllers
             _token = Session["Token"].ToString();
             var documento = new Documentos()
             {
-                Token = _token,
-                Id = model.Id,
-                Fecha = model.Fecha,
-                Hora = model.Hora,
-                Tipo = model.Tipo,
+                
             };
             documento.CrearDocumento(documento);
             return RedirectToAction("VerDocumento");
@@ -49,10 +45,7 @@ namespace SigloXXI.Controllers
             documentos = documentos.ObtenerDocumento(id);
             DocumentoModel model = new DocumentoModel
             {
-                Id = documentos.Id,
-                Fecha = documentos.Fecha,
-                Hora = documentos.Hora,
-                Tipo = documentos.Tipo,
+               
             };
             return View(model);
         }
@@ -63,11 +56,7 @@ namespace SigloXXI.Controllers
             _token = Session["Token"].ToString();
             var documentos = new Documentos()
             {
-                Token = _token,
-                Id = model.Id,
-                Fecha = model.Fecha,
-                Hora = model.Hora,
-                Tipo = model.Tipo,
+                
             };
             documentos.ActualizarDocumento(documentos);
             return RedirectToAction("VerDocumentos");

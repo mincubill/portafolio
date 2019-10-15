@@ -8,37 +8,22 @@ namespace SigloXXI.Data
 {
     public class Ingredientes
     {
-        public int Id { get; set; }
-        public int Cantidad { get; set; }
-        public int Platillo_Id { get; set; }
-        public int Producto_Id { get; set; }
+        public int id { get; set; }
+        public int cantidad { get; set; }
+        public int platilloId { get; set; }
+        public Productos productoId { get; set; }
         public string Token { get; set; }
 
         public bool CrearIngrediente(Ingredientes ingrediente)
         {
-            var queryParams = new Dictionary<string, string>
-            {
-                {"Id", ingrediente.Id.ToString() },
-                {"Cantidad",  ingrediente.Cantidad.ToString()},
-                {"Id platillo",  ingrediente.Platillo_Id.ToString()},
-                {"Id producto",  ingrediente.Producto_Id.ToString()},
-
-            };
             JsonHelper<Ingredientes>.Token = this.Token;
-            return JsonHelper<Ingredientes>.Post(queryParams, "/ingredientes/crear-ingrediente");
+            return JsonHelper<Ingredientes>.Post(ingrediente, "/ingredientes/crear-ingrediente");
         }
 
         public bool ActualizarIngrediente(Ingredientes ingrediente)
         {
-            var queryParams = new Dictionary<string, string>
-            {
-                {"Id", ingrediente.Id.ToString() },
-                {"Cantidad",  ingrediente.Cantidad.ToString()},
-                {"Id platillo",  ingrediente.Platillo_Id.ToString()},
-                {"Id producto",  ingrediente.Producto_Id.ToString()},
-            };
             JsonHelper<Ingredientes>.Token = this.Token;
-            return JsonHelper<Ingredientes>.Put(queryParams, "/ingredientes/actualizar-ingrediente/" + ingrediente.Id);
+            return JsonHelper<Ingredientes>.Put(ingrediente, "/ingredientes/actualizar-ingrediente/" + ingrediente.id);
         }
 
         public List<Ingredientes> ObtenerIngredientes()

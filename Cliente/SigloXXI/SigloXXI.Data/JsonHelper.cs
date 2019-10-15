@@ -15,7 +15,7 @@ namespace SigloXXI.Data
     {
         public static string Token { get; set; }
 
-        public static string Url { get; set; } = "http://192.168.1.13:8084";
+        public static string Url { get; set; } = "http://weasdf.ddns.net:8084";
 
         public static T Get(Dictionary<string, string> queryParams, string metodo)
         {
@@ -114,6 +114,42 @@ namespace SigloXXI.Data
                 throw;
             }
         }
+
+        public static bool Post(object param, string metodo)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(Token))
+                {
+                    var cliente = new RestClient(Url + metodo);
+                    var request = new RestRequest(Method.POST);
+                    request.AddHeader("cache-control", "no-cache");
+                    request.AddHeader("content-type", "application/json");
+                    request.AddHeader("Authorization", $"Bearer {Token}");
+                    request.RequestFormat = DataFormat.Json;
+                    var data = JsonConvert.SerializeObject(param);
+                    request.AddJsonBody(JsonConvert.SerializeObject(param));
+                    IRestResponse response = cliente.Execute(request);
+                    if (response.StatusCode == System.Net.HttpStatusCode.Created)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Error al ingresar datos - respuesta: " + response.Content);
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException("No hay token");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
         public static bool Put(Dictionary<string, string> param, string metodo)
         {
             try
@@ -147,7 +183,39 @@ namespace SigloXXI.Data
                 throw;
             }
         }
-
+        public static bool Put(object param, string metodo)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(Token))
+                {
+                    var cliente = new RestClient(Url + metodo);
+                    var request = new RestRequest(Method.PUT);
+                    request.AddHeader("cache-control", "no-cache");
+                    request.AddHeader("content-type", "application/json");
+                    request.AddHeader("Authorization", $"Bearer {Token}");
+                    request.RequestFormat = DataFormat.Json;
+                    request.AddJsonBody(JsonConvert.SerializeObject(param));
+                    IRestResponse response = cliente.Execute(request);
+                    if (response.StatusCode == System.Net.HttpStatusCode.Created)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Error al actualizar datos - respuesta: " + response.Content);
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException("No hay token");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
         public static bool Delete(Dictionary<string, string> param, string metodo)
         {
             try

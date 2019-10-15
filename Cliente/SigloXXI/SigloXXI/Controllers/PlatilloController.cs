@@ -33,9 +33,9 @@ namespace SigloXXI.Controllers
             var plat = new Platillo()
             {
                 Token = _token,
-                Id = model.Id,
-                Nombre = model.Nombre,
-                Tiempo = model.Tiempo,
+                id = model.Id,
+                nombre = model.Nombre,
+                tiempo = model.Tiempo,
             };
             plat.CrearPlatillo(plat);
             return RedirectToAction("VerPlatillos");
@@ -49,9 +49,9 @@ namespace SigloXXI.Controllers
             plat = plat.ObtenerPlatillo(id);
             PlatilloModel model = new PlatilloModel
             {
-                Id = plat.Id,
-                Nombre = plat.Nombre,
-                Tiempo = plat.Tiempo,
+                Id = plat.id,
+                Nombre = plat.nombre,
+                Tiempo = plat.tiempo,
             };
             return View(model);
         }
@@ -63,9 +63,9 @@ namespace SigloXXI.Controllers
             var plat = new Platillo()
             {
                 Token = _token,
-                Id = model.Id,
-                Nombre = model.Nombre,
-                Tiempo = model.Tiempo,
+                id = model.Id,
+                nombre = model.Nombre,
+                tiempo = model.Tiempo,
             };
             plat.ActualizarPlatillo(plat);
             return RedirectToAction("VerPlatillos");

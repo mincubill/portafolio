@@ -37,11 +37,11 @@ namespace SigloXXI.Tests
             var prod = new Productos()
             {
                 Token = _token,
-                Cantidad = 1,
-                Categoria = "ingrediente",
-                Descripcion = "transgenico",
-                Nombre = "tomaco",
-                Precio = 800,
+                cantidad = 1,
+                categoria = "ingrediente",
+                descripcion = "transgenico",
+                nombre = "tomaco",
+                precio = 800,
             };
             bool res = prod.CrearProducto(prod);
             Assert.AreEqual(true, res);
@@ -53,11 +53,11 @@ namespace SigloXXI.Tests
             var prod = new Productos()
             {
                 Token = _token,
-                Cantidad = 10,
-                Categoria = "ingrediente",
-                Descripcion = "transgenico",
-                Nombre = "tomaco",
-                Precio = 1800,
+                cantidad = 10,
+                categoria = "ingrediente",
+                descripcion = "transgenico",
+                nombre = "tomaco",
+                precio = 1800,
             };
             bool res = prod.ActualizarProducto(prod);
             Assert.AreEqual(true, res);

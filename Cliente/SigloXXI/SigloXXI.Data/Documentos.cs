@@ -8,36 +8,31 @@ namespace SigloXXI.Data
 {
     public class Documentos
     {
-        public int Id { get; set; }
-        public DateTime Fecha { get; set; }
-        public string Hora { get; set; }
-        public int Tipo { get; set; }
+        public int id { get; set; }
+        public string fecha { get; set; }
+        public string hora { get; set; }
+        public TipoDocumento tipo { get; set; }
+        public List<PedidoHeader> pedidoH { get; set; }
+        public List<OrdenH> ordenHId { get; set; }
         public string Token { get; set; }
         
         public bool CrearDocumento(Documentos documento)
         {
-            var queryParams = new Dictionary<string, string>
-            {
-                {"Id", documento.Id.ToString() },
-                {"Fecha",  documento.Fecha.ToString()},
-                {"Tipo",  documento.Tipo.ToString()},
-                {"Hora",  documento.Hora},
-            };
             JsonHelper<Documentos>.Token = this.Token;
-            return JsonHelper<Documentos>.Post(queryParams, "/documentos/crear-documento");
+            return JsonHelper<Documentos>.Post(documento, "/documentos/crear-documento");
         }
 
         public bool ActualizarDocumento(Documentos documento)
         {
             var queryParams = new Dictionary<string, string>
             {
-                {"Id", documento.Id.ToString() },
-                {"Fecha",  documento.Fecha.ToString()},
-                {"Tipo",  documento.Tipo.ToString()},
-                {"Hora",  documento.Hora},
+                {"Id", documento.id.ToString() },
+                {"Fecha",  documento.fecha.ToString()},
+                {"Tipo",  documento.tipo.ToString()},
+                {"Hora",  documento.hora},
             };
             JsonHelper<Documentos>.Token = this.Token;
-            return JsonHelper<Documentos>.Put(queryParams, "/documentos/actualizar-documento/" + documento.Id);
+            return JsonHelper<Documentos>.Put(queryParams, "/documentos/actualizar-documento/" + documento.id);
         }
 
         public List<Documentos> ObtenerDocumentos()
@@ -61,5 +56,13 @@ namespace SigloXXI.Data
             var queryParams = new Dictionary<string, string>();
             return JsonHelper<Documentos>.Delete(queryParams, "/documentos/eliminar-documento/" + id.ToString());
         }
+    }
+
+    public enum TipoDocumento
+    {
+       Boleta = 1,
+       OrdenDeCompra = 2,
+       NotaCredito = 3,
+       NotaDebito = 4,
     }
 }

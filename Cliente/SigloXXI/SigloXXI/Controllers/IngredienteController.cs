@@ -32,10 +32,10 @@ namespace SigloXXI.Controllers
             var ingredientes = new Ingredientes()
             {
                 Token = _token,
-                Id = model.Id,
-                Cantidad = model.Cantidad,
-                Platillo_Id = model.Platillo_Id,
-                Producto_Id = model.Producto_Id,
+                id = model.Id,
+                cantidad = model.Cantidad,
+                platilloId = model.Platillo_Id,
+                producto_Id = model.Producto_Id,
             };
             ingredientes.CrearIngrediente(ingredientes);
             return RedirectToAction("VerIngredientes");
@@ -49,10 +49,10 @@ namespace SigloXXI.Controllers
             ingredientes = ingredientes.ObtenerIngrediente(id);
             IngredienteModel model = new IngredienteModel
             {
-                Id = ingredientes.Id,
-                Cantidad = ingredientes.Cantidad,
-                Platillo_Id = ingredientes.Platillo_Id,
-                Producto_Id = ingredientes.Producto_Id,
+                Id = ingredientes.id,
+                Cantidad = ingredientes.cantidad,
+                Platillo_Id = ingredientes.platilloId,
+                Producto_Id = ingredientes.producto_Id,
             };
             return View(model);
         }
@@ -64,10 +64,10 @@ namespace SigloXXI.Controllers
             var ingredientes = new Ingredientes()
             {
                 Token = _token,
-                Id = model.Id,
-                Cantidad = model.Cantidad,
-                Platillo_Id = model.Platillo_Id,
-                Producto_Id = model.Producto_Id,
+                id = model.Id,
+                cantidad = model.Cantidad,
+                platilloId = model.Platillo_Id,
+                producto_Id = model.Producto_Id,
             };
             ingredientes.ActualizarIngrediente(ingredientes);
             return RedirectToAction("VerIngredientes");

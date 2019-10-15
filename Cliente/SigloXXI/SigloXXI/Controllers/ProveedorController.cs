@@ -32,11 +32,11 @@ namespace SigloXXI.Controllers
             var proveedores = new Proveedores()
             {
                 Token = _token,
-                Rut = model.Rut,
-                Nombre = model.Nombre,
-                Telefono = model.Telefono,
-                Direccion = model.Direccion,
-                Correo = model.Correo,
+                rut = model.Rut,
+                nombre = model.Nombre,
+                telefono = model.Telefono,
+                direccion = model.Direccion,
+                correo = model.Correo,
             };
             proveedores.CrearProveedor(proveedores);
             return RedirectToAction("VerProveedores");
@@ -50,11 +50,11 @@ namespace SigloXXI.Controllers
             proveedores = proveedores.ObtenerProveedor(rut);
             ProveedorModel model = new ProveedorModel
             {
-                Rut = proveedores.Rut,
-                Nombre = proveedores.Nombre,
-                Telefono = proveedores.Telefono,
-                Direccion = proveedores.Direccion,
-                Correo = proveedores.Correo,
+                Rut = proveedores.rut,
+                Nombre = proveedores.nombre,
+                Telefono = proveedores.telefono,
+                Direccion = proveedores.direccion,
+                Correo = proveedores.correo,
             };
             return View(model);
         }
@@ -66,11 +66,11 @@ namespace SigloXXI.Controllers
             var proveedores = new Proveedores()
             {
                 Token = _token,
-                Rut = model.Rut,
-                Nombre = model.Nombre,
-                Telefono = model.Telefono,
-                Direccion = model.Direccion,
-                Correo = model.Correo,
+                rut = model.Rut,
+                nombre = model.Nombre,
+                telefono = model.Telefono,
+                direccion = model.Direccion,
+                correo = model.Correo,
             };
             proveedores.ActualizarProveedor(proveedores);
             return RedirectToAction("VerProveedores");

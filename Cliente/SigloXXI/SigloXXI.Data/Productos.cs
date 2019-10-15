@@ -8,12 +8,12 @@ namespace SigloXXI.Data
 {
     public class Productos
     {
-        public int Id { get; set; }
-        public string Nombre { get; set; }
-        public string Descripcion { get; set; }
-        public int Cantidad { get; set; }
-        public int Precio { get; set; }
-        public string Categoria { get; set; }
+        public int id { get; set; }
+        public string nombre { get; set; }
+        public string descripcion { get; set; }
+        public int cantidad { get; set; }
+        public int precio { get; set; }
+        public string categoria { get; set; }
         public string Token { get; set; }
 
         public bool CrearProducto(Productos producto)
@@ -21,11 +21,11 @@ namespace SigloXXI.Data
             var queryParams = new Dictionary<string, string>
             {
                 //{"id", producto.Id.ToString() },
-                {"nombre",  producto.Nombre},
-                {"descripcion",  producto.Descripcion},
-                {"cantidad",  producto.Cantidad.ToString()},
-                {"precio",  producto.Precio.ToString()},
-                {"categoria",  Categoria},
+                {"nombre",  producto.nombre},
+                {"descripcion",  producto.descripcion},
+                {"cantidad",  producto.cantidad.ToString()},
+                {"precio",  producto.precio.ToString()},
+                {"categoria",  categoria},
                
             };
             JsonHelper<Productos>.Token = this.Token;
@@ -36,15 +36,15 @@ namespace SigloXXI.Data
         {
             var queryParams = new Dictionary<string, string>
             {
-                {"id", producto.Id.ToString() },
-                {"nombre",  producto.Nombre},
-                {"descripcion",  producto.Descripcion},
-                {"cantidad",  producto.Cantidad.ToString()},
-                {"precio",  producto.Precio.ToString()},
-                {"categoria",  Categoria},
+                {"id", producto.id.ToString() },
+                {"nombre",  producto.nombre},
+                {"descripcion",  producto.descripcion},
+                {"cantidad",  producto.cantidad.ToString()},
+                {"precio",  producto.precio.ToString()},
+                {"categoria",  categoria},
             };
             JsonHelper<Productos>.Token = this.Token;
-            return JsonHelper<Users>.Put(queryParams, "/productos/actualizar-producto/" + producto.Id);
+            return JsonHelper<Users>.Put(queryParams, "/productos/actualizar-producto/" + producto.id);
         }
 
         public List<Productos> ObtenerProductos()

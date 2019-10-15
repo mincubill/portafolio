@@ -58,6 +58,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ProductosTest.cs" />
+    <Compile Include="PedidoTest.cs" />
+    <Compile Include="OrdenesTest.cs" />
+    <Compile Include="PlatilloTest.cs" />
+    <Compile Include="IngredienteTest.cs" />
+    <Compile Include="MesaTest.cs" />
+    <Compile Include="ClienteTest.cs" />
     <Compile Include="UsuariosTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
