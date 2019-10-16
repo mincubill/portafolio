@@ -71,10 +71,8 @@
                                 Mesas
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="mesas/mesas_ingresar.html">Ingresar mesas</a>
-                                <a class="dropdown-item" href="mesas/mesas_actualizar.html">Actualizar mesas</a>
-                                <a class="dropdown-item" href="mesas/mesas_eliminar.html">Eliminar mesas</a>
-                                <a class="dropdown-item" href="mesas/mesas_lista.html">Lista de mesas</a>
+                                @Html.ActionLink("Agregar mesas", "AgregarMesa", "Mesas", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Ver mesas", "VerMesasDisponibles", "Mesas", new { area = "" }, new { @class = "dropdown-item" })
                             </div>
                         </li>
                         <!-- Usuarios -->

@@ -10,18 +10,24 @@ namespace SigloXXI.Controllers
 {
     public class UsuarioController : Controller
     {
+        private string _token;
+        public UsuarioController()
+        {
+        }
         [HttpGet]
         public ActionResult AgregarUsuario()
         {
+            _token = Session["Token"].ToString();
             return View();
         }
 
         [HttpPost]
         public ActionResult AgregarUsuario(UsuarioModel model)
         {
+            _token = Session["Token"].ToString();
             var user = new Users
             {
-                Url = "http://weasdf.ddns.net:8082",
+                Token = _token,
                 Apellido = model.Apellido,
                 Correo = model.Correo,
                 Dv = model.Dv,
@@ -39,7 +45,8 @@ namespace SigloXXI.Controllers
         [HttpGet]
         public ActionResult VerUsuarios()
         {
-            var user = new Users() { Url = "http://weasdf.ddns.net:8082" };
+            _token = Session["Token"].ToString();
+            var user = new Users() { Token = _token };
             ViewData["Usuarios"] = user.ObtenerUsuarios();
             return View();
         }
@@ -47,11 +54,13 @@ namespace SigloXXI.Controllers
         [HttpGet]
         public ActionResult EditarUsuarios(string rut)
         {
-            var user = new Users() { Url = "http://weasdf.ddns.net:8082" };
+            _token = Session["Token"].ToString();
+            var user = new Users();
             user = user.ObtenerUsuario(int.Parse(rut));
             ViewData["Usuario"] = user;
             UsuarioModel model = new UsuarioModel()
             {
+                
                 Apellido = user.Apellido,
                 Correo = user.Correo,
                 Dv = user.Dv,
@@ -70,7 +79,7 @@ namespace SigloXXI.Controllers
         {
             var user = new Users
             {
-                Url = "http://weasdf.ddns.net:8082",
+                Token = _token,
                 Apellido = model.Apellido,
                 Correo = model.Correo,
                 Dv = model.Dv,
@@ -85,10 +94,10 @@ namespace SigloXXI.Controllers
             return RedirectToAction("VerUsuarios");
         }
 
-        
+
         public ActionResult EliminarUsuarios(string rut)
         {
-            var user = new Users() { Url = "http://weasdf.ddns.net:8082" };
+            var user = new Users() { Token = _token};
             user.EliminarUsuario(int.Parse(rut));
             return RedirectToAction("VerUsuarios");
 
