@@ -64,6 +64,7 @@
     <Compile Include="IngredienteTest.cs" />
     <Compile Include="MesaTest.cs" />
     <Compile Include="ClienteTest.cs" />
+    <Compile Include="ProveedorTest.cs" />
     <Compile Include="UsuariosTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
