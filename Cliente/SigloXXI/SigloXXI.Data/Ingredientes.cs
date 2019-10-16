@@ -29,7 +29,7 @@ namespace SigloXXI.Data
         public List<Ingredientes> ObtenerIngredientes()
         {
             JsonHelper<Ingredientes>.Token = this.Token;
-            var result = JsonHelper<Ingredientes>.GetList("/ingredientes/obtener-ingrediente");
+            var result = JsonHelper<Ingredientes>.GetList("/ingredientes/obtener-ingredientes");
             return result;
         }
 

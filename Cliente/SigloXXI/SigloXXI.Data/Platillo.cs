@@ -12,7 +12,6 @@ namespace SigloXXI.Data
         public string nombre { get; set; }
         public int tiempo { get; set; }
         public string Token { get; set; }
-
         public List<Ingredientes> ingredienteId { get; set; }
 
         public bool CrearPlatillo(Platillo platillo)
@@ -23,21 +22,14 @@ namespace SigloXXI.Data
 
         public bool ActualizarPlatillo(Platillo platillo)
         {
-            
-            var queryParams = new Dictionary<string, string>
-            {
-                {"id", platillo.id.ToString() },
-                {"nombre",  platillo.nombre},
-                {"tiempo",  platillo.tiempo.ToString()},
-            };
             JsonHelper<Platillo>.Token = this.Token;
-            return JsonHelper<Platillo>.Put(queryParams, "/productos/actualizar-producto/" + platillo.id);
+            return JsonHelper<Platillo>.Put(platillo, "/platillos/actualizar-platillo/" + platillo.id);
         }
 
         public List<Platillo> ObtenerPlatillos()
         {
             JsonHelper<Platillo>.Token = this.Token;
-            var result = JsonHelper<Platillo>.GetList("/platillos/obtener-platillo");
+            var result = JsonHelper<Platillo>.GetList("/platillos/obtener-platillos");
             return result;
         }
 
@@ -53,7 +45,7 @@ namespace SigloXXI.Data
         {
             JsonHelper<Platillo>.Token = this.Token;
             var queryParams = new Dictionary<string, string>();
-            return JsonHelper<Platillo>.Delete(queryParams, "/platillos/eliminar-platillos/" + id.ToString());
+            return JsonHelper<Platillo>.Delete(queryParams, "/platillos/eliminar-platillo/" + id.ToString());
         }
     }
 }
