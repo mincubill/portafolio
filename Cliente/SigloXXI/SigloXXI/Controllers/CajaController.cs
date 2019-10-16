@@ -13,6 +13,5 @@ namespace SigloXXI.Controllers
         {
             return View();
         }
-
     }
 }
