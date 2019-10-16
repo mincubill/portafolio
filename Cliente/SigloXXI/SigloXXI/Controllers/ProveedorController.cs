@@ -43,7 +43,7 @@ namespace SigloXXI.Controllers
         }
 
         [HttpGet]
-        public ActionResult EditarProveedores(int rut)
+        public ActionResult EditarProveedores(string rut)
         {
             _token = Session["Token"].ToString();
             var proveedores = new Proveedores() { Token = _token };
@@ -77,7 +77,7 @@ namespace SigloXXI.Controllers
 
         }
 
-        public ActionResult EliminarProveedores(int id)
+        public ActionResult EliminarProveedores(string id)
         {
             _token = Session["Token"].ToString();
             var proveedores = new Proveedores() { Token = _token };

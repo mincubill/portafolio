@@ -19,11 +19,11 @@ namespace SigloXXI.Data
         {
             var queryParams = new Dictionary<string, string>
             {
-                {"Rut", proveedor.rut },
-                {"Nombre",  proveedor.nombre},
-                {"Telefono",  proveedor.telefono},
-                {"Direccion",  proveedor.direccion},
-                {"Correo",  proveedor.correo},
+                {"rut", proveedor.rut },
+                {"nombre",  proveedor.nombre},
+                {"telefono",  proveedor.telefono},
+                {"direccion",  proveedor.direccion},
+                {"correo",  proveedor.correo},
             };
             JsonHelper<Proveedores>.Token = this.Token;
             return JsonHelper<Proveedores>.Post(queryParams, "/proveedores/crear-proveedor");
@@ -33,11 +33,11 @@ namespace SigloXXI.Data
         {
             var queryParams = new Dictionary<string, string>
             {
-                {"Rut", proveedor.rut },
-                {"Nombre",  proveedor.nombre},
-                {"Telefono",  proveedor.telefono},
-                {"Direccion",  proveedor.direccion},
-                {"Correo",  proveedor.correo},
+                {"rut", proveedor.rut },
+                {"nombre",  proveedor.nombre},
+                {"telefono",  proveedor.telefono},
+                {"direccion",  proveedor.direccion},
+                {"correo",  proveedor.correo},
             };
             JsonHelper<Proveedores>.Token = this.Token;
             return JsonHelper<Proveedores>.Put(queryParams, "/proveedores/actualizar-proveedor/" + proveedor.rut);
@@ -45,23 +45,24 @@ namespace SigloXXI.Data
 
         public List<Proveedores> ObtenerProveedores()
         {
-            var result = JsonHelper<Proveedores>.GetList("/proveedores/obtener-proveedor");
+            JsonHelper<Proveedores>.Token = this.Token;
+            var result = JsonHelper<Proveedores>.GetList("/proveedores/obtener-proveedores");
             return result;
         }
 
-        public Proveedores ObtenerProveedor(int rut)
+        public Proveedores ObtenerProveedor(string rut)
         {
             JsonHelper<Proveedores>.Token = this.Token;
             var queryParams = new Dictionary<string, string>();
-            var res = JsonHelper<Proveedores>.Get(queryParams, "/proveedores/buscar-proveedor/" + rut.ToString());
+            var res = JsonHelper<Proveedores>.Get(queryParams, "/proveedores/buscar-proveedor/" + rut);
             return res;
         }
 
-        public bool EliminarProveedor(int rut)
+        public bool EliminarProveedor(string rut)
         {
             JsonHelper<Proveedores>.Token = this.Token;
             var queryParams = new Dictionary<string, string>();
-            return JsonHelper<Proveedores>.Delete(queryParams, "/proveedores/eliminar-proveedor/" + rut.ToString());
+            return JsonHelper<Proveedores>.Delete(queryParams, "/proveedores/eliminar-proveedor/" + rut);
         }
     }
 }
