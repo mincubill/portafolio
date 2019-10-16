@@ -13,17 +13,12 @@ namespace SigloXXI.Data
         public int tiempo { get; set; }
         public string Token { get; set; }
 
+        public List<Ingredientes> ingredienteId { get; set; }
+
         public bool CrearPlatillo(Platillo platillo)
         {
-            var queryParams = new Dictionary<string, string>
-            {
-                {"id", platillo.id.ToString() },
-                {"nombre",  platillo.nombre},
-                {"tiempo",  platillo.tiempo.ToString()},
-
-            };
             JsonHelper<Platillo>.Token = this.Token;
-            return JsonHelper<Platillo>.Post(queryParams, "/platillos/crear-platillo");
+            return JsonHelper<Platillo>.Post(platillo, "/platillos/crear-platillo");
         }
 
         public bool ActualizarPlatillo(Platillo platillo)

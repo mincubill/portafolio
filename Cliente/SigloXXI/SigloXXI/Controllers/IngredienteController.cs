@@ -28,50 +28,19 @@ namespace SigloXXI.Controllers
         [HttpPost]
         public ActionResult AgregarIngredientes(IngredienteModel model)
         {
-            _token = Session["Token"].ToString();
-            var ingredientes = new Ingredientes()
-            {
-                Token = _token,
-                id = model.Id,
-                cantidad = model.Cantidad,
-                platilloId = model.Platillo_Id,
-                producto_Id = model.Producto_Id,
-            };
-            ingredientes.CrearIngrediente(ingredientes);
-            return RedirectToAction("VerIngredientes");
+            return View();
         }
 
         [HttpGet]
         public ActionResult EditarIngrediente(int id)
         {
-            _token = Session["Token"].ToString();
-            var ingredientes = new Ingredientes() { Token = _token };
-            ingredientes = ingredientes.ObtenerIngrediente(id);
-            IngredienteModel model = new IngredienteModel
-            {
-                Id = ingredientes.id,
-                Cantidad = ingredientes.cantidad,
-                Platillo_Id = ingredientes.platilloId,
-                Producto_Id = ingredientes.producto_Id,
-            };
-            return View(model);
+            return View();
         }
 
         [HttpPost]
         public ActionResult EditarIngredientes(IngredienteModel model)
         {
-            _token = Session["Token"].ToString();
-            var ingredientes = new Ingredientes()
-            {
-                Token = _token,
-                id = model.Id,
-                cantidad = model.Cantidad,
-                platilloId = model.Platillo_Id,
-                producto_Id = model.Producto_Id,
-            };
-            ingredientes.ActualizarIngrediente(ingredientes);
-            return RedirectToAction("VerIngredientes");
-
+            return View();
         }
 
         public ActionResult EliminarIngredientes(int id)
