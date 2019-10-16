@@ -135,8 +135,8 @@
     <Compile Include="Models\IngredienteModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MesaModel.cs" />
-    <Compile Include="Models\OrdenHModel.cs" />
-    <Compile Include="Models\PedidoHModel.cs" />
+    <Compile Include="Models\OrdenHeaderModel.cs" />
+    <Compile Include="Models\PedidoHeaderModel.cs" />
     <Compile Include="Models\PlatilloModel.cs" />
     <Compile Include="Models\ProductoModel.cs" />
     <Compile Include="Models\ProveedorModel.cs" />
@@ -171,6 +171,8 @@
     <Content Include="Views\Platillo\VerPlatillos.cshtml" />
     <Content Include="Views\Platillo\AgregarPlatillo.cshtml" />
     <Content Include="Views\Platillo\EditarPlatillo.cshtml" />
+    <Content Include="Views\Pedido\VerPedidos.cshtml" />
+    <Content Include="Views\Pedido\AgregarPedido.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -184,7 +186,6 @@
     <Folder Include="Views\Clientee\" />
     <Folder Include="Views\Documento\" />
     <Folder Include="Views\Ingrediente\" />
-    <Folder Include="Views\Pedido\" />
     <Folder Include="Views\Proveedor\" />
   </ItemGroup>
   <ItemGroup>

@@ -55,8 +55,7 @@
     <Compile Include="JsonHelper.cs" />
     <Compile Include="Mesas.cs" />
     <Compile Include="OrdenBody.cs" />
-    <Compile Include="OrdenH.cs" />
-    <Compile Include="Pedido.cs" />
+    <Compile Include="OrdenHeader.cs" />
     <Compile Include="PedidoBody.cs" />
     <Compile Include="PedidoHeader.cs" />
     <Compile Include="Platillo.cs" />

@@ -70,7 +70,7 @@ namespace SigloXXI.Tests
                         }
                     }
                 },
-                ordenHId = new List<OrdenH>(),
+                ordenHId = new List<OrdenHeader>(),
             };
             doc.CrearDocumento(doc);
         }

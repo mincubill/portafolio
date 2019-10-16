@@ -22,8 +22,18 @@
                         <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
                     </li>
                     @*@if (Session["Rol"].ToString() == "1")*@
-                    @if (Session["Rol"].ToString() == "1")
+                    @if (true)
                     {
+                        <!-- Clientes -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Clientes
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @Html.ActionLink("Agregar Cliente", "AgregarUsuario", "Cliente", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Ver Clientesh", "VerUsuarios", "Cliente", new { area = "" }, new { @class = "dropdown-item" })
+                            </div>
+                        </li>
                         <!-- Productos -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -40,7 +50,7 @@
                                 Caja
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="caja/caja_ingresar.html">Emitir boleta</a>
+                                @Html.ActionLink("Registrar pago", " ", " ", new { area = "" }, new { @class = "dropdown-item" })
                             </div>
                         </li>
                         <!-- Platillos -->
@@ -49,10 +59,9 @@
                                 Platillos
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="platillos/platillos_ingresar.html">Ingresar platillo</a>
-                                <a class="dropdown-item" href="platillos/platillos_actualizar.html">Actualizar platillo</a>
-                                <a class="dropdown-item" href="platillos/platillos_eliminar.html">Eliminar platillo</a>
-                                <a class="dropdown-item" href="platillos/platillos_lista.html">Lista de platillos</a>
+                                @Html.ActionLink("Lista de Platillos", "VerProductos", "Producto", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Ver de Platillos", "VerProductos", "Producto", new { area = "" }, new { @class = "dropdown-item" })
+
                             </div>
                         </li>
                         <!-- Pedidos prov. -->
@@ -61,8 +70,9 @@
                                 Pedidos prov.
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="pedidos_prov/pedidos_prov_ingresar.html">Emitir pedido</a>
-                                <a class="dropdown-item" href="pedidos_prov/pedidos_prov_lista.html">Lista de pedidos</a>
+                                @Html.ActionLink("Ingresar Pedidos", "AgregarProductos", "Producto", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Lista de Pedido", "VerProductos", "Producto", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Validar Pedido", "VerProductos", "Producto", new { area = "" }, new { @class = "dropdown-item" })
                             </div>
                         </li>
                         <!-- Mesas -->
@@ -91,7 +101,7 @@
                 <form class="form-inline my-2 my-lg-0">
                     @*<a href="login.html" class="btn btn-outline-primary my-2 my-sm-0">Login</a>*@
                     @*@if (string.IsNullOrEmpty(Session["Rol"].ToString()))*@
-                    @if (string.IsNullOrEmpty(Session["Rol"].ToString()))
+                    @if (true)
                     {
                         @Html.ActionLink("Iniciar sesion", "Login", "Login",
                         new { area = "" }, new { @class = "btn btn-outline-primary my-2 my-sm-0" })

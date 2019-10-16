@@ -13,7 +13,7 @@ namespace SigloXXI.Data
         public string hora { get; set; }
         public TipoDocumento tipo { get; set; }
         public List<PedidoHeader> pedidoH { get; set; }
-        public List<OrdenH> ordenHId { get; set; }
+        public List<OrdenHeader> ordenHId { get; set; }
         public string Token { get; set; }
         
         public bool CrearDocumento(Documentos documento)

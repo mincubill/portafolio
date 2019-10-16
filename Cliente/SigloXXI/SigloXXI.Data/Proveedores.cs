@@ -45,7 +45,8 @@ namespace SigloXXI.Data
 
         public List<Proveedores> ObtenerProveedores()
         {
-            var result = JsonHelper<Proveedores>.GetList("/proveedores/obtener-proveedor");
+            JsonHelper<Proveedores>.Token = this.Token;
+            var result = JsonHelper<Proveedores>.GetList("/proveedores/obtener-proveedores");
             return result;
         }
 

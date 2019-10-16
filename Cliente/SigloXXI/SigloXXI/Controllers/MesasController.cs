@@ -9,10 +9,10 @@ using System.Web.Mvc;
 
 namespace SigloXXI.Controllers
 {
-    public class MesaController : Controller
+    public class MesasController : Controller
     {
         string _token;
-        public ActionResult VerMesas()
+        public ActionResult VerMesasDisponibles()
         {
             _token = Session["Token"].ToString();
             var mesa = new Mesas() { Token = _token };
@@ -21,14 +21,14 @@ namespace SigloXXI.Controllers
         }
 
         [HttpGet]
-        public ActionResult AgregarMesas()
+        public ActionResult AgregarMesa()
         {
             _token = Session["Token"].ToString();
             return View();
         }
 
         [HttpPost]
-        public ActionResult AgregarMesas(MesaModel model)
+        public ActionResult AgregarMesa(MesaModel model)
         {
             _token = Session["Token"].ToString();
             var mesa = new Mesas()
@@ -39,11 +39,11 @@ namespace SigloXXI.Controllers
                 capacidad = model.Capacidad,
             };
             mesa.CrearMesa(mesa);
-            return RedirectToAction("VerMesas");
+            return RedirectToAction("VerMesasDisponibles");
         }
 
         [HttpGet]
-        public ActionResult EditarMesas(int id)
+        public ActionResult EditarMesa(int id)
         {
             _token = Session["Token"].ToString();
             var mesa = new Mesas() { Token = _token };
@@ -58,7 +58,7 @@ namespace SigloXXI.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditarMesas(MesaModel model)
+        public ActionResult EditarMesa(MesaModel model)
         {
             _token = Session["Token"].ToString();
             var mesa = new Mesas()
@@ -69,15 +69,15 @@ namespace SigloXXI.Controllers
                 capacidad = model.Capacidad,
             };
             mesa.ActualizarMesa(mesa);
-            return RedirectToAction("VerMesas");
+            return RedirectToAction("VerMesasDisponibles");
         }
 
-        public ActionResult EliminarMesas(int id)
+        public ActionResult EliminarMesa(int id)
         {
             _token = Session["Token"].ToString();
             var mesa = new Mesas() { Token = _token };
             mesa.EliminarMesa(id);
-            return RedirectToAction("VerMesas");
+            return RedirectToAction("VerMesasDisponibles");
         }
     }
 }

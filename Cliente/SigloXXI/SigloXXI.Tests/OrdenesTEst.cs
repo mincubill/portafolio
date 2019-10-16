@@ -27,9 +27,9 @@ namespace SigloXXI.Tests
                 hora = DateTime.Now.ToShortTimeString(),
                 tipo = TipoDocumento.Boleta,
                 id = 70,
-                ordenHId = new List<OrdenH>
+                ordenHId = new List<OrdenHeader>
                 {
-                    new OrdenH
+                    new OrdenHeader
                     {
                         estado = EstadoOrden.Pagado,
                         mesaId = new Mesas
@@ -75,7 +75,7 @@ namespace SigloXXI.Tests
         public void ListarOdenes()
         {
             ObtenerToken("ADMINISTRADOR", "ASDF");
-            var orden = new OrdenH() { Token = _token };
+            var orden = new OrdenHeader() { Token = _token };
             var data = orden.Obtenerordenes();
             Assert.IsNotNull(data);
         }
@@ -84,7 +84,7 @@ namespace SigloXXI.Tests
         public void ObtenerOrden()
         {
             ObtenerToken("ADMINISTRADOR", "ASDF");
-            var orden = new OrdenH() { Token = _token };
+            var orden = new OrdenHeader() { Token = _token };
             var data = orden.ObtenerOrden(25);
             Assert.IsNotNull(data);
         }

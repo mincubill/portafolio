@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SigloXXI.Data
 {
-    public class OrdenH
+    public class OrdenHeader
     {
         public int id { get; set; }
         public int total { get; set; }
@@ -16,46 +16,46 @@ namespace SigloXXI.Data
         public List<OrdenBody> ordenBId { get; set; }
         public string Token { get; set; }
 
-        public bool CrearOrden_H(OrdenH orden_h)
+        public bool CrearOrden_H(OrdenHeader orden_h)
         {
             var queryParams = new Dictionary<string, string>
             {
               
             };
-            JsonHelper<OrdenH>.Token = this.Token;
-            return JsonHelper<OrdenH>.Post(queryParams, "/orden_H/crear-ordenh");
+            JsonHelper<OrdenHeader>.Token = this.Token;
+            return JsonHelper<OrdenHeader>.Post(queryParams, "/orden_H/crear-ordenh");
         }
 
-        public bool ActualizarOrden_H(OrdenH orden_h)
+        public bool ActualizarOrden_H(OrdenHeader orden_h)
         {
             var queryParams = new Dictionary<string, string>
             {
 
             };
-            JsonHelper<OrdenH>.Token = this.Token;
-            return JsonHelper<OrdenH>.Put(queryParams, "/orden_H/actualizar-orden_h/" + orden_h.id);
+            JsonHelper<OrdenHeader>.Token = this.Token;
+            return JsonHelper<OrdenHeader>.Put(queryParams, "/orden_H/actualizar-orden_h/" + orden_h.id);
         }
 
-        public List<OrdenH> Obtenerordenes()
+        public List<OrdenHeader> Obtenerordenes()
         {
-            JsonHelper<OrdenH>.Token = this.Token;
-            var result = JsonHelper<OrdenH>.GetList("/ordenh/obtener-ordenh/");
+            JsonHelper<OrdenHeader>.Token = this.Token;
+            var result = JsonHelper<OrdenHeader>.GetList("/ordenh/obtener-ordenh/");
             return result;
         }
 
-        public OrdenH ObtenerOrden(int id)
+        public OrdenHeader ObtenerOrden(int id)
         {
-            JsonHelper<OrdenH>.Token = this.Token;
+            JsonHelper<OrdenHeader>.Token = this.Token;
             var queryParams = new Dictionary<string, string>();
-            var res = JsonHelper<OrdenH>.Get(queryParams, "/ordenh/buscar-ordenh/" + id.ToString());
+            var res = JsonHelper<OrdenHeader>.Get(queryParams, "/ordenh/buscar-ordenh/" + id.ToString());
             return res;
         }
 
         public bool EliminarOrdenH(int id)
         {
-            JsonHelper<OrdenH>.Token = this.Token;
+            JsonHelper<OrdenHeader>.Token = this.Token;
             var queryParams = new Dictionary<string, string>();
-            return JsonHelper<OrdenH>.Delete(queryParams, "/ordenH/eliminar-orden_h/" + id.ToString());
+            return JsonHelper<OrdenHeader>.Delete(queryParams, "/ordenH/eliminar-orden_h/" + id.ToString());
         }
 
     }

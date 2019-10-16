@@ -5,26 +5,25 @@
 }
 
 <h2>Ver Mesas Disponibles</h2>
-<table>
+<table class="table table-bordered">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Numero</th>
             <th>Capacidad</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var mesa in data)
         {
             <tr>
-                <td>@mesa.Id</td>
-                <td>@mesa.Numero</td>
-                <td>@mesa.Capacidad</td>
+                <td>@mesa.numero</td>
+                <td>@mesa.capacidad</td>
                 <td>
                     @Html.ActionLink(" ", "EditarMesa", "Mesas",
-                       new { rut = mesa.Id }, new { @class = "far fa-edit" })
+                       new { id = mesa.id }, new { @class = "far fa-edit" })
                     @Html.ActionLink(" ", "EliminarMesa", "Mesas",
-                       new { rut = mesa.Id }, new { @class = "far fa-trash-alt" })
+                       new { id = mesa.id }, new { @class = "far fa-trash-alt" })
                 </td>
             </tr>
         }
