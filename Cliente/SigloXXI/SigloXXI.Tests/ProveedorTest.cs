@@ -72,9 +72,8 @@ namespace SigloXXI.Tests
         public void EliminarProveedor()
         {
             ObtenerToken("ADMINISTRADOR", "ASDF");
-            var proveedor = new Proveedores() { Token = _token };
-            var proveedorRut = proveedor.ObtenerProveedor("18853947-9").rut;
-            proveedor.EliminarProveedor(proveedorRut);
+            var proveedor = new Proveedores() { Token = _token };            
+            proveedor.EliminarProveedor("18853947-9");
         }
     }
 }
