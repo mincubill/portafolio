@@ -16,10 +16,20 @@
     <tbody>
         @foreach (var mesa in data)
         {
-            <tr>
+            <tr class="@(mesa.estado == SigloXXI.Data.Mesas.EstadoMesa.Ocupada ? "table-warning" : "table-success")">
                 <td>@mesa.numero</td>
                 <td>@mesa.capacidad</td>
                 <td>
+                    @if (mesa.estado == SigloXXI.Data.Mesas.EstadoMesa.Ocupada)
+                    {
+                        @Html.ActionLink(" ", "ValidarMesa", "Mesas",
+                            new { id = mesa.id }, new { @class = "fas fa-toggle-off" })
+                    }
+                    @if (mesa.estado == SigloXXI.Data.Mesas.EstadoMesa.Disponible)
+                    {
+                        @Html.ActionLink(" ", "ValidarMesa", "Mesas",
+                            new { id = mesa.id }, new { @class = "fas fa-toggle-on" })
+                    }
                     @Html.ActionLink(" ", "EditarMesa", "Mesas",
                        new { id = mesa.id }, new { @class = "far fa-edit" })
                     @Html.ActionLink(" ", "EliminarMesa", "Mesas",

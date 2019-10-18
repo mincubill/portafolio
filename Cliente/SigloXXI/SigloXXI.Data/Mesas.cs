@@ -11,16 +11,18 @@ namespace SigloXXI.Data
         public int id { get; set; }
         public int numero { get; set; }
         public int capacidad { get; set; }
+        public EstadoMesa estado { get; set; }
         public string Token { get; set; }
 
         public bool CrearMesa(Mesas mesa)
         {
-            
+
             var queryParams = new Dictionary<string, string>
             {
-                {"id", mesa.id.ToString() },
+                { "id", mesa.id.ToString() },
                 { "numero",  mesa.numero.ToString() },
-                {"capacidad",  mesa.capacidad.ToString() },
+                { "capacidad",  mesa.capacidad.ToString() },
+                { "estado",  mesa.estado.ToString() },
             };
             JsonHelper<Mesas>.Token = this.Token;
             return JsonHelper<Mesas>.Post(queryParams, "/mesas/crear-mesa");
@@ -28,12 +30,13 @@ namespace SigloXXI.Data
 
         public bool ActualizarMesa(Mesas mesa)
         {
-           
+
             var queryParams = new Dictionary<string, string>
             {
                 {"id", mesa.id.ToString() },
                 { "numero",  mesa.numero.ToString() },
                 {"capacidad",  mesa.capacidad.ToString() },
+                { "estado",  mesa.estado.ToString() },
             };
             JsonHelper<Mesas>.Token = this.Token;
             return JsonHelper<Mesas>.Put(queryParams, "/mesas/actualizar-mesa/" + mesa.id);
@@ -59,6 +62,11 @@ namespace SigloXXI.Data
             JsonHelper<Mesas>.Token = this.Token;
             var queryParams = new Dictionary<string, string>();
             return JsonHelper<Mesas>.Delete(queryParams, "/mesas/eliminar-mesa/" + id.ToString());
+        }
+        public enum EstadoMesa
+        {
+            Ocupada = 1,
+            Disponible = 0,
         }
     }
 }

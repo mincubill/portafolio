@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Siglo XXI</title>
-    <link href="~/Content/main.css" rel="stylesheet" />
+    <link href="~/Content/main.css" rel="stylesheet" /> 
     <!-- Bootstrap 4 -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -30,8 +30,8 @@
                                 Clientes
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                @Html.ActionLink("Agregar Cliente", "AgregarUsuario", "Cliente", new { area = "" }, new { @class = "dropdown-item" })
-                                @Html.ActionLink("Ver Clientesh", "VerUsuarios", "Cliente", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Agregar Cliente", "AgregarCliente", "Cliente", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Ver Clientesh", "VerClientes", "Cliente", new { area = "" }, new { @class = "dropdown-item" })
                             </div>
                         </li>
                         <!-- Productos -->
@@ -70,9 +70,8 @@
                                 Pedidos prov.
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                @Html.ActionLink("Ingresar Pedidos", "AgregarProductos", "Producto", new { area = "" }, new { @class = "dropdown-item" })
-                                @Html.ActionLink("Lista de Pedido", "VerProductos", "Producto", new { area = "" }, new { @class = "dropdown-item" })
-                                @Html.ActionLink("Validar Pedido", "VerProductos", "Producto", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Ingresar Pedidos", "AgregarPedido", "Pedido", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Lista de Pedido", "VerPedidos", "Pedido", new { area = "" }, new { @class = "dropdown-item" })
                             </div>
                         </li>
                         <!-- Mesas -->

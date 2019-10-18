@@ -10,7 +10,7 @@ namespace SigloXXI.Data
     {
         public int id { get; set; }
         public int total { get; set; }
-        public int estado { get; set; }
+        public EstadoPedido estado { get; set; }
         public Proveedores proveedor { get; set; }
         public int documentoId { get; set; }
         public List<PedidoBody> pedidoBId { get; set; }
@@ -31,16 +31,17 @@ namespace SigloXXI.Data
             var res = JsonHelper<PedidoHeader>.Get(queryParams, "/pedidoh/buscar-pedidoh/" + id.ToString());
             return res;
         }
-        public PedidoHeader ValidarPedido(int id)
+        public PedidoHeader RecibirPedido(int id)
         {
             JsonHelper<PedidoHeader>.Token = this.Token;
             var queryParams = new Dictionary<string, string>();
-            var res = JsonHelper<PedidoHeader>.Get(queryParams, "/pedidoh/buscar-pedidoh/" + id.ToString());
+            var res = JsonHelper<PedidoHeader>.Get(queryParams, "" + id.ToString());
             return res;
         }
+
     }
 
-    public enum TipoPedido
+    public enum EstadoPedido
     {
         NoRecibido = 0,
         Recibido = 1,

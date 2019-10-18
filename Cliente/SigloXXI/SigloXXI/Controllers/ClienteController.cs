@@ -28,6 +28,7 @@ namespace SigloXXI.Controllers
                 Correo = model.Correo,
                 Dv = model.Dv,
                 Nombre = model.Nombre,
+                Apellido = model.Apellido,
                 Telefono = model.Telefono,
                 Rut = model.Rut,
             };
@@ -45,17 +46,18 @@ namespace SigloXXI.Controllers
         }
 
         [HttpGet]
-        public ActionResult EditarClientes(string rut)
+        public ActionResult EditarClientes(string Rut)
         {
             _token = Session["Token"].ToString();
             var cliente = new Clientes() { Token = _token };
-            cliente = cliente.ObtenerCliente(int.Parse(rut));
+            cliente = cliente.ObtenerCliente(int.Parse(Rut));
             ViewData["Cliente"] = cliente;
             ClienteModel model = new ClienteModel()
             {
                 Correo = cliente.Correo,
                 Dv = cliente.Dv,
                 Nombre = cliente.Nombre,
+                Apellido = cliente.Apellido,
                 Rut = cliente.Rut,
                 Telefono = cliente.Telefono,
             };

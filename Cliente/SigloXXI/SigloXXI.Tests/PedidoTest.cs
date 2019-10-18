@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SigloXXI.Data;
 
@@ -38,7 +39,7 @@ namespace SigloXXI.Tests
                             direccion = "AV. PORCINO 656",
                             correo = "IMPORTACIONESLTDA@PORCINO.CL",
                         },
-                        estado = 1,
+                        estado = EstadoPedido.NoRecibido,
                         documentoId = 69,
                         pedidoBId = new List<PedidoBody>
                         {
@@ -113,5 +114,41 @@ namespace SigloXXI.Tests
             int docId = pedido.ObtenerPedido(26).documentoId;
             Assert.AreEqual(69, docId);
         }
+        [TestMethod]
+        public void ObtenerDecumentoDelPedido()
+        {
+            ObtenerToken("ADMINISTRADOR", "ASDF");
+            var pedido = new PedidoHeader() { Token = _token };
+            var doc = new Documentos() { Token = _token };
+            int docId = pedido.ObtenerPedido(26).documentoId;
+            doc = doc.ObtenerDocumento(docId);
+            Assert.AreEqual(69, doc.id);
+
+        }
+        [TestMethod]
+        public void ObtenerDecumentosDePedidos()
+        {
+            ObtenerToken("ADMINISTRADOR", "ASDF");
+            var doc = new Documentos() { Token = _token };
+            var pedidos = doc.ObtenerDocumentos().Where(d => d.pedidoH.Count > 0).ToList();
+            var wea = "";
+        }
+        [TestMethod]
+        public void RecibirPedido()
+        {
+            ObtenerToken("ADMINISTRADOR", "ASDF");
+            var pedido = new PedidoHeader() { Token = _token };
+            pedido = pedido.RecibirPedido(26);
+        }
+        [TestMethod]
+        public void ObtenerDetalles()
+        {
+            ObtenerToken("ADMINISTRADOR", "ASDF");
+            var pedido = new PedidoHeader() { Token = _token };
+            pedido = pedido.ObtenerPedido(5);
+            var detalles = pedido.pedidoBId;
+            Assert.IsNotNull(detalles);
+        }
+
     }
 }

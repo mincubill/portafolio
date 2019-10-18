@@ -15,7 +15,9 @@ namespace SigloXXI.Controllers
         string _token;
         public ActionResult VerPedidos()
         {
-            
+            _token = Session["Token"].ToString();
+            var pedido = new PedidoHeader() { Token = _token };
+            ViewData["Pedidos"] = pedido.ObtenerPedidos();
             return View();
         }
         [HttpGet]
@@ -44,11 +46,25 @@ namespace SigloXXI.Controllers
             var wea = "";
         }
 
+        public ActionResult VerDetalles(int id)
+        {
+            _token = Session["Token"].ToString();
+            var pedido = new PedidoHeader() { Token = _token };
+            pedido = pedido.ObtenerPedido(id);
+            ViewData["Detalles"] = pedido.pedidoBId;
+            return View();
+        }
+
+        public ActionResult ValidarPedido()
+        {
+            return RedirectToAction("VerPedidos");
+        }
 
         public ActionResult EditarPedido()
         {
             return View();
         }
+
         public ActionResult EliminarPedido()
         {
             return View();

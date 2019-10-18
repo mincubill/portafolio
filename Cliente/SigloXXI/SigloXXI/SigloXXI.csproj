@@ -173,6 +173,10 @@
     <Content Include="Views\Platillo\EditarPlatillo.cshtml" />
     <Content Include="Views\Pedido\VerPedidos.cshtml" />
     <Content Include="Views\Pedido\AgregarPedido.cshtml" />
+    <Content Include="Views\Cliente\VerClientes.cshtml" />
+    <Content Include="Views\Cliente\AgregarCliente.cshtml" />
+    <Content Include="Views\Cliente\EditarClientes.cshtml" />
+    <Content Include="Views\Pedido\VerDetalles.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -183,7 +187,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Caja\" />
-    <Folder Include="Views\Clientee\" />
     <Folder Include="Views\Documento\" />
     <Folder Include="Views\Ingrediente\" />
     <Folder Include="Views\Proveedor\" />

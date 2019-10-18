@@ -38,7 +38,7 @@ namespace SigloXXI.Data
         public List<Documentos> ObtenerDocumentos()
         {
             JsonHelper<Documentos>.Token = this.Token;
-            var result = JsonHelper<Documentos>.GetList("/documentos/obtener-documento");
+            var result = JsonHelper<Documentos>.GetList("/documentos/obtener-documentos");
             return result;
         }
 

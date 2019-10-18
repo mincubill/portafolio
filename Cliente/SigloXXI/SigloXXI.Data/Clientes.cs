@@ -23,11 +23,11 @@ namespace SigloXXI.Data
                 {"dv",  cliente.Dv.ToString()},
                 {"nombre",  cliente.Nombre},
                 {"apellido",  cliente.Apellido},
-                {"rol",  cliente.Correo},
-                {"correo",  cliente.Telefono},
+                {"correo",  cliente.Correo},
+                {"telefono",  cliente.Telefono},
             };
             JsonHelper<Clientes>.Token = this.Token;
-            return JsonHelper<Clientes>.Post(queryParams, "/clientes/crear-clientes");
+            return JsonHelper<Clientes>.Post(queryParams, "/clientes/crear-cliente");
         }
 
         public bool ActualizarClientes(Clientes cliente)
@@ -38,11 +38,11 @@ namespace SigloXXI.Data
                 {"dv",  cliente.Dv.ToString()},
                 {"nombre",  cliente.Nombre},
                 {"apellido",  cliente.Apellido},
-                {"rol",  cliente.Correo},
-                {"correo",  cliente.Telefono},
+                {"correo",  cliente.Correo},
+                {"telefono",  cliente.Telefono},
             };
             JsonHelper<Clientes>.Token = this.Token;
-            return JsonHelper<Clientes>.Put(queryParams, "/clientes/actualizar-clientes/" + cliente.Rut);
+            return JsonHelper<Clientes>.Put(queryParams, "/clientes/actualizar-cliente/" + cliente.Rut);
         }
 
         public List<Clientes> ObtenerClientes()
@@ -56,7 +56,7 @@ namespace SigloXXI.Data
         {
             JsonHelper<Clientes>.Token = this.Token;
             var queryParams = new Dictionary<string, string>();
-            var res = JsonHelper<Clientes>.Get(queryParams, "/clientes/buscar-clientes/" + rut.ToString());
+            var res = JsonHelper<Clientes>.Get(queryParams, "/clientes/buscar-cliente/" + rut.ToString());
             return res;
         }
 
