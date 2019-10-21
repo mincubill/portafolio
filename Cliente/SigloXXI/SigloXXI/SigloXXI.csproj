@@ -103,6 +103,9 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Fakes Include="Fakes\SigloXXI.Data.fakes" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile2.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -121,6 +124,7 @@
     <Compile Include="Controllers\IngredienteController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MesasController.cs" />
+    <Compile Include="Controllers\OrdenController.cs" />
     <Compile Include="Controllers\PedidoController.cs" />
     <Compile Include="Controllers\PlatilloController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
@@ -177,6 +181,8 @@
     <Content Include="Views\Cliente\AgregarCliente.cshtml" />
     <Content Include="Views\Cliente\EditarClientes.cshtml" />
     <Content Include="Views\Pedido\VerDetalles.cshtml" />
+    <Content Include="Views\Orden\VerOrdenes.cshtml" />
+    <Content Include="Views\Orden\VerDetalles.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

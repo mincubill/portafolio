@@ -1,26 +1,26 @@
 ﻿
 @{
     ViewBag.Title = "VerDetalles";
-    var data = (List<SigloXXI.Data.PedidoBody>)ViewData["Detalles"];
+    var data = (List<SigloXXI.Data.OrdenBody>)ViewData["Detalles"];
 }
 
 <h2>Ver Detalles</h2>
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>Producto</th>
             <th>Cantidad</th>
+            <th>Platillo</th>
             <th>Precio</th>
         </tr>
     </thead>
     <tbody>
 
-        @foreach (var pedido in data)
+        @foreach (var orden in data)
         {
             <tr>
-                <td>@pedido.productoId.nombre</td>
-                <td>@pedido.productoId.precio</td>
-                <td>@pedido.productoId.cantidad</td>
+                <td>@orden.cantidad</td>
+                <td>@orden.platilloId.nombre</td>
+                <td>@orden.subTotal</td>
             </tr>
         }
     </tbody>

@@ -81,6 +81,11 @@ namespace SigloXXI.Tests
             ObtenerToken("ADMINISTRADOR", "ASDF");
             var pedido = new PedidoHeader() { Token = _token };
             var data = pedido.ObtenerPedidos();
+            foreach (var d in data)
+            {
+                
+                d.CalcularTotal();
+            }
             Assert.IsNotNull(data);
         }
         [TestMethod]

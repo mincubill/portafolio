@@ -76,8 +76,12 @@ namespace SigloXXI.Tests
         {
             ObtenerToken("ADMINISTRADOR", "ASDF");
             var orden = new OrdenHeader() { Token = _token };
-            var data = orden.Obtenerordenes();
-            Assert.IsNotNull(data);
+            var ordenes = orden.Obtenerordenes();
+            foreach(var o in ordenes)
+            {
+                o.CalcularTotal();
+            }
+            Assert.IsNotNull(ordenes);
         }
 
         [TestMethod]

@@ -16,14 +16,27 @@ namespace SigloXXI.Controllers
         public ActionResult VerPedidos()
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var pedido = new PedidoHeader() { Token = _token };
-            ViewData["Pedidos"] = pedido.ObtenerPedidos();
+            var data = pedido.ObtenerPedidos();
+            foreach (var p in data)
+            {
+                p.CalcularTotal();
+            }
+            ViewData["Pedidos"] = data;
             return View();
         }
         [HttpGet]
         public ActionResult AgregarPedido()
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var proveedores = new Proveedores { Token = _token };
             var produtos = new Productos { Token = _token };
             ViewData["Proveedores"] = proveedores.ObtenerProveedores();
@@ -34,6 +47,10 @@ namespace SigloXXI.Controllers
         public ActionResult AgregarPedido(DocumentoModel model)
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var proveedores = new Proveedores { Token = _token };
             var produtos = new Productos { Token = _token };
             ViewData["Proveedores"] = proveedores.ObtenerProveedores();
@@ -49,6 +66,10 @@ namespace SigloXXI.Controllers
         public ActionResult VerDetalles(int id)
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var pedido = new PedidoHeader() { Token = _token };
             pedido = pedido.ObtenerPedido(id);
             ViewData["Detalles"] = pedido.pedidoBId;

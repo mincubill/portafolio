@@ -15,6 +15,11 @@ namespace SigloXXI.Controllers
         public ActionResult AgregarCliente()
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
+
             return View();
         }
 
@@ -22,6 +27,10 @@ namespace SigloXXI.Controllers
         public ActionResult AgregarCliente(ClienteModel model)
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var cliente = new Clientes
             {
                 Token = _token,
@@ -40,6 +49,10 @@ namespace SigloXXI.Controllers
         public ActionResult VerClientes()
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var cliente = new Clientes() { Token = _token };
             ViewData["Clientes"] = cliente.ObtenerClientes();
             return View();
@@ -49,6 +62,10 @@ namespace SigloXXI.Controllers
         public ActionResult EditarClientes(string Rut)
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var cliente = new Clientes() { Token = _token };
             cliente = cliente.ObtenerCliente(int.Parse(Rut));
             ViewData["Cliente"] = cliente;

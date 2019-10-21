@@ -9,11 +9,11 @@ namespace SigloXXI.Data
     public class OrdenHeader
     {
         public int id { get; set; }
-        public int total { get; set; }
         public EstadoOrden estado { get; set; }
         public int documentoId { get; set; }
         public Mesas mesaId { get; set; }
         public List<OrdenBody> ordenBId { get; set; }
+        public int total { get; set; }
         public string Token { get; set; }
 
         public bool CrearOrden_H(OrdenHeader orden_h)
@@ -58,6 +58,16 @@ namespace SigloXXI.Data
             return JsonHelper<OrdenHeader>.Delete(queryParams, "/ordenH/eliminar-orden_h/" + id.ToString());
         }
 
+        public void CalcularTotal()
+        {
+            if(ordenBId != null)
+            {
+                foreach (var d in ordenBId)
+                {
+                    total += d.cantidad * d.subTotal;
+                }
+            }
+        }
     }
     public enum EstadoOrden
     {

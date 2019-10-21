@@ -39,6 +39,17 @@ namespace SigloXXI.Data
             return res;
         }
 
+        public void CalcularTotal()
+        {
+            if(pedidoBId != null)
+            {
+                foreach(var p in pedidoBId)
+                {
+                    total += p.cantidad * p.total;
+                }
+            }
+        }
+
     }
 
     public enum EstadoPedido

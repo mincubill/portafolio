@@ -14,6 +14,12 @@ namespace SigloXXI.Data
         public Productos productoId { get; set; }
         public string Token { get; set; }
 
-        
+        public void CalcularTotal()
+        {
+            if(productoId != null)
+            {
+                total = cantidad * productoId.precio;
+            }
+        }
     }
 }
