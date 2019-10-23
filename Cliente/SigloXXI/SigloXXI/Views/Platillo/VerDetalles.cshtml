@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "VerDetalles";
+    var data = (List<SigloXXI.Data.Ingredientes>)ViewData["Detalles"];
+}
+
+<h2>Ver Detalles</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var ingrediente in data)
+        {
+            <tr>
+                <td>@ingrediente.productoId.nombre</td>
+                <td>@ingrediente.cantidad</td>
+            </tr>
+        }
+    </tbody>
+</table>

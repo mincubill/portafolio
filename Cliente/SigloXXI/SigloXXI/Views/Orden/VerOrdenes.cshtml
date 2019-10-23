@@ -24,8 +24,8 @@
             <tr class="@(orden.estado == SigloXXI.Data.EstadoOrden.NoPagado? "table-warning" : "table-success")">
                 <td>@orden.id</td>
                 <td>@orden.documentoId</td>
-                <td>@orden.estado.ToString()</td>
-                <td>@orden.mesaId</td>
+                <td>@(orden.estado == SigloXXI.Data.EstadoOrden.NoPagado ? "No Pagado" : "Pagado")</td>
+                <td>@orden.mesaId.numero</td>
                 <td>@orden.total</td>
                 <td>
                     @Html.ActionLink(" ", "VerDetalles", "Orden",

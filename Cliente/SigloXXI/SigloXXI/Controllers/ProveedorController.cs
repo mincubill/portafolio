@@ -14,6 +14,10 @@ namespace SigloXXI.Controllers
         public ActionResult VerProveedores()
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var proveedores = new Proveedores() { Token = _token };
             ViewData["Proveedores"] = proveedores.ObtenerProveedores();
             return View();
@@ -22,6 +26,10 @@ namespace SigloXXI.Controllers
         public ActionResult AgregarProveedores()
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
@@ -46,6 +54,10 @@ namespace SigloXXI.Controllers
         public ActionResult EditarProveedores(string rut)
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var proveedores = new Proveedores() { Token = _token };
             proveedores = proveedores.ObtenerProveedor(rut);
             ProveedorModel model = new ProveedorModel
@@ -80,6 +92,10 @@ namespace SigloXXI.Controllers
         public ActionResult EliminarProveedores(string id)
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var proveedores = new Proveedores() { Token = _token };
             proveedores.EliminarProveedor(id);
             return RedirectToAction("VerProveedores");

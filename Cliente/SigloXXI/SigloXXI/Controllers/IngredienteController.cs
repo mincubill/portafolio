@@ -14,6 +14,10 @@ namespace SigloXXI.Controllers
         public ActionResult VerIngredientes()
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var ingredientes = new Ingredientes() { Token = _token };
             ViewData["Ingredientes"] = ingredientes.ObtenerIngredientes();
             return View();
@@ -22,6 +26,10 @@ namespace SigloXXI.Controllers
         public ActionResult AgregarIngredientes()
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
@@ -41,6 +49,10 @@ namespace SigloXXI.Controllers
         public ActionResult EditarIngrediente(int id)
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var ingredientes = new Ingredientes() { Token = _token };
             ingredientes = ingredientes.ObtenerIngrediente(id);
             IngredienteModel model = new IngredienteModel
@@ -66,6 +78,10 @@ namespace SigloXXI.Controllers
         public ActionResult EliminarIngredientes(int id)
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var ingredientes = new Ingredientes() { Token = _token } ;
             ingredientes.EliminarIngrediente(id);
             return RedirectToAction("VerIngredientes");

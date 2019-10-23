@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "VerOrdenesSinPago";
+    var data = (List<SigloXXI.Data.OrdenHeader>)ViewData["Ordenes"];
+}
+
+<h2>Ordenes Sin Pagar</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Codigo pedido</th>
+            <th>Numero Doc</th>
+            <th>Estado</th>
+            <th>Nº Mesa</th>
+            <th>Total</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var orden in data)
+        {
+            <tr>
+                <td>@orden.id</td>
+                <td>@orden.documentoId</td>
+                <td>@(orden.estado == SigloXXI.Data.EstadoOrden.NoPagado ? "No Pagado" : "Pagado") </td>
+                <td>@orden.mesaId.numero</td>
+                <td>@orden.total</td>
+                <td>
+                    @Html.ActionLink(" ", "MarcarPago", "Caja",
+                       new { id = orden.id }, new { @class = "fa fa-check" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

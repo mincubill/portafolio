@@ -14,6 +14,10 @@ namespace SigloXXI.Controllers
         public ActionResult VerDocumentos()
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var documento = new Documentos() { Token = _token};
             ViewData["Documentos"] = documento.ObtenerDocumentos();
             return View();
@@ -22,6 +26,10 @@ namespace SigloXXI.Controllers
         public ActionResult AgregarDocumentos()
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
@@ -29,6 +37,10 @@ namespace SigloXXI.Controllers
         public ActionResult AgregarDocumentos(DocumentoModel model)
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var documento = new Documentos()
             {
                 
@@ -41,6 +53,10 @@ namespace SigloXXI.Controllers
         public ActionResult EditarDocumentos(int id)
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var documentos = new Documentos() { Token = _token };
             documentos = documentos.ObtenerDocumento(id);
             DocumentoModel model = new DocumentoModel
@@ -54,6 +70,10 @@ namespace SigloXXI.Controllers
         public ActionResult EditarDocumentos(DocumentoModel model)
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var documentos = new Documentos()
             {
                 
@@ -66,6 +86,10 @@ namespace SigloXXI.Controllers
         public ActionResult EliminarDocumentos(int id)
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var documentos = new Documentos() { Token = _token };
             documentos.EliminarDocumento(id);
             return RedirectToAction("VerDocumentos");

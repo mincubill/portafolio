@@ -14,6 +14,10 @@ namespace SigloXXI.Controllers
         public ActionResult VerProductos()
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var prod = new Productos() { Token = _token };
             ViewData["Productos"] = prod.ObtenerProductos();
             return View();
@@ -22,6 +26,10 @@ namespace SigloXXI.Controllers
         public ActionResult AgregarProductos()
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var prod = new Productos() { Token = _token };
             return View();
         }
@@ -29,6 +37,11 @@ namespace SigloXXI.Controllers
         [HttpPost]
         public ActionResult AgregarProductos(ProductoModel model)
         {
+            _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var prod = new Productos()
             {
                 Token = _token,
@@ -45,7 +58,12 @@ namespace SigloXXI.Controllers
         [HttpGet]
         public ActionResult EditarProductos(int id)
         {
-            var prod = new Productos();
+            _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
+            var prod = new Productos() { Token = _token };
             prod = prod.ObtenerProducto(id);
             ProductoModel model = new ProductoModel
             {
@@ -62,8 +80,14 @@ namespace SigloXXI.Controllers
         [HttpPost]
         public ActionResult EditarProductos(ProductoModel model)
         {
+            _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var prod = new Productos()
             {
+                Token = _token,
                 precio = model.Precio,
                 id = model.Id,
                 categoria = model.Categoria,
@@ -77,7 +101,12 @@ namespace SigloXXI.Controllers
 
         public ActionResult EliminarProductos(int id)
         {
-            var prod = new Productos();
+            _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
+            var prod = new Productos() { Token = _token }; 
             prod.EliminarProducto(id);
             return RedirectToAction("VerProductos");
         }

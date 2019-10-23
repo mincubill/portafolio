@@ -9,6 +9,7 @@
     <thead>
         <tr>
             <th>Numero</th>
+            <th>Estado</th>
             <th>Capacidad</th>
             <th>Acciones</th>
         </tr>
@@ -16,18 +17,19 @@
     <tbody>
         @foreach (var mesa in data)
         {
-            <tr class="@(mesa.estado == SigloXXI.Data.Mesas.EstadoMesa.Ocupada ? "table-warning" : "table-success")">
+            <tr class="@(mesa.estado == SigloXXI.Data.EstadoMesa.Ocupada ? "table-warning" : "table-success")">
                 <td>@mesa.numero</td>
+                <td>@(mesa.estado == SigloXXI.Data.EstadoMesa.Ocupada ? "Ocupada" : "Disponible")</td>
                 <td>@mesa.capacidad</td>
                 <td>
-                    @if (mesa.estado == SigloXXI.Data.Mesas.EstadoMesa.Ocupada)
+                    @if (mesa.estado == SigloXXI.Data.EstadoMesa.Ocupada)
                     {
-                        @Html.ActionLink(" ", "ValidarMesa", "Mesas",
+                        @Html.ActionLink(" ", "CambiarEstadoMesa", "Mesas",
                             new { id = mesa.id }, new { @class = "fas fa-toggle-off" })
                     }
-                    @if (mesa.estado == SigloXXI.Data.Mesas.EstadoMesa.Disponible)
+                    @if (mesa.estado == SigloXXI.Data.EstadoMesa.Disponible)
                     {
-                        @Html.ActionLink(" ", "ValidarMesa", "Mesas",
+                        @Html.ActionLink(" ", "CambiarEstadoMesa", "Mesas",
                             new { id = mesa.id }, new { @class = "fas fa-toggle-on" })
                     }
                     @Html.ActionLink(" ", "EditarMesa", "Mesas",

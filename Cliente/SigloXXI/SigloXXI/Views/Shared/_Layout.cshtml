@@ -31,7 +31,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 @Html.ActionLink("Agregar Cliente", "AgregarCliente", "Cliente", new { area = "" }, new { @class = "dropdown-item" })
-                                @Html.ActionLink("Ver Clientesh", "VerClientes", "Cliente", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Ver Clientes", "VerClientes", "Cliente", new { area = "" }, new { @class = "dropdown-item" })
                             </div>
                         </li>
                         <!-- Productos -->
@@ -50,7 +50,7 @@
                                 Caja
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                @Html.ActionLink("Registrar pago", " ", " ", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Registrar pago", "VerOrdenesSinPago", "Caja", new { area = "" }, new { @class = "dropdown-item" })
                             </div>
                         </li>
                         <!-- Platillos -->
@@ -59,8 +59,8 @@
                                 Platillos
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                @Html.ActionLink("Lista de Platillos", "VerProductos", "Producto", new { area = "" }, new { @class = "dropdown-item" })
-                                @Html.ActionLink("Ver de Platillos", "VerProductos", "Producto", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Ingresar Platillos", "AgregarPlatillo", "Platillo", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Ver de Platillos", "VerPlatillos", "Platillo", new { area = "" }, new { @class = "dropdown-item" })
 
                             </div>
                         </li>
@@ -80,8 +80,8 @@
                                 Pedidos prov.
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                @Html.ActionLink("Ingresar Orden", "AgregarOrden", "Pedido", new { area = "" }, new { @class = "dropdown-item" })
-                                @Html.ActionLink("Lista de Ordenes", "VerOrdenes", "Pedido", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Ingresar Orden", "AgregarOrden", "Orden", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Lista de Ordenes", "VerOrdenes", "Orden", new { area = "" }, new { @class = "dropdown-item" })
                             </div>
                         </li>
                         <!-- Mesas -->

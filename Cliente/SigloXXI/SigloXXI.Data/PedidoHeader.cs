@@ -15,8 +15,7 @@ namespace SigloXXI.Data
         public int documentoId { get; set; }
         public List<PedidoBody> pedidoBId { get; set; }
         public string Token { get; set; }
-
-               
+    
         public List<PedidoHeader> ObtenerPedidos()
         {
             JsonHelper<PedidoHeader>.Token = this.Token;
@@ -31,11 +30,12 @@ namespace SigloXXI.Data
             var res = JsonHelper<PedidoHeader>.Get(queryParams, "/pedidoh/buscar-pedidoh/" + id.ToString());
             return res;
         }
+
         public PedidoHeader RecibirPedido(int id)
         {
             JsonHelper<PedidoHeader>.Token = this.Token;
             var queryParams = new Dictionary<string, string>();
-            var res = JsonHelper<PedidoHeader>.Get(queryParams, "" + id.ToString());
+            var res = JsonHelper<PedidoHeader>.Get(queryParams, "/pedidoh/cambiar-estado-pedidoh/" + id.ToString());
             return res;
         }
 
@@ -54,7 +54,7 @@ namespace SigloXXI.Data
 
     public enum EstadoPedido
     {
-        NoRecibido = 0,
+        NoRecibido = 2,
         Recibido = 1,
     }
 

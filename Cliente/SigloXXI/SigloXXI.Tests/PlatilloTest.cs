@@ -125,7 +125,7 @@ namespace SigloXXI.Tests
             };
             Assert.AreEqual(true, platillo.ActualizarPlatillo(platillo));
         }
-        
+
         [TestMethod]
         public void EliminarPlatillo()
         {
@@ -135,6 +135,15 @@ namespace SigloXXI.Tests
                 Token = _token
             };
             Assert.AreEqual(true, platillo.EliminarPlatillo(61));
+        }
+
+        [TestMethod]
+        public void ObtenerIingredientes()
+        {
+            ObtenerToken("ADMINISTRADOR", "ASDF");
+            var platillo = new Platillo() { Token = _token };
+            var ingredientes = platillo.ObtenerPlatillo(1).ingredienteId;
+            Assert.IsNotNull(ingredientes);
         }
     }
 }

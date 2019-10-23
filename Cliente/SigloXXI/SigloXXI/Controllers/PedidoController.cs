@@ -76,19 +76,25 @@ namespace SigloXXI.Controllers
             return View();
         }
 
-        public ActionResult ValidarPedido()
+        public ActionResult ValidarPedido(int id)
         {
+            var pedido = new PedidoHeader() { Token = _token };
+            pedido.RecibirPedido(id);
             return RedirectToAction("VerPedidos");
         }
 
         public ActionResult EditarPedido()
         {
+
             return View();
         }
 
-        public ActionResult EliminarPedido()
+        public ActionResult EliminarPedido(int id)
         {
-            return View();
+            var pedido = new PedidoHeader() { Token = _token };
+            var doc = new Documentos() { Token = _token };
+            doc.EliminarDocumento(pedido.ObtenerPedido(id).documentoId);
+            return RedirectToAction("VerPedidos");
         }
     }
 }

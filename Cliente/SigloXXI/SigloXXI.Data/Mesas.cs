@@ -63,10 +63,25 @@ namespace SigloXXI.Data
             var queryParams = new Dictionary<string, string>();
             return JsonHelper<Mesas>.Delete(queryParams, "/mesas/eliminar-mesa/" + id.ToString());
         }
-        public enum EstadoMesa
+        
+        public bool MarcarMesa(int id)
         {
-            Ocupada = 1,
-            Disponible = 0,
+            if(ObtenerMesa(id).estado == EstadoMesa.Disponible)
+            {
+                var queryParams = new Dictionary<string, string>();
+                return JsonHelper<Mesas>.Delete(queryParams, "/mesas/cambiar-estado-no-disponible/" + id.ToString());
+            }
+            else
+            {
+                var queryParams = new Dictionary<string, string>();
+                return JsonHelper<Mesas>.Delete(queryParams, "/mesas/cambiar-estado-disponible/" + id.ToString());
+            }
         }
+    }
+
+    public enum EstadoMesa
+    {
+        Ocupada = 2,
+        Disponible = 1,
     }
 }

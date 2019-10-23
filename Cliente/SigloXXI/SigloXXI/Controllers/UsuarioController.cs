@@ -18,6 +18,10 @@ namespace SigloXXI.Controllers
         public ActionResult AgregarUsuario()
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
@@ -25,6 +29,10 @@ namespace SigloXXI.Controllers
         public ActionResult AgregarUsuario(UsuarioModel model)
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var user = new Users
             {
                 Token = _token,
@@ -55,6 +63,10 @@ namespace SigloXXI.Controllers
         public ActionResult EditarUsuarios(string rut)
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var user = new Users();
             user = user.ObtenerUsuario(int.Parse(rut));
             ViewData["Usuario"] = user;
@@ -97,6 +109,11 @@ namespace SigloXXI.Controllers
 
         public ActionResult EliminarUsuarios(string rut)
         {
+            _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var user = new Users() { Token = _token};
             user.EliminarUsuario(int.Parse(rut));
             return RedirectToAction("VerUsuarios");

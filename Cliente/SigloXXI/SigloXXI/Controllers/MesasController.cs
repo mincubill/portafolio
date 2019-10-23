@@ -15,6 +15,10 @@ namespace SigloXXI.Controllers
         public ActionResult VerMesasDisponibles()
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var mesa = new Mesas() { Token = _token };
             ViewData["Mesas"] = mesa.ObtenerMesas();
             return View();
@@ -24,6 +28,10 @@ namespace SigloXXI.Controllers
         public ActionResult AgregarMesa()
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
@@ -46,6 +54,10 @@ namespace SigloXXI.Controllers
         public ActionResult EditarMesa(int id)
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var mesa = new Mesas() { Token = _token };
             mesa = mesa.ObtenerMesa(id);
             MesaModel model = new MesaModel
@@ -75,9 +87,27 @@ namespace SigloXXI.Controllers
         public ActionResult EliminarMesa(int id)
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var mesa = new Mesas() { Token = _token };
             mesa.EliminarMesa(id);
+
             return RedirectToAction("VerMesasDisponibles");
         }
+
+        public ActionResult CambiarEstadoMesa(int id)
+        {
+            _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
+            var mesa = new Mesas() { Token = _token };
+            mesa.MarcarMesa(id);
+            return RedirectToAction("VerMesasDisponibles");
+        }
+
     }
 }

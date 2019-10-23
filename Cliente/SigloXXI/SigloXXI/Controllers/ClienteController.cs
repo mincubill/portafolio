@@ -102,6 +102,10 @@ namespace SigloXXI.Controllers
         public ActionResult EliminarClientes(string rut)
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var cliente = new Clientes() { Token = _token };
             cliente.EliminarCliente(int.Parse(rut));
             return RedirectToAction("VerClientes");

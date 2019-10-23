@@ -14,6 +14,10 @@ namespace SigloXXI.Controllers
         public ActionResult VerPlatillos()
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var plat = new Platillo() { Token = _token };
             ViewData["Platillo"] = plat.ObtenerPlatillos();
             return View();
@@ -23,6 +27,10 @@ namespace SigloXXI.Controllers
         public ActionResult AgregarPlatillo()
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
@@ -45,6 +53,10 @@ namespace SigloXXI.Controllers
         public ActionResult EditarPlatillo(int id)
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var plat = new Platillo() { Token = _token };
             plat = plat.ObtenerPlatillo(id);
             PlatilloModel model = new PlatilloModel
@@ -74,9 +86,26 @@ namespace SigloXXI.Controllers
         public ActionResult EliminarPlatillo(int id)
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var plat = new Platillo() { Token = _token };
             plat.EliminarPlatillo(id);
             return RedirectToAction("VerPlatillos");
+        }
+
+        public ActionResult VerDetalles(int id)
+        {
+            _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
+            var plat = new Platillo() { Token = _token };
+            var ingredientes = plat.ObtenerPlatillo(1).ingredienteId;
+            ViewData["Detalles"] = ingredientes;
+            return View();
         }
     }
 }

@@ -58,6 +58,13 @@ namespace SigloXXI.Data
             return JsonHelper<OrdenHeader>.Delete(queryParams, "/ordenH/eliminar-orden_h/" + id.ToString());
         }
 
+        public bool ValidarPago(int id)
+        {
+            JsonHelper<OrdenHeader>.Token = this.Token;
+            var queryParams = new Dictionary<string, string>();
+            return JsonHelper<OrdenHeader>.Delete(queryParams, "/ordenH/cambiar-estado-ordenh/" + id.ToString());
+        }
+
         public void CalcularTotal()
         {
             if(ordenBId != null)
@@ -69,9 +76,10 @@ namespace SigloXXI.Data
             }
         }
     }
+
     public enum EstadoOrden
     {
         Pagado = 1,
-        NoPagado = 0
+        NoPagado = 2
     }
 }

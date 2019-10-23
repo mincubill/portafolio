@@ -1,8 +1,34 @@
-﻿@model SigloXXI.Models.PlatilloModel
-
-@{
+﻿@{
     ViewBag.Title = "VerPlatillos";
+    var data = (List<SigloXXI.Data.Platillo>)ViewData["Platillo"];
 }
 
-<h2>VerPlatillos</h2>
+<h2>Ver Platillos</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Tiempo de preparacion</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var platillo in data)
+        {
+            <tr>
+                <td>@platillo.nombre</td>
+                <td>@platillo.tiempo</td>
+                <td>
+                    @Html.ActionLink(" ", "VerDetalles", "Platillo",
+                       new { id = platillo.id }, new { @class = "far fa-list-alt" })
+                    @Html.ActionLink(" ", "EditarPlatillo", "Platillo",
+                       new { id = platillo.id }, new { @class = "far fa-edit" })
+                    @Html.ActionLink(" ", "EliminarPlatillo", "Platillo",
+                       new { id = platillo.id }, new { @class = "far fa-trash-alt" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 
