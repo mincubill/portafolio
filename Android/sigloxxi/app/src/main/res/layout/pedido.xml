@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+
+    <TextView
+        android:id="@+id/pedidoName"
+        android:text="Android Name"
+        android:textSize="20sp"
+        android:layout_marginTop="8dp"
+        android:maxLines="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/appIconIV"
+        android:layout_toEndOf="@+id/appIconIV"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        tools:ignore="RtlHardcoded,UnknownIdInLayout" />
+
+    <TextView
+        android:id="@+id/pedidoCantidad"
+        android:text="Android Version"
+        android:textSize="14sp"
+        android:maxLines="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pedidoName"
+        android:layout_alignLeft="@+id/pedidoName"
+        android:layout_alignStart="@+id/pedidoName" />
+</RelativeLayout>
