@@ -16,7 +16,6 @@ namespace SigloXXI.Data
 
         public bool CrearMesa(Mesas mesa)
         {
-
             var queryParams = new Dictionary<string, string>
             {
                 { "id", mesa.id.ToString() },
@@ -69,12 +68,15 @@ namespace SigloXXI.Data
             if(ObtenerMesa(id).estado == EstadoMesa.Disponible)
             {
                 var queryParams = new Dictionary<string, string>();
-                return JsonHelper<Mesas>.Delete(queryParams, "/mesas/cambiar-estado-no-disponible/" + id.ToString());
+                JsonHelper<Mesas>.Get(queryParams, "/mesas/cambiar-estado-no-disponible/" + id.ToString());
+                return true;
             }
             else
             {
                 var queryParams = new Dictionary<string, string>();
-                return JsonHelper<Mesas>.Delete(queryParams, "/mesas/cambiar-estado-disponible/" + id.ToString());
+                JsonHelper<Mesas>.Get(queryParams, "/mesas/cambiar-estado-disponible/" + id.ToString());
+                return true;
+
             }
         }
     }

@@ -55,14 +55,23 @@ namespace SigloXXI.Data
         {
             JsonHelper<OrdenHeader>.Token = this.Token;
             var queryParams = new Dictionary<string, string>();
-            return JsonHelper<OrdenHeader>.Delete(queryParams, "/ordenH/eliminar-orden_h/" + id.ToString());
+            return JsonHelper<OrdenHeader>.Delete(queryParams, "/ordenh/eliminar-orden_h/" + id.ToString());
         }
 
         public bool ValidarPago(int id)
         {
-            JsonHelper<OrdenHeader>.Token = this.Token;
-            var queryParams = new Dictionary<string, string>();
-            return JsonHelper<OrdenHeader>.Delete(queryParams, "/ordenH/cambiar-estado-ordenh/" + id.ToString());
+            try
+            {
+                JsonHelper<OrdenHeader>.Token = this.Token;
+                var queryParams = new Dictionary<string, string>();
+                JsonHelper<OrdenHeader>.Get(queryParams, "/ordenh/cambiar-estado-ordenh/" + id.ToString());
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            
         }
 
         public void CalcularTotal()
@@ -79,7 +88,7 @@ namespace SigloXXI.Data
 
     public enum EstadoOrden
     {
-        Pagado = 1,
-        NoPagado = 2
+        Pagado = 2,
+        NoPagado = 1
     }
 }

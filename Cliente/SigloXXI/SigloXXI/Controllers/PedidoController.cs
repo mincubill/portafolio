@@ -78,6 +78,11 @@ namespace SigloXXI.Controllers
 
         public ActionResult ValidarPedido(int id)
         {
+            _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var pedido = new PedidoHeader() { Token = _token };
             pedido.RecibirPedido(id);
             return RedirectToAction("VerPedidos");

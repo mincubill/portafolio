@@ -33,10 +33,18 @@ namespace SigloXXI.Data
 
         public PedidoHeader RecibirPedido(int id)
         {
-            JsonHelper<PedidoHeader>.Token = this.Token;
-            var queryParams = new Dictionary<string, string>();
-            var res = JsonHelper<PedidoHeader>.Get(queryParams, "/pedidoh/cambiar-estado-pedidoh/" + id.ToString());
-            return res;
+            try
+            {
+                JsonHelper<PedidoHeader>.Token = this.Token;
+                var queryParams = new Dictionary<string, string>();
+                var res = JsonHelper<PedidoHeader>.Get(queryParams, "/pedidoh/cambiar-estado-pedidoh/" + id.ToString());
+                return res;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            
         }
 
         public void CalcularTotal()
@@ -54,8 +62,8 @@ namespace SigloXXI.Data
 
     public enum EstadoPedido
     {
-        NoRecibido = 2,
-        Recibido = 1,
+        NoRecibido = 1,
+        Recibido = 2,
     }
 
 }

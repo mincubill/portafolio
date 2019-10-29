@@ -30,8 +30,11 @@
                 <td>
                     @Html.ActionLink(" ", "VerDetalles", "Orden",
                        new { id = orden.id }, new { @class = "far fa-list-alt" })
-                    @Html.ActionLink(" ", "PagarOrden", "Orden",
+                    @if (orden.estado == SigloXXI.Data.EstadoOrden.NoPagado)
+                    {
+                        @Html.ActionLink(" ", "PagarOrden", "Orden",
                        new { id = orden.id }, new { @class = "fa fa-check" })
+                    }
                     @Html.ActionLink(" ", "EditarOrden", "Orden",
                        new { id = orden.id }, new { @class = "far fa-edit" })
                     @Html.ActionLink(" ", "EliminarOrden", "Orden",

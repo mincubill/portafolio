@@ -47,6 +47,10 @@ namespace SigloXXI.Controllers
         public ActionResult VerDetalles(int id)
         {
             _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             var orden = new OrdenHeader { Token = _token };
             ViewData["Detalles"] = orden.ObtenerOrden(id).ordenBId;
             return View();
@@ -61,7 +65,14 @@ namespace SigloXXI.Controllers
         }
         public ActionResult PagarOrden(int id)
         {
-            return RedirectToAction("");
+            _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
+            var orden = new OrdenHeader { Token = _token };
+            orden.ValidarPago(id);
+            return RedirectToAction("VerOrdenes");
         }
     }
 }

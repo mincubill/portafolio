@@ -19,7 +19,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/Home/Index">Inicio <span class="sr-only">(current)</span></a>
                     </li>
                     @*@if (Session["Rol"].ToString() == "1")*@
                     @if (Session["Rol"].ToString() == "1")
@@ -42,6 +42,16 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 @Html.ActionLink("Ingresar producto", "AgregarProductos", "Producto", new { area = "" }, new { @class = "dropdown-item" })
                                 @Html.ActionLink("Lista de productos", "VerProductos", "Producto", new { area = "" }, new { @class = "dropdown-item" })
+                            </div>
+                        </li>
+                        <!-- Proveedores -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Proveedores
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @Html.ActionLink("Ingresar proveedor", "AgregarProveedores", "Proveedor", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Lista de proveedores", "VerProveedores", "Proveedor", new { area = "" }, new { @class = "dropdown-item" })
                             </div>
                         </li>
                         <!-- Caja -->
@@ -77,7 +87,7 @@
                         <!-- Ordenes -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Pedidos prov.
+                                Ordenes Clien.
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 @Html.ActionLink("Ingresar Orden", "AgregarOrden", "Orden", new { area = "" }, new { @class = "dropdown-item" })
