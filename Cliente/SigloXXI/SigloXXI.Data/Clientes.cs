@@ -8,23 +8,23 @@ namespace SigloXXI.Data
 {
     public class Clientes
     {
-        public int Rut { get; set; }
-        public char Dv { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public string Correo { get; set; }
-        public string Telefono { get; set; }
+        public int rut { get; set; }
+        public char dv { get; set; }
+        public string nombre { get; set; }
+        public string apellido { get; set; }
+        public string correo { get; set; }
+        public string telefono { get; set; }
         public string Token { get; set; }
         public bool CrearCliente(Clientes cliente)
         {
             var queryParams = new Dictionary<string, string>
             {
-                {"rut", cliente.Rut.ToString() },
-                {"dv",  cliente.Dv.ToString()},
-                {"nombre",  cliente.Nombre},
-                {"apellido",  cliente.Apellido},
-                {"correo",  cliente.Correo},
-                {"telefono",  cliente.Telefono},
+                {"rut", cliente.rut.ToString() },
+                {"dv",  cliente.dv.ToString()},
+                {"nombre",  cliente.nombre},
+                {"apellido",  cliente.apellido},
+                {"correo",  cliente.correo},
+                {"telefono",  cliente.telefono},
             };
             JsonHelper<Clientes>.Token = this.Token;
             return JsonHelper<Clientes>.Post(queryParams, "/clientes/crear-cliente");
@@ -34,15 +34,15 @@ namespace SigloXXI.Data
         {
             var queryParams = new Dictionary<string, string>
             {
-                {"rut", cliente.Rut.ToString() },
-                {"dv",  cliente.Dv.ToString()},
-                {"nombre",  cliente.Nombre},
-                {"apellido",  cliente.Apellido},
-                {"correo",  cliente.Correo},
-                {"telefono",  cliente.Telefono},
+                {"rut", cliente.rut.ToString() },
+                {"dv",  cliente.dv.ToString()},
+                {"nombre",  cliente.nombre},
+                {"apellido",  cliente.apellido},
+                {"correo",  cliente.correo},
+                {"telefono",  cliente.telefono},
             };
             JsonHelper<Clientes>.Token = this.Token;
-            return JsonHelper<Clientes>.Put(queryParams, "/clientes/actualizar-cliente/" + cliente.Rut);
+            return JsonHelper<Clientes>.Put(queryParams, "/clientes/actualizar-cliente/" + cliente.rut);
         }
 
         public List<Clientes> ObtenerClientes()

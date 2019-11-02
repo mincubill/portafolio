@@ -13,7 +13,7 @@ namespace SigloXXI.Tests
         public string _token;
         public void ObtenerToken(string usuario, string contrasena)
         {
-            var user = new Users();
+            var user = new Usuario();
             user.IniciarSesion("mincubill", "palito");
             _token = user.Token;
         }
@@ -21,7 +21,7 @@ namespace SigloXXI.Tests
         public void CrearUsuario()
         {
             ObtenerToken("mincubill", "palito");
-            var user = new Users()
+            var user = new Usuario()
             {
                 Token = _token,
                 Nombre = "asdf",
@@ -32,7 +32,7 @@ namespace SigloXXI.Tests
                 UserName = "asdf",
                 PassWord = "asdf",
                 FechaNacimiento = new DateTime(1987, 8, 23),
-                rol = 1,
+                rol = Data.RolUsuario.administrador,
             };
             bool res = user.CrearUsuario(user);
             Assert.AreEqual(true, res);
@@ -41,7 +41,7 @@ namespace SigloXXI.Tests
         public void ActualizarUsuario()
         {
             ObtenerToken("mincubill", "palito");
-            var user = new Users()
+            var user = new Usuario()
             {
                 Token = _token,
                 Nombre = "asdf",
@@ -52,7 +52,7 @@ namespace SigloXXI.Tests
                 UserName = "asdf",
                 PassWord = "zxcv",
                 FechaNacimiento = new DateTime(1987, 8, 23),
-                rol = 2,
+                rol = Data.RolUsuario.finanzas,
             };
             bool res = user.ActualizarUsuario(user);
             Assert.AreEqual(true, res);
@@ -61,7 +61,7 @@ namespace SigloXXI.Tests
         public void EliminarUsuario()
         {
             ObtenerToken("mincubill", "palito");
-            var user = new Users() { Token = _token };
+            var user = new Usuario() { Token = _token };
             bool res = user.EliminarUsuario(12345678);
             Assert.AreEqual(true, res);
         }
@@ -69,7 +69,7 @@ namespace SigloXXI.Tests
         public void ObtenerUsuarios()
         {
             ObtenerToken("mincubill", "palito");
-            var user = new Users() { Token = _token };
+            var user = new Usuario() { Token = _token };
             var res = user.ObtenerUsuarios();
             Assert.IsNotNull(res);
         }
@@ -77,7 +77,7 @@ namespace SigloXXI.Tests
         public void ObtenerUsuario()
         {
             ObtenerToken("mincubill", "palito");
-            var user = new Users() { Token = _token };
+            var user = new Usuario() { Token = _token };
             var res = user.ObtenerUsuario(17287315);
             Assert.IsNotNull(res);
         }

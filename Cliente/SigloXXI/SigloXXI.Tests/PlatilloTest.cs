@@ -11,7 +11,7 @@ namespace SigloXXI.Tests
         public string _token;
         public void ObtenerToken(string usuario, string contrasena)
         {
-            var user = new Users();
+            var user = new Usuario();
             user.IniciarSesion(usuario, contrasena);
             _token = user.Token;
         }

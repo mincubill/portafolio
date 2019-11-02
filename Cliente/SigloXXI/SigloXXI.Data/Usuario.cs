@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SigloXXI.Data
 {
-    public class Users
+    public class Usuario
     {
         public int Rut { get; set; }
         public char Dv { get; set; }
@@ -14,18 +14,18 @@ namespace SigloXXI.Data
         public string PassWord { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
-        public int rol { get; set; }
+        public RolUsuario rol { get; set; }
         public string Correo { get; set; }
         public DateTime FechaNacimiento { get; set; }
 
         public string Token{ get; set; }
 
-        public Users IniciarSesion (string userName, string password)
+        public Usuario IniciarSesion (string userName, string password)
         {
-            if(JsonHelper<Users>.GetToken(userName, password))
+            if(JsonHelper<Usuario>.GetToken(userName, password))
             {
-                Token = JsonHelper<Users>.Token;
-                var result = JsonHelper<Users>.GetList("/usuarios/obtener-usuarios");
+                Token = JsonHelper<Usuario>.Token;
+                var result = JsonHelper<Usuario>.GetList("/usuarios/obtener-usuarios");
                 var temp = result.FirstOrDefault(u => u.UserName == userName);
                 temp.Token = this.Token;
                 return temp;
@@ -33,9 +33,7 @@ namespace SigloXXI.Data
             return null;
         }
 
-        
-
-        public bool CrearUsuario (Users usuario)
+        public bool CrearUsuario (Usuario usuario)
         {
             var queryParams = new Dictionary<string, string>
             {
@@ -49,10 +47,10 @@ namespace SigloXXI.Data
                 {"correo",  usuario.Correo},
                 {"fechaNacimiento",  usuario.FechaNacimiento.ToString("yyyy-MM-dd") },
             };
-            return JsonHelper<Users>.Post(queryParams, "/usuarios/crear-usuario");
+            return JsonHelper<Usuario>.Post(queryParams, "/usuarios/crear-usuario");
         }
 
-        public bool ActualizarUsuario(Users usuario)
+        public bool ActualizarUsuario(Usuario usuario)
         {
             var queryParams = new Dictionary<string, string>
             {
@@ -66,26 +64,35 @@ namespace SigloXXI.Data
                 {"correo",  usuario.Correo},
                 {"fechaNacimiento",  usuario.FechaNacimiento.ToString("yyyy-MM-dd") },
             };
-            return JsonHelper<Users>.Put(queryParams, "/usuarios/actualizar-usuario/"+usuario.Rut);
+            return JsonHelper<Usuario>.Put(queryParams, "/usuarios/actualizar-usuario/"+usuario.Rut);
         }
 
-        public List<Users> ObtenerUsuarios()
+        public List<Usuario> ObtenerUsuarios()
         {
-            var result = JsonHelper<Users>.GetList("/usuarios/obtener-usuarios");
+            var result = JsonHelper<Usuario>.GetList("/usuarios/obtener-usuarios");
             return result;
         }
 
-        public Users ObtenerUsuario(int rut)
+        public Usuario ObtenerUsuario(int rut)
         {
             var queryParams = new Dictionary<string, string>();
-            var res = JsonHelper<Users>.Get(queryParams, "/usuarios/buscar-usuario/" + rut.ToString());
+            var res = JsonHelper<Usuario>.Get(queryParams, "/usuarios/buscar-usuario/" + rut.ToString());
             return res;
         }
 
         public bool EliminarUsuario(int rut)
         {
             var queryParams = new Dictionary<string, string>();
-            return JsonHelper<Users>.Delete(queryParams, "/usuarios/eliminar-usuario/"+rut);
+            return JsonHelper<Usuario>.Delete(queryParams, "/usuarios/eliminar-usuario/"+rut);
         }
+    }
+    public enum RolUsuario
+    {
+        administrador = 1,
+        finanzas = 2,
+        bodega = 3,
+        cocina = 4,
+        bartender = 5,
+        mesero = 6,
     }
 }

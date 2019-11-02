@@ -25,7 +25,7 @@ namespace SigloXXI.Controllers
             {
                 //Here we are checking the values with hardcoded admin and admin
                 //You can check these values from a database
-                var user = new Users();
+                var user = new Usuario();
                 var tempUser = user.IniciarSesion(model.UserName, model.Password);
                 if (tempUser != null)
                 {
@@ -37,7 +37,7 @@ namespace SigloXXI.Controllers
                     model.Apellido = tempUser.Apellido;
                     //Store the Username in session
                     Session["UserName"] = tempUser.UserName;
-                    Session["Rol"] = tempUser.rol;
+                    Session["Rol"] = (int)tempUser.rol;
                     Session["Token"] = tempUser.Token;
                     //Then redirect to the Index Action method of Home Controller
                     return RedirectToAction("Index", "Home");

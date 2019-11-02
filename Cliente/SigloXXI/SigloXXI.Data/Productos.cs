@@ -44,7 +44,7 @@ namespace SigloXXI.Data
                 {"categoria",  categoria},
             };
             JsonHelper<Productos>.Token = this.Token;
-            return JsonHelper<Users>.Put(queryParams, "/productos/actualizar-producto/" + producto.id);
+            return JsonHelper<Usuario>.Put(queryParams, "/productos/actualizar-producto/" + producto.id);
         }
 
         public List<Productos> ObtenerProductos()

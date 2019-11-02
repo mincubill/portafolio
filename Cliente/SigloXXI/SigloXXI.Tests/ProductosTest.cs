@@ -10,14 +10,14 @@ namespace SigloXXI.Tests
         public string _token;
         public void ObtenerToken(string usuario, string contrasena)
         {
-            var user = new Users();
+            var user = new Usuario();
             user.IniciarSesion(usuario, contrasena);
             _token = user.Token;
         }
         [TestMethod]
         public void ObtenerProductos()
         {
-            ObtenerToken("mincubill", "palito");
+            ObtenerToken("ADMINISTRADOR", "ASDF");
             var prod = new Productos() { Token = _token };
             var res = prod.ObtenerProductos();
             Assert.IsNotNull(res);
@@ -25,7 +25,7 @@ namespace SigloXXI.Tests
         [TestMethod]
         public void ObtenerProducto()
         {
-            ObtenerToken("mincubill", "palito");
+            ObtenerToken("ADMINISTRADOR", "ASDF");
             var prod = new Productos() { Token = _token };
             var res = prod.ObtenerProducto(1);
             Assert.IsNotNull(res);
@@ -33,7 +33,7 @@ namespace SigloXXI.Tests
         [TestMethod]
         public void CrearProducto()
         {
-            ObtenerToken("mincubill", "palito");
+            ObtenerToken("ADMINISTRADOR", "ASDF");
             var prod = new Productos()
             {
                 Token = _token,
@@ -49,7 +49,7 @@ namespace SigloXXI.Tests
         [TestMethod]
         public void ActualizarProducto()
         {
-            ObtenerToken("mincubill", "palito");
+            ObtenerToken("ADMINISTRADOR", "ASDF");
             var prod = new Productos()
             {
                 Token = _token,
@@ -65,7 +65,7 @@ namespace SigloXXI.Tests
         [TestMethod]
         public void EliminarProducto()
         {
-            ObtenerToken("mincubill", "palito");
+            ObtenerToken("ADMINISTRADOR", "ASDF");
             var prod = new Productos() { Token = _token };
             var res = prod.EliminarProducto(1);
             Assert.AreEqual(true, res);

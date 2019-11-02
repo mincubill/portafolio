@@ -33,7 +33,7 @@ namespace SigloXXI.Controllers
             {
                 RedirectToAction("Index", "Home");
             }
-            var user = new Users
+            var user = new Usuario
             {
                 Token = _token,
                 Apellido = model.Apellido,
@@ -42,7 +42,7 @@ namespace SigloXXI.Controllers
                 FechaNacimiento = model.FechaNacimiento,
                 Nombre = model.Nombre,
                 PassWord = model.Password,
-                rol = (int)model.Rol,
+                rol = (SigloXXI.Data.RolUsuario)model.Rol,
                 Rut = model.Rut,
                 UserName = model.UserName,
             };
@@ -54,7 +54,7 @@ namespace SigloXXI.Controllers
         public ActionResult VerUsuarios()
         {
             _token = Session["Token"].ToString();
-            var user = new Users() { Token = _token };
+            var user = new Usuario() { Token = _token };
             ViewData["Usuarios"] = user.ObtenerUsuarios();
             return View();
         }
@@ -67,7 +67,7 @@ namespace SigloXXI.Controllers
             {
                 RedirectToAction("Index", "Home");
             }
-            var user = new Users();
+            var user = new Usuario();
             user = user.ObtenerUsuario(int.Parse(rut));
             ViewData["Usuario"] = user;
             UsuarioModel model = new UsuarioModel()
@@ -79,7 +79,7 @@ namespace SigloXXI.Controllers
                 FechaNacimiento = user.FechaNacimiento,
                 Nombre = user.Nombre,
                 Password = user.PassWord,
-                Rol = (Rol)user.rol,
+                Rol = (SigloXXI.Models.RolUsuario)user.rol,
                 Rut = user.Rut,
                 UserName = user.UserName,
             };
@@ -89,7 +89,7 @@ namespace SigloXXI.Controllers
         [HttpPost]
         public ActionResult EditarUsuarios(UsuarioModel model)
         {
-            var user = new Users
+            var user = new Usuario
             {
                 Token = _token,
                 Apellido = model.Apellido,
@@ -98,7 +98,7 @@ namespace SigloXXI.Controllers
                 FechaNacimiento = model.FechaNacimiento,
                 Nombre = model.Nombre,
                 PassWord = model.Password,
-                rol = (int)model.Rol,
+                rol = (SigloXXI.Data.RolUsuario)model.Rol,
                 Rut = model.Rut,
                 UserName = model.UserName,
             };
@@ -114,7 +114,7 @@ namespace SigloXXI.Controllers
             {
                 RedirectToAction("Index", "Home");
             }
-            var user = new Users() { Token = _token};
+            var user = new Usuario() { Token = _token};
             user.EliminarUsuario(int.Parse(rut));
             return RedirectToAction("VerUsuarios");
 

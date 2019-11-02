@@ -164,6 +164,7 @@ namespace SigloXXI.Data
                     request.AddHeader("Authorization", $"Bearer {Token}");
                     request.RequestFormat = DataFormat.Json;
                     request.AddJsonBody(JsonConvert.SerializeObject(param));
+                    var data = JsonConvert.SerializeObject(param);
                     IRestResponse response = cliente.Execute(request);
                     if (response.StatusCode == System.Net.HttpStatusCode.Created)
                     {
@@ -196,6 +197,7 @@ namespace SigloXXI.Data
                     request.AddHeader("content-type", "application/json");
                     request.AddHeader("Authorization", $"Bearer {Token}");
                     request.RequestFormat = DataFormat.Json;
+                    var data = JsonConvert.SerializeObject(param);
                     request.AddJsonBody(JsonConvert.SerializeObject(param));
                     IRestResponse response = cliente.Execute(request);
                     if (response.StatusCode == System.Net.HttpStatusCode.Created)

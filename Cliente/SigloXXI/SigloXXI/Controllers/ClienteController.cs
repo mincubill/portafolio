@@ -34,12 +34,12 @@ namespace SigloXXI.Controllers
             var cliente = new Clientes
             {
                 Token = _token,
-                Correo = model.Correo,
-                Dv = model.Dv,
-                Nombre = model.Nombre,
-                Apellido = model.Apellido,
-                Telefono = model.Telefono,
-                Rut = model.Rut,
+                correo = model.Correo,
+                dv = model.Dv,
+                nombre = model.Nombre,
+                apellido = model.Apellido,
+                telefono = model.Telefono,
+                rut = model.Rut,
             };
             cliente.CrearCliente(cliente);
             return RedirectToAction("VerClientes");
@@ -71,12 +71,12 @@ namespace SigloXXI.Controllers
             ViewData["Cliente"] = cliente;
             ClienteModel model = new ClienteModel()
             {
-                Correo = cliente.Correo,
-                Dv = cliente.Dv,
-                Nombre = cliente.Nombre,
-                Apellido = cliente.Apellido,
-                Rut = cliente.Rut,
-                Telefono = cliente.Telefono,
+                Correo = cliente.correo,
+                Dv = cliente.dv,
+                Nombre = cliente.nombre,
+                Apellido = cliente.apellido,
+                Rut = cliente.rut,
+                Telefono = cliente.telefono,
             };
             return View(model);
         }
@@ -88,11 +88,11 @@ namespace SigloXXI.Controllers
             var cliente = new Clientes
             {
                 Token = _token,
-                Correo = model.Correo,
-                Dv = model.Dv,
-                Nombre = model.Nombre,
-                Rut = model.Rut,
-                Telefono = model.Telefono,
+                correo = model.Correo,
+                dv = model.Dv,
+                nombre = model.Nombre,
+                rut = model.Rut,
+                telefono = model.Telefono,
             };
             cliente.ActualizarClientes(cliente);
             return RedirectToAction("VerClientes");
