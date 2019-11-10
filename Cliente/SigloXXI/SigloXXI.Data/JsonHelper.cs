@@ -273,6 +273,7 @@ namespace SigloXXI.Data
             }
             catch (Exception ex)
             {
+                return false;
                 throw;
             }
         }

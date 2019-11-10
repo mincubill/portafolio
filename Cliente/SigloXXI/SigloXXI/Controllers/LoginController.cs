@@ -45,7 +45,7 @@ namespace SigloXXI.Controllers
                 else
                 {
                     ModelState.AddModelError("", "Nombre de usuario o contraseña incorrecto");
-                    return View(model);
+                    return View();
                 }
             }
             else

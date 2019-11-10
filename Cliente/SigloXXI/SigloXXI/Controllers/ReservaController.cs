@@ -26,6 +26,7 @@ namespace SigloXXI.Controllers
         [HttpGet]
         public ActionResult AgregarReserva()
         {
+            ViewData["error"] = "";
             _token = Session["Token"].ToString();
             if (string.IsNullOrEmpty(_token))
             {
@@ -41,10 +42,18 @@ namespace SigloXXI.Controllers
         [HttpPost]
         public ActionResult AgregarReserva(ReservaModel model)
         {
+            
             _token = Session["Token"].ToString();
+            var clientes = new Clientes { Token = _token };
+            ViewData["Clientes"] = clientes.ObtenerClientes();
             if (string.IsNullOrEmpty(_token))
             {
                 RedirectToAction("Index", "Home");
+            }
+            if (DateTime.Parse(model.fecha) < DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd")))
+            {
+                ViewData["error"] = "Fecha no puede ser menor a la actual";
+                return View(model);
             }
             var reserva = new Reserva
             {
@@ -89,6 +98,11 @@ namespace SigloXXI.Controllers
             if (string.IsNullOrEmpty(_token))
             {
                 RedirectToAction("Index", "Home");
+            }
+            if (DateTime.Parse(model.fecha) < DateTime.Now)
+            {
+                ViewData["error"] = "Fecha no puede ser menor a la actual";
+                return View(model);
             }
             var reserva = new Reserva()
             {

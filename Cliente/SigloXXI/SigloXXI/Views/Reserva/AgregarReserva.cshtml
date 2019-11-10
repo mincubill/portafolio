@@ -4,6 +4,7 @@
     ViewBag.Title = "AgregarReserva";
     var clientes = (List<SigloXXI.Data.Clientes>)ViewData["Clientes"];
     var mesas = (List<SigloXXI.Data.Mesas>)ViewData["Mesas"];
+    var error = ViewData["error"].ToString();
 }
 
 <h2>Agregar Reserva</h2>
@@ -23,14 +24,22 @@
         <div class="form-group">
             @Html.LabelFor(model => model.fecha, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="date" name="fecha" class="form-control" required />
+                <input type="date" name="fecha" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" min="@DateTime.Now.ToString("dd/MM/yyyy")" required />
+                @if (!string.IsNullOrEmpty(error))
+                {
+                    <p class="text-danger">@error</p>
+                }
                 @Html.ValidationMessageFor(model => model.fecha, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.hora, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="time" name="hora" class="form-control" required />
+                <input type="time" name="hora" class="form-control" value="@DateTime.Now.ToString("HH:mm")" min="@DateTime.Now.ToString("HH:mm")" required />
+                @if(!string.IsNullOrEmpty(error))
+                {
+                    <p class="text-danger">@error</p>
+                }
                 @Html.ValidationMessageFor(model => model.hora, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -46,7 +55,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             <label>Mesa</label>
             <div class="col-md-10">
                 <select class="form-control" name="mesaId" required>
@@ -56,7 +65,7 @@
                     }
                 </select>
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
