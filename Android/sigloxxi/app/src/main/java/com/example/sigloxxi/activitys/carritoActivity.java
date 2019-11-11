@@ -1,8 +1,10 @@
 package com.example.sigloxxi.activitys;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +30,7 @@ import com.example.sigloxxi.service.iToken;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.stream.IntStream;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -59,6 +62,7 @@ public class carritoActivity extends AppCompatActivity {
 
         btn = findViewById(R.id.button2);
         btn.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
                 Toast.makeText(carritoActivity.this,"wenda ",Toast.LENGTH_SHORT).show();
@@ -66,8 +70,10 @@ public class carritoActivity extends AppCompatActivity {
                 int total = 0;
                 for (Carrito ca:carrito)
                 {
-                    int subtotal = ca.getCantidad()*platillos.get(ca.getPlatilloID()-1).getPrecio();
-                    ordenBody.add(new OrdenB(ca.getCantidad(),subtotal,platillos.get(ca.getPlatilloID()-1)));
+                    Platillo plaTemporal = buscaplatillo(platillos,ca.getPlatilloID());
+                    //int subtotal = ca.getCantidad()*platillos.get(ca.getPlatilloID()-1).getPrecio();
+                    int subtotal = ca.getCantidad()*plaTemporal.getPrecio() ;
+                    ordenBody.add(new OrdenB(ca.getCantidad(),subtotal,plaTemporal));
                     total+=subtotal;
                 }
                 final OrdenH ordenHeader = new OrdenH(total,2,ordenBody,new Mesa(1,1,2));
@@ -128,5 +134,15 @@ public class carritoActivity extends AppCompatActivity {
         lv = (ListView) findViewById(R.id.ListView2);
         PedidoAdapter pedidoAdapter = new PedidoAdapter(this,R.layout.pedido,carrito);
         lv.setAdapter(pedidoAdapter);
+    }
+
+    public Platillo buscaplatillo (ArrayList<Platillo> pla, int idplatillo)
+    {
+        for (Platillo pa: pla)
+        {
+            if(pa.getId()==idplatillo)
+                return pa;
+        }
+        return new Platillo();
     }
 }
