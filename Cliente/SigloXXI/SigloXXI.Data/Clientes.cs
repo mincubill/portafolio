@@ -15,7 +15,7 @@ namespace SigloXXI.Data
         public string correo { get; set; }
         public string telefono { get; set; }
         public string Token { get; set; }
-        public bool CrearCliente(Clientes cliente)
+        public Clientes CrearCliente(Clientes cliente)
         {
             var queryParams = new Dictionary<string, string>
             {
@@ -30,7 +30,7 @@ namespace SigloXXI.Data
             return JsonHelper<Clientes>.Post(queryParams, "/clientes/crear-cliente");
         }
 
-        public bool ActualizarClientes(Clientes cliente)
+        public Clientes ActualizarClientes(Clientes cliente)
         {
             var queryParams = new Dictionary<string, string>
             {

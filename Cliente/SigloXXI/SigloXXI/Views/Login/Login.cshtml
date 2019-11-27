@@ -2,34 +2,45 @@
 @{
     ViewBag.Title = "Login";
 }
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+<link href="~/Content/css/login.css" rel="stylesheet" />
+<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="botonInicio">Ingresar usuario</button>
+<!-- Formulario de ingreso al sistema -->
+<div id="id01" class="modal">
+    <form class="modal-content animate" method="post">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+        </div>
+        <div class="container">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <label for="uname"><b>Usuario</b></label>
+            <input type="text" placeholder="Ingresar nombre de usuario" name="UserName" required>
+            <label for="psw"><b>Contraseña</b></label>
+            <input type="password" placeholder="Ingresar contraseña" name="Password" required>
+            <button type="submit">Login</button>
 
-    <div class="form">
+           
+        </div>
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancelar</button>
+        </div>
+    </form>
+</div>
+<script>
+    // Obtener modal id01
+    var modal = document.getElementById('id01');
+    // // Cuando el usuario hace clic en cualquier lugar fuera del modal, se cierra
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Iniciar" class="btn btn-primary" />
-            </div>
-        </div>
-    </div>
-}
+
+
+
+
+
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

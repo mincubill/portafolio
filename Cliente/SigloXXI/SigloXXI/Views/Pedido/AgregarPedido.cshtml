@@ -3,19 +3,21 @@
 @{
     ViewBag.Title = "AgregarPedido";
     var proveedores = (List<SigloXXI.Data.Proveedores>)ViewData["Proveedores"];
+    var productos = (List<SigloXXI.Data.Productos>)ViewData["Productos"];
 }
 
-<h2>Nuevo Pedido</h2>
+<link href="~/Content/css/administrador.css" rel="stylesheet" />
+<div class="container" style="background-color: white; border: solid 1px black; border-radius: 3px; opacity: 80%; margin-top: 4%;">
+    <h2>Nuevo Pedido</h2>
 
-<form>
     <div class="form">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="datetime" name="Fecha" value="@DateTime.Now" class="form-control" />
+                <input type="datetime" name="Fecha" id="fecha" value="@DateTime.Now" class="form-control" />
                 @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -23,7 +25,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Proveedores, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <select name="ProveedorRut" class="form-control">
+                <select name="ProveedorRut" id="proveedor" class="form-control">
                     @foreach (var p in proveedores)
                     {
                         <option value="@p.rut">@p.nombre</option>
@@ -33,96 +35,116 @@
             </div>
         </div>
 
-        <div class="card">
+        <div class="card form-group">
             <div class="card-header">Productos a pedir</div>
             <div class="card-text">
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Pedido, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        <select name="ProveedorRut" class="form-control">
-                            @foreach (var p in Model.Productos)
+                        <select name="ProveedorRut" id="producto" class="form-control">
+                            @foreach (var p in productos)
                             {
                                 <option value="@p.id">@p.nombre</option>
                             }
                         </select>
                         <label class="control-label col-md-2">Cantidad</label>
-                        @Html.EditorFor(model => model.PedidoDetalle.cantidad, new { htmlAttributes = new { @class = "form-control" } })
-
-                        <button class="btn btn-primary" onclick="location.href='@Url.Action("Pedido", "AgregarProducto")'">Añadir</button>
+                        <input type="number" min=1 class="form-control" id="cantidad" required />
+                        <button class="btn btn-primary" onclick="agregar()">Añadir</button>
                     </div>
                 </div>
+                <table class="table" id="productos">
+                    <thead>
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Guardar" class="btn btn-primary" />
+                <input type="button" value="Guardar" onclick="guardar()" class="btn btn-primary" />
             </div>
         </div>
     </div>
-</form>
 
-@*@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+    <script>
+    var pedidos = [];
+    function agregar() {
+        let tabla = document.getElementById("productos");
+        let codigo = $("#producto option:selected").val();
+        let producto = $("#producto option:selected").html();
+        let cantidad = document.getElementById("cantidad").value;
+        let codigoCell = document.createElement("td");
+        let productoCell = document.createElement("td");
+        let cantidadCell = document.createElement("td");
+        let accionesCell = document.createElement("td");
+        let mas = document.createElement("a");
+        let row = document.createElement("tr");
+        mas.innerHTML = "Quitar";
+        mas.id = codigo;
+        row.id = "Row"+codigo;
+        codigoCell.innerHTML = codigo;
+        productoCell.innerHTML = producto;
+        cantidadCell.innerHTML = cantidad;
+        row.appendChild(codigoCell);
+        row.appendChild(productoCell);
+        row.appendChild(cantidadCell);
+        row.appendChild(accionesCell);
+        mas.addEventListener('click', (e) => {
+            let elemId = e.currentTarget.id;
+            //console.log(pedidos);
+            pedidos.forEach(elem => {
+                if (elem.Codigo === elemId) {
+                    console.log(elem);
+                    limpiarTabla(row.id);
+                }
+            });
+            //console.log(pedidos);
 
-    <div class="form">
+        }, false)
+        accionesCell.appendChild(mas);
 
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Id, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        tabla.appendChild(row);
+        let pedido = {
+            Codigo: codigo,
+            Producto: producto,
+            Cantidad: cantidad,
+        };
+        pedidos.push(pedido);
+    }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="datetime" name="Fecha" value="@DateTime.Now" class="form-control" />
-                @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    function limpiarTabla(id) {
+        alert(id);
+        let row = document.getElementById(id);
+        row.parentNode.removeChild(row);
+    }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Proveedores, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <select name="ProveedorRut" class="form-control">
-                    @foreach (var p in proveedores)
-                    {
-                        <option value="@p.rut">@p.nombre</option>
-                    }
-                </select>
-                @Html.ValidationMessageFor(model => model.Proveedores, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    function guardar() {
+        let fecha = document.getElementById("fecha").value;
+        let proveedor = $("#proveedor option:selected").val();
+        let documento = {
+            Fecha: fecha,
+            Pedidos: [{
+                ProveedorRut: proveedor,
+                DetallePedido: this.pedidos,
+            }],
+        };
+        let data = JSON.stringify(documento);
 
-        <div class="card">
-            <div class="card-header">Productos a pedir</div>
-            <div class="card-text">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Pedido, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        <select name="ProveedorRut" class="form-control">
-                            @foreach (var p in Model.Productos)
-                            {
-                                <option value="@p.id">@p.nombre</option>
-                            }
-                        </select>
-                        <label class="control-label col-md-2">Cantidad</label>
-                        @Html.EditorFor(model => model.PedidoDetalle.cantidad, new { htmlAttributes = new { @class = "form-control" } })
-
-                        <button class="btn btn-primary" onclick="location.href='@Url.Action("AgregarProducto", "Pedido")'">Añadir</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Guardar" class="btn btn-primary" />
-            </div>
-        </div>
-    </div>
-}*@
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AgregarPedido", "Pedido")',
+            dataType: 'json',
+            data: { "data": data },
+            success: function (res) {
+                window.location.href = res;
+            }
+        });
+    }
+    </script>
+ </div>

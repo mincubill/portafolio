@@ -25,7 +25,7 @@ namespace SigloXXI.Tests
                 Token = _token,
                 fecha = DateTime.Now.ToString("yyyy-MM-dd"),
                 hora = DateTime.Now.ToShortTimeString(),
-                tipo = TipoDocumento.Boleta,
+                tipo = TipoDocumento.OrdenDeCompra,
                 id = 69,
                 pedidoH = new List<PedidoHeader>
                 {

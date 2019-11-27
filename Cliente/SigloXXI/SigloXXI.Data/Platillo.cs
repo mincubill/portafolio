@@ -14,13 +14,13 @@ namespace SigloXXI.Data
         public string Token { get; set; }
         public List<Ingredientes> ingredienteId { get; set; }
 
-        public bool CrearPlatillo(Platillo platillo)
+        public Platillo CrearPlatillo(Platillo platillo)
         {
             JsonHelper<Platillo>.Token = this.Token;
             return JsonHelper<Platillo>.Post(platillo, "/platillos/crear-platillo");
         }
 
-        public bool ActualizarPlatillo(Platillo platillo)
+        public Platillo ActualizarPlatillo(Platillo platillo)
         {
             JsonHelper<Platillo>.Token = this.Token;
             return JsonHelper<Platillo>.Put(platillo, "/platillos/actualizar-platillo/" + platillo.id);

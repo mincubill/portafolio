@@ -16,9 +16,10 @@ namespace SigloXXI.Models
         public int Total { get; set; }
         [Required(ErrorMessage = "Campo obligatorio")]
         [Display(Name = "Id proveedor: ")]
-        public string Proveedor_Id { get; set; }
+        public string ProveedorRut { get; set; }
+
         [Required(ErrorMessage = "Campo obligatorio")]
         [Display(Name = "Id documento: ")]
-        public int Documento_Id { get; set; }
+        public List<PedidoBodyModel> DetallePedido { get; set; }
     }
 }

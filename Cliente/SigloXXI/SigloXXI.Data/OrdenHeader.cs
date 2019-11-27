@@ -16,7 +16,7 @@ namespace SigloXXI.Data
         public int total { get; set; }
         public string Token { get; set; }
 
-        public bool CrearOrden_H(OrdenHeader orden_h)
+        public OrdenHeader CrearOrden_H(OrdenHeader orden_h)
         {
             var queryParams = new Dictionary<string, string>
             {
@@ -26,7 +26,7 @@ namespace SigloXXI.Data
             return JsonHelper<OrdenHeader>.Post(queryParams, "/orden_H/crear-ordenh");
         }
 
-        public bool ActualizarOrden_H(OrdenHeader orden_h)
+        public OrdenHeader ActualizarOrden_H(OrdenHeader orden_h)
         {
             var queryParams = new Dictionary<string, string>
             {

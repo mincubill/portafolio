@@ -11,88 +11,18 @@ namespace SigloXXI.Controllers
     public class DocumentoController : Controller
     {
         string _token;
-        public ActionResult VerDocumentos()
+        
+        public ActionResult VerDocumento(int id)
         {
             _token = Session["Token"].ToString();
             if (string.IsNullOrEmpty(_token))
             {
                 RedirectToAction("Index", "Home");
             }
-            var documento = new Documentos() { Token = _token};
-            ViewData["Documentos"] = documento.ObtenerDocumentos();
+            var documento = new Documentos() { Token = _token }.ObtenerDocumento(id);
+            ViewData["Documento"] = documento;
             return View();
         }
-        [HttpGet]
-        public ActionResult AgregarDocumentos()
-        {
-            _token = Session["Token"].ToString();
-            if (string.IsNullOrEmpty(_token))
-            {
-                RedirectToAction("Index", "Home");
-            }
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult AgregarDocumentos(DocumentoModel model)
-        {
-            _token = Session["Token"].ToString();
-            if (string.IsNullOrEmpty(_token))
-            {
-                RedirectToAction("Index", "Home");
-            }
-            var documento = new Documentos()
-            {
-                
-            };
-            documento.CrearDocumento(documento);
-            return RedirectToAction("VerDocumento");
-        }
-
-        [HttpGet]
-        public ActionResult EditarDocumentos(int id)
-        {
-            _token = Session["Token"].ToString();
-            if (string.IsNullOrEmpty(_token))
-            {
-                RedirectToAction("Index", "Home");
-            }
-            var documentos = new Documentos() { Token = _token };
-            documentos = documentos.ObtenerDocumento(id);
-            DocumentoModel model = new DocumentoModel
-            {
-               
-            };
-            return View(model);
-        }
-
-        [HttpPost]
-        public ActionResult EditarDocumentos(DocumentoModel model)
-        {
-            _token = Session["Token"].ToString();
-            if (string.IsNullOrEmpty(_token))
-            {
-                RedirectToAction("Index", "Home");
-            }
-            var documentos = new Documentos()
-            {
-                
-            };
-            documentos.ActualizarDocumento(documentos);
-            return RedirectToAction("VerDocumentos");
-
-        }
-
-        public ActionResult EliminarDocumentos(int id)
-        {
-            _token = Session["Token"].ToString();
-            if (string.IsNullOrEmpty(_token))
-            {
-                RedirectToAction("Index", "Home");
-            }
-            var documentos = new Documentos() { Token = _token };
-            documentos.EliminarDocumento(id);
-            return RedirectToAction("VerDocumentos");
-        }
+        
     }
 }

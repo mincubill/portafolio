@@ -47,6 +47,9 @@
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -91,13 +94,72 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\img\background.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\main.css" />
+    <Content Include="Content\css\administrador.css" />
+    <Content Include="Content\css\bartender.css" />
+    <Content Include="Content\css\bodega.css" />
+    <Content Include="Content\css\cocina.css" />
+    <Content Include="Content\css\finanzas.css" />
+    <Content Include="Content\css\index.css" />
+    <Content Include="Content\css\login.css" />
+    <Content Include="Content\css\mesero.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\img\aceituna.jpg" />
+    <Content Include="Content\img\aderezo.jpg" />
+    <Content Include="Content\img\arroz.png" />
+    <Content Include="Content\img\arrozconcarneyaceitunas.jpg" />
+    <Content Include="Content\img\bar.jpg" />
+    <Content Include="Content\img\bebidas.jfif" />
+    <Content Include="Content\img\carneconarrozytocino.jpg" />
+    <Content Include="Content\img\carnedevacuno.jpg" />
+    <Content Include="Content\img\cazuela.jpg" />
+    <Content Include="Content\img\choclo.jpg" />
+    <Content Include="Content\img\completo.jpg" />
+    <Content Include="Content\img\completo1.jpg" />
+    <Content Include="Content\img\fideosconjamonyqueso.jpg" />
+    <Content Include="Content\img\fondo2.jpg" />
+    <Content Include="Content\img\fondo3.jpg" />
+    <Content Include="Content\img\fondo4.jpg" />
+    <Content Include="Content\img\fondo4.png" />
+    <Content Include="Content\img\fondo5.jpg" />
+    <Content Include="Content\img\fondo6.jpg" />
+    <Content Include="Content\img\fondo7.jpg" />
+    <Content Include="Content\img\fondo8.jpg" />
+    <Content Include="Content\img\humitas.jpg" />
+    <Content Include="Content\img\imagen1.jpg" />
+    <Content Include="Content\img\imagen2.jpg" />
+    <Content Include="Content\img\imagen3.jpg" />
+    <Content Include="Content\img\imagen4.jpg" />
+    <Content Include="Content\img\imagen5.jpg" />
+    <Content Include="Content\img\jamon.png" />
+    <Content Include="Content\img\mapa.jpg" />
+    <Content Include="Content\img\menu.jpg" />
+    <Content Include="Content\img\pago.jpg" />
+    <Content Include="Content\img\palta.jpg" />
+    <Content Include="Content\img\paltatomate.jpg" />
+    <Content Include="Content\img\pandecompleto.jpg" />
+    <Content Include="Content\img\papascocidas.jpg" />
+    <Content Include="Content\img\pollo.jpg" />
+    <Content Include="Content\img\polloconpapas.jpg" />
+    <Content Include="Content\img\queso.jpg" />
+    <Content Include="Content\img\restaurante.jpg" />
+    <Content Include="Content\img\restaurante2.jpg" />
+    <Content Include="Content\img\tallarin.jpg" />
+    <Content Include="Content\img\tiempo.jpg" />
+    <Content Include="Content\img\tocino.jpg" />
+    <Content Include="Content\img\tomate.jfif" />
+    <Content Include="Content\img\trago.jpg" />
+    <Content Include="Content\img\trigo.jpg" />
+    <Content Include="Content\img\vienesas.jpg" />
+    <Content Include="Content\mainNew.css" />
+    <Content Include="Content\img\PMBOX6ED.pdf" />
+    <Content Include="Content\img\PMOInformatica Plantilla de Plan de gestion de interesados.doc" />
+    <None Include="Content\mainOld.css_" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\style.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
@@ -117,6 +179,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CajaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\DocumentoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IngredienteController.cs" />
@@ -139,6 +202,7 @@
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MesaModel.cs" />
     <Compile Include="Models\OrdenHeaderModel.cs" />
+    <Compile Include="Models\PedidoBodyModel.cs" />
     <Compile Include="Models\PedidoHeaderModel.cs" />
     <Compile Include="Models\PlatilloModel.cs" />
     <Compile Include="Models\ProductoModel.cs" />
@@ -191,6 +255,14 @@
     <Content Include="Views\Reserva\VerReservas.cshtml" />
     <Content Include="Views\Reserva\AgregarReserva.cshtml" />
     <Content Include="Views\Reserva\EditarReserva.cshtml" />
+    <Content Include="Views\Documento\VerDocumento.cshtml" />
+    <Content Include="Views\Mesas\VerResumen.cshtml" />
+    <Content Include="Views\Common\Administrador.cshtml" />
+    <Content Include="Views\Common\Bartender.cshtml" />
+    <Content Include="Views\Common\Bodega.cshtml" />
+    <Content Include="Views\Common\Cocina.cshtml" />
+    <Content Include="Views\Common\Finazas.cshtml" />
+    <Content Include="Views\Common\Mesero.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -200,7 +272,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Documento\" />
     <Folder Include="Views\Ingrediente\" />
   </ItemGroup>
   <ItemGroup>

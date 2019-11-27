@@ -17,7 +17,7 @@ namespace SigloXXI.Data
         public EstadoReserva estado { get; set; }
         public string Token { get; set; }
 
-        public bool CrearReserva(Reserva reserva)
+        public Reserva CrearReserva(Reserva reserva)
         {
             JsonHelper<Reserva>.Token = this.Token;
             reserva.mesaId = SeleccionMesa(reserva.cantidadPersonas);
@@ -37,7 +37,7 @@ namespace SigloXXI.Data
             return JsonHelper<Reserva>.Get(queryParams, "/reservas/buscar-reserva/" + id.ToString());
         }
 
-        public bool ActualizarReserva(Reserva reserva)
+        public Reserva ActualizarReserva(Reserva reserva)
         {
             JsonHelper<Reserva>.Token = this.Token;
             return JsonHelper<Reserva>.Put(reserva, "/reservas/actualizar-reserva/" + id.ToString());

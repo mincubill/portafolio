@@ -43,8 +43,8 @@ namespace SigloXXI.Tests
                 nombre = "tomaco",
                 precio = 800,
             };
-            bool res = prod.CrearProducto(prod);
-            Assert.AreEqual(true, res);
+            var res = prod.CrearProducto(prod);
+            Assert.IsNull(res);
         }
         [TestMethod]
         public void ActualizarProducto()
@@ -59,8 +59,8 @@ namespace SigloXXI.Tests
                 nombre = "tomaco",
                 precio = 1800,
             };
-            bool res = prod.ActualizarProducto(prod);
-            Assert.AreEqual(true, res);
+            var res = prod.ActualizarProducto(prod);
+            Assert.IsNull(res);
         }
         [TestMethod]
         public void EliminarProducto()

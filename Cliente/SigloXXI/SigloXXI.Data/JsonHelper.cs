@@ -15,8 +15,8 @@ namespace SigloXXI.Data
     {
         public static string Token { get; set; }
 
-        public static string Url { get; set; } = "http://192.168.1.13:8084";
-        //public static string Url { get; set; } = "http://weasdf.ddns.net:8084";
+        public static string Url { get; set; } = "http://192.168.1.13:8082";
+        //public static string Url { get; set; } = "http://weasdf.ddns.net:8082";
 
         public static T Get(Dictionary<string, string> queryParams, string metodo)
         {
@@ -82,7 +82,7 @@ namespace SigloXXI.Data
             }
         }
 
-        public static bool Post(Dictionary<string, string> param, string metodo)
+        public static T Post(Dictionary<string, string> param, string metodo)
         {
             try
             {
@@ -98,7 +98,8 @@ namespace SigloXXI.Data
                     IRestResponse response = cliente.Execute(request);
                     if (response.StatusCode == System.Net.HttpStatusCode.Created)
                     {
-                        return true;
+                        return JsonConvert.DeserializeObject<T>(response.Content);
+                        //return true;
                     }
                     else
                     {
@@ -116,7 +117,7 @@ namespace SigloXXI.Data
             }
         }
 
-        public static bool Post(object param, string metodo)
+        public static T Post(object param, string metodo)
         {
             try
             {
@@ -133,7 +134,8 @@ namespace SigloXXI.Data
                     IRestResponse response = cliente.Execute(request);
                     if (response.StatusCode == System.Net.HttpStatusCode.Created)
                     {
-                        return true;
+                        return JsonConvert.DeserializeObject<T>(response.Content);
+                        //return true;
                     }
                     else
                     {
@@ -151,7 +153,7 @@ namespace SigloXXI.Data
             }
         }
 
-        public static bool Put(Dictionary<string, string> param, string metodo)
+        public static T Put(Dictionary<string, string> param, string metodo)
         {
             try
             {
@@ -168,7 +170,8 @@ namespace SigloXXI.Data
                     IRestResponse response = cliente.Execute(request);
                     if (response.StatusCode == System.Net.HttpStatusCode.Created)
                     {
-                        return true;
+                        return JsonConvert.DeserializeObject<T>(response.Content);
+                        //return true;
                     }
                     else
                     {
@@ -185,7 +188,7 @@ namespace SigloXXI.Data
                 throw;
             }
         }
-        public static bool Put(object param, string metodo)
+        public static T Put(object param, string metodo)
         {
             try
             {
@@ -202,7 +205,8 @@ namespace SigloXXI.Data
                     IRestResponse response = cliente.Execute(request);
                     if (response.StatusCode == System.Net.HttpStatusCode.Created)
                     {
-                        return true;
+                        return JsonConvert.DeserializeObject<T>(response.Content);
+                        //return true;
                     }
                     else
                     {
@@ -231,7 +235,7 @@ namespace SigloXXI.Data
                     request.AddHeader("content-type", "application/json");
                     request.AddHeader("Authorization", $"Bearer {Token}");
                     IRestResponse response = cliente.Execute(request);
-                    if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         return true;
                     }
@@ -265,7 +269,6 @@ namespace SigloXXI.Data
                 IRestResponse response = cliente.Execute(request);
                 var data = (JObject)JsonConvert.DeserializeObject(response.Content);
                 Token = data["access_token"].ToString();
-
                 if (!string.IsNullOrEmpty(Token))
                     return true;
                 else

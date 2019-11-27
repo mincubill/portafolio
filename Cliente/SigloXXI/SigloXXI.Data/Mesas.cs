@@ -14,7 +14,7 @@ namespace SigloXXI.Data
         public EstadoMesa estado { get; set; }
         public string Token { get; set; }
 
-        public bool CrearMesa(Mesas mesa)
+        public Mesas CrearMesa(Mesas mesa)
         {
             var queryParams = new Dictionary<string, string>
             {
@@ -27,9 +27,8 @@ namespace SigloXXI.Data
             return JsonHelper<Mesas>.Post(queryParams, "/mesas/crear-mesa");
         }
 
-        public bool ActualizarMesa(Mesas mesa)
+        public Mesas ActualizarMesa(Mesas mesa)
         {
-
             var queryParams = new Dictionary<string, string>
             {
                 {"id", mesa.id.ToString() },

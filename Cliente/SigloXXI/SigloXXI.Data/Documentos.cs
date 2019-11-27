@@ -16,13 +16,13 @@ namespace SigloXXI.Data
         public List<OrdenHeader> ordenHId { get; set; }
         public string Token { get; set; }
         
-        public bool CrearDocumento(Documentos documento)
+        public Documentos CrearDocumento(Documentos documento)
         {
             JsonHelper<Documentos>.Token = this.Token;
             return JsonHelper<Documentos>.Post(documento, "/documentos/crear-documento");
         }
 
-        public bool ActualizarDocumento(Documentos documento)
+        public Documentos ActualizarDocumento(Documentos documento)
         {
             var queryParams = new Dictionary<string, string>
             {

@@ -67,8 +67,8 @@ namespace SigloXXI.Tests
                     }
                 }
             };
-            bool res = platillo.CrearPlatillo(platillo);
-            Assert.AreEqual(true, res);
+            var res = platillo.CrearPlatillo(platillo);
+            Assert.IsNotNull(res);
         }
 
         [TestMethod]

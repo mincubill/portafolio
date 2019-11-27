@@ -1,0 +1,50 @@
+﻿@model SigloXXI.Models.DocumentoModel
+
+@{
+    ViewBag.Title = "VerDocumento";
+    var data = (SigloXXI.Data.Documentos)ViewData["Documento"];
+}
+
+
+<link href="~/Content/css/administrador.css" rel="stylesheet" />
+<div class="container" style="margin-top: 2%;">
+    <h2>Ver Documento</h2>
+    <p><label>Nº Documento: </label>@data.id</p>
+    <p><label>Fecha: </label>@data.fecha</p>
+    <p><label>Hora: </label>@data.hora</p>
+    <p><label>Tipo: </label>@data.tipo.ToString()</p>
+    @if (data.pedidoH.Count > 0 || data.pedidoH != null)
+    {
+        foreach (var ph in data.pedidoH)
+        {
+            <p><label>Proveedor: </label> @ph.proveedor.nombre;</p>
+            <p><label>RUT: </label> @ph.proveedor.rut;</p>
+            <p><label>Telefono: </label> @ph.proveedor.telefono;</p>
+            <p><label>Correo: </label> @ph.proveedor.correo;</p>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Producto</th>
+                        <th>Precio Un.</th>
+                        <th>Cantidad</th>
+                        <th>Sub Total</th>
+                    </tr>
+                    @foreach (var pb in ph.pedidoBId)
+                    {
+                        <tr>
+                            <td>@pb.productoId.id</td>
+                            <td>@pb.productoId.nombre</td>
+                            <td>@pb.productoId.precio</td>
+                            <td>@pb.cantidad</td>
+                            <td>@pb.subtotal</td>
+                        </tr>
+                    }
+                </thead>
+            </table>
+            <label>Total</label> @ph.total
+        }
+    }
+</div>
+

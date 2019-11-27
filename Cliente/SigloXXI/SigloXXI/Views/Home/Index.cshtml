@@ -1,7 +1,87 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Inicio";
 }
 
-<h2>Index</h2>
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicadores -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    </ol>
+    <!-- Envoltorio para diapositivas -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="~/Content/img/restaurante2.jpg" />
+            <div class="carousel-caption"></div>
+        </div>
+    </div>
+</div>
+<!-- Contenedor-->
+<div id="band" class="container text-center">
+    <p><em>Restaurante Siglo XI</em></p>
+    <p>
+        ¿A quién no le gusta comer fuera de casa? Esta costumbre que hoy en día tenemos tan arraigada es relativamente novedosa. La existencia de restaurantes tiene su origen en la antigua Roma pero con la caída del Imperio el negocio de la restauración desapareció y no volvió a darse hasta entrado el siglo XI.
+        La historia de los restaurantes comienza con el Imperio Romano. En la antigua Roma ya existían tabernas (cauponam) que servían comida y bebidas alcohólicas.
+        En el yacimiento arqueológico de Herculano y Pompeya, perfectamente conservados gracias a la erupción del volcán Vesuvio, se han encontrado restos de puestos callejeros que ofrecían comida fría y caliente.
+        Durante la Edad Media, en concreto a partir del año 1200, aparecieron por toda Europa tabernas, pero no son consideradas restaurantes porque su principal negocio consistía en servir bebidas, generalmente alcohólicas.
+        El primer restaurante del mundo es español, está situado en Madrid y abrió en 1725. El segundo abrió en 1765 en la Rue de Poulies de París y estaba regentado por el mesonero Boulanger.
+        A la entrada se podía leer la siguiente frase en latín “Venid a mí, hombres de estómago cansado, y yo os lo restauraré". Inicialmente Boulanger servía sopas y pies de cordero con salsa, pero la afluencia de clientes comenzó a crecer y amplió el menú.
+        Probablemente la palabra restaurante proviene del anterior dicho y la palabra restaurar (el estómago).
+        Tras la Revolución Francesa muchos chefs que cocinaban para familias de la aristocracia francesa abrieron sus propios negocios y es a partir de este momento cuando comienzan a proliferar los restaurantes, primero en Francia y luego en el resto de Europa.
+        El primer restaurante de Estados Unidos abrió en 1884 en Nueva York.
+        En la década de los 60 surgieron los primeros Fast food en EEUU y en 1970 llegaron los restaurantes buffet. En los últimos años ha proliferado la comida take away.
+        Y ahora que sabemos un poquito más de la historia de los restaurantes. ¿Te animas a conocernos?
+    </p>
+    <br>
+    <div class="row">
+        <div class="col-sm-4">
+            <p class="text-center"><strong>Completos</strong></p><br>
+            <a href="#demo" data-toggle="collapse">
+                <img src="~/Content/img/completo.jpg" class="img-circle person" alt="Random Name" width="245" height="245"/>
+            </a>
+        </div>
+        <div class="col-sm-4">
+            <p class="text-center"><strong>Fideos</strong></p><br>
+            <a href="#demo2" data-toggle="collapse">
+                <img src="~/Content/img/imagen3.jpg" class="img-circle person" alt="Random Name" width="270" height="270">
+            </a>
+        </div>
+        <div class="col-sm-4">
+            <p class="text-center"><strong>Carne con arroz y tocino</strong></p><br>
+            <a href="#demo3" data-toggle="collapse">
+                <img src="~/Content/img/carneconarrozytocino.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+            </a>
+        </div>
+    </div>
+</div>
+<!-- Container (Contact Section) -->
+<div id="contact" class="container">
+    <h3 class="text-center">Contacto</h3>
+    <p class="text-center"><em>Solicita tu reserva aquí</em></p>
+    <div class="row">
+        <div class="col-md-4">
+            <p>Datos</p>
+            <p><span class="glyphicon glyphicon-map-marker"></span>Chile, Santiago</p>
+            <p><span class="glyphicon glyphicon-phone"></span>Telefono: +569 45677899</p>
+            <p><span class="glyphicon glyphicon-envelope"></span>Correo: turestaurantefavorito@mail.com</p>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-sm-6 form-group">
+                    <input class="form-control" id="name" name="nombre" placeholder="nombre" type="text" required>
+                </div>
+                <div class="col-sm-6 form-group">
+                    <input class="form-control" id="email" name="correo" placeholder="correo" type="email" required>
+                </div>
+            </div>
+            <textarea class="form-control" id="comments" name="Comentario" placeholder="Comentario" rows="5"></textarea>
+            <br>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <button class="btn pull-right" type="submit">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 

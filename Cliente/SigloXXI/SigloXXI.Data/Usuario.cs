@@ -33,7 +33,7 @@ namespace SigloXXI.Data
             return null;
         }
 
-        public bool CrearUsuario (Usuario usuario)
+        public Usuario CrearUsuario (Usuario usuario)
         {
             var queryParams = new Dictionary<string, string>
             {
@@ -50,7 +50,7 @@ namespace SigloXXI.Data
             return JsonHelper<Usuario>.Post(queryParams, "/usuarios/crear-usuario");
         }
 
-        public bool ActualizarUsuario(Usuario usuario)
+        public Usuario ActualizarUsuario(Usuario usuario)
         {
             var queryParams = new Dictionary<string, string>
             {

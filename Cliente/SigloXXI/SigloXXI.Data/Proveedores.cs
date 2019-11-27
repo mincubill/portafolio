@@ -15,7 +15,7 @@ namespace SigloXXI.Data
         public string correo { get; set; }
         public string Token { get; set; }
 
-        public bool CrearProveedor(Proveedores proveedor)
+        public Proveedores CrearProveedor(Proveedores proveedor)
         {
             var queryParams = new Dictionary<string, string>
             {
@@ -29,7 +29,7 @@ namespace SigloXXI.Data
             return JsonHelper<Proveedores>.Post(queryParams, "/proveedores/crear-proveedor");
         }
 
-        public bool ActualizarProveedor(Proveedores proveedor)
+        public Proveedores ActualizarProveedor(Proveedores proveedor)
         {
             var queryParams = new Dictionary<string, string>
             {
