@@ -4,13 +4,16 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <link href="~/Content/mainNew.css" rel="stylesheet" />
-    <link href="~/Content/style.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+
+    <link href="~/Content/css/mainNew.css" rel="stylesheet" />
+    <link href="~/Content/css/style.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -59,14 +62,18 @@
                                 <div class="imgcontainer">
                                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                                 </div>
-                                <div class="container">
+                                <div class="container" style="padding-left: 35px">
                                     <div class="row">
                                         <ul class="col-md-3">
                                             <li class="dropdown">
                                                 Clientes
                                                 <a style="color:white;" class="dropbtn">
                                                     <div class="dropdown-content">
-                                                        @Html.ActionLink("Nuevo", "AgregarCliente", "Cliente", new { area = "" }, new { @class = "dropdown-item" })
+                                                       <ul>
+                                                           <li>
+                                                                @Html.ActionLink("Nuevo", "AgregarCliente", "Cliente", new { area = "" }, new { @class = "dropdown-item" })
+                                                           </li>
+                                                       </ul>
                                                     </div>
                                                 </a>
                                             </li>
@@ -75,8 +82,14 @@
                                                 Productos
                                                 <a style="color:white;" class="dropbtn">
                                                     <div class="dropdown-content">
-                                                        @Html.ActionLink("Ingresar", "AgregarProductos", "Producto", new { area = "" }, new { @class = "dropdown-item" })
-                                                        @Html.ActionLink("Listado", "VerProductos", "Producto", new { area = "" }, new { @class = "dropdown-item" })
+                                                        <ul>
+                                                            <li>
+                                                                @Html.ActionLink("Ingresar", "AgregarProductos", "Producto", new { area = "" }, new { @class = "dropdown-item" })
+                                                            </li>
+                                                            <li>
+                                                                @Html.ActionLink("Listado", "VerProductos", "Producto", new { area = "" }, new { @class = "dropdown-item" })
+                                                            </li>
+                                                        </ul>
                                                     </div>
                                                 </a>
                                             </li>
@@ -85,8 +98,14 @@
                                                 Proveedores
                                                 <a style="color:white;" class="dropbtn">
                                                     <div class="dropdown-content">
-                                                        @Html.ActionLink("Nuevo", "AgregarProveedores", "Proveedor", new { area = "" }, new { @class = "dropdown-item" })
-                                                        @Html.ActionLink("Listado", "VerProveedores", "Proveedor", new { area = "" }, new { @class = "dropdown-item" })
+                                                        <ul>
+                                                            <li>
+                                                                @Html.ActionLink("Nuevo", "AgregarProveedores", "Proveedor", new { area = "" }, new { @class = "dropdown-item" })
+                                                            </li>
+                                                            <li>
+                                                                @Html.ActionLink("Listado", "VerProveedores", "Proveedor", new { area = "" }, new { @class = "dropdown-item" })
+                                                            </li>
+                                                        </ul>
                                                     </div>
                                                 </a>
                                             </li>
@@ -95,7 +114,11 @@
                                                 Caja
                                                 <a style="color:white;" class="dropbtn">
                                                     <div class="dropdown-content">
-                                                        @Html.ActionLink("Registrar pago", "VerOrdenesSinPago", "Caja", new { area = "" }, new { @class = "dropdown-item" })
+                                                        <ul>
+                                                            <li>
+                                                                @Html.ActionLink("Registrar pago", "VerOrdenesSinPago", "Caja", new { area = "" }, new { @class = "dropdown-item" })
+                                                            </li>
+                                                        </ul>
                                                     </div>
                                                 </a>
                                             </li>
@@ -105,8 +128,14 @@
                                                 Platillos
                                                 <a style="color:white;" class="dropbtn">
                                                     <div class="dropdown-content">
-                                                        @Html.ActionLink("Ingresar Platillos", "AgregarPlatillo", "Platillo", new { area = "" }, new { @class = "dropdown-item" })
-                                                        @Html.ActionLink("Ver de Platillos", "VerPlatillos", "Platillo", new { area = "" }, new { @class = "dropdown-item" })
+                                                        <ul>
+                                                            <li>
+                                                                @Html.ActionLink("Ingresar Platillos", "AgregarPlatillo", "Platillo", new { area = "" }, new { @class = "dropdown-item" })
+                                                            </li>
+                                                            <li>
+                                                                @Html.ActionLink("Ver de Platillos", "VerPlatillos", "Platillo", new { area = "" }, new { @class = "dropdown-item" })
+                                                            </li>
+                                                        </ul>
                                                     </div>
                                                 </a>
                                             </li>
@@ -114,8 +143,14 @@
                                                 Pedidos Prov.
                                                 <a style="color:white;" class="dropbtn">
                                                     <div class="dropdown-content">
-                                                        @Html.ActionLink("Ingresar Pedidos", "AgregarPedido", "Pedido", new { area = "" }, new { @class = "dropdown-item" })
-                                                        @Html.ActionLink("Lista de Pedido", "VerPedidos", "Pedido", new { area = "" }, new { @class = "dropdown-item" })
+                                                        <ul>
+                                                            <li>
+                                                                @Html.ActionLink("Ingresar Pedidos", "AgregarPedido", "Pedido", new { area = "" }, new { @class = "dropdown-item" })
+                                                            </li>
+                                                            <li>
+                                                                @Html.ActionLink("Lista de Pedido", "VerPedidos", "Pedido", new { area = "" }, new { @class = "dropdown-item" })
+                                                            </li>
+                                                        </ul>
                                                     </div>
                                                 </a>
                                             </li>
@@ -123,8 +158,14 @@
                                                 Ordenes Clien.
                                                 <a style="color:white;" class="dropbtn">
                                                     <div class="dropdown-content">
-                                                        @Html.ActionLink("Ingresar Orden", "AgregarOrden", "Orden", new { area = "" }, new { @class = "dropdown-item" })
-                                                        @Html.ActionLink("Lista de Ordenes", "VerOrdenes", "Orden", new { area = "" }, new { @class = "dropdown-item" })
+                                                        <ul>
+                                                            <li>
+                                                                @Html.ActionLink("Ingresar Orden", "AgregarOrden", "Orden", new { area = "" }, new { @class = "dropdown-item" })
+                                                            </li>
+                                                            <li>
+                                                                @Html.ActionLink("Lista de Ordenes", "VerOrdenes", "Orden", new { area = "" }, new { @class = "dropdown-item" })
+                                                            </li>
+                                                        </ul>
                                                     </div>
                                                 </a>
                                             </li>
@@ -132,8 +173,12 @@
                                                 Mesas
                                                 <a style="color:white;" class="dropbtn">
                                                     <div class="dropdown-content">
-                                                        @Html.ActionLink("Agregar mesas", "AgregarMesa", "Mesas", new { area = "" }, new { @class = "dropdown-item" })
-                                                        @Html.ActionLink("Ver mesas", "VerMesasDisponibles", "Mesas", new { area = "" }, new { @class = "dropdown-item" })
+                                                        <ul>
+                                                            @Html.ActionLink("Agregar mesas", "AgregarMesa", "Mesas", new { area = "" }, new { @class = "dropdown-item" })
+                                                        </ul>
+                                                        <ul>
+                                                            @Html.ActionLink("Ver mesas", "VerMesasDisponibles", "Mesas", new { area = "" }, new { @class = "dropdown-item" })
+                                                        </ul>
                                                     </div>
                                                 </a>
                                             </li>
@@ -144,8 +189,14 @@
                                                 Usuarios
                                                 <a style="color:white;" class="dropbtn">
                                                     <div class="dropdown-content">
-                                                        @Html.ActionLink("Agregar Usuario", "AgregarUsuario", "Usuario", new { area = "" }, new { @class = "dropdown-item" })
-                                                        @Html.ActionLink("Ver usuarios", "VerUsuarios", "Usuario", new { area = "" }, new { @class = "dropdown-item" })
+                                                        <ul>
+                                                            <li>
+                                                                @Html.ActionLink("Agregar Usuario", "AgregarUsuario", "Usuario", new { area = "" }, new { @class = "dropdown-item" })
+                                                            </li>
+                                                            <li>
+                                                                @Html.ActionLink("Ver usuarios", "VerUsuarios", "Usuario", new { area = "" }, new { @class = "dropdown-item" })
+                                                            </li>
+                                                        </ul>
                                                     </div>
                                                 </a>
                                             </li>
@@ -155,6 +206,7 @@
                             </div>
                         </div>
                     }
+
                     @if (Session["Rol"].ToString() == "2")
                     {
                         <ul class="nav navbar-nav">

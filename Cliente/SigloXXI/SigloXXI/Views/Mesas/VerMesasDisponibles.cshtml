@@ -26,17 +26,17 @@
                         @if (mesa.estado == SigloXXI.Data.EstadoMesa.Ocupada)
                         {
                             @Html.ActionLink(" ", "CambiarEstadoMesa", "Mesas",
-                                new { id = mesa.id }, new { @class = "fas fa-toggle-off" })
+                                new { id = mesa.id }, new { @class = "glyphicon glyphicon-refresh" })
                         }
                         @if (mesa.estado == SigloXXI.Data.EstadoMesa.Disponible)
                         {
                             @Html.ActionLink(" ", "CambiarEstadoMesa", "Mesas",
-                                new { id = mesa.id }, new { @class = "fas fa-toggle-on" })
+                                new { id = mesa.id }, new { @class = "glyphicon glyphicon-refresh" })
                         }
                         @Html.ActionLink(" ", "EditarMesa", "Mesas",
-                           new { id = mesa.id }, new { @class = "far fa-edit" })
+                           new { id = mesa.id }, new { @class = "glyphicon glyphicon-edit" })
                         @Html.ActionLink(" ", "EliminarMesa", "Mesas",
-                           new { id = mesa.id }, new { @class = "far fa-trash-alt" })
+                           new { id = mesa.id }, new { @class = "glyphicon glyphicon-remove" })
                     </td>
                 </tr>
             }

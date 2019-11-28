@@ -2,15 +2,17 @@
 @{
     ViewBag.Title = "Login";
 }
+<link href="~/Content/css/style.css" rel="stylesheet" />
 <link href="~/Content/css/login.css" rel="stylesheet" />
+
 <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="botonInicio">Ingresar usuario</button>
 <!-- Formulario de ingreso al sistema -->
 <div id="id01" class="modal">
-    <form class="modal-content animate" method="post">
+    <form class="modal-content animate container" method="post">
         <div class="imgcontainer">
             <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
         </div>
-        <div class="container">
+        <div>
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <label for="uname"><b>Usuario</b></label>
             <input type="text" placeholder="Ingresar nombre de usuario" name="UserName" required>
@@ -20,7 +22,7 @@
 
            
         </div>
-        <div class="container" style="background-color:#f1f1f1">
+        <div  style="background-color:#f1f1f1">
             <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancelar</button>
         </div>
     </form>
@@ -35,13 +37,3 @@
         }
     }
 </script>
-
-
-
-
-
-
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-

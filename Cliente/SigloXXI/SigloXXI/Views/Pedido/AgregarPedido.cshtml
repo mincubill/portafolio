@@ -101,9 +101,9 @@
             pedidos.forEach(elem => {
                 if (elem.Codigo === elemId) {
                     console.log(elem);
-                    limpiarTabla(row.id);
                 }
             });
+            limpiarTabla(row.id);
             //console.log(pedidos);
 
         }, false)
@@ -122,6 +122,11 @@
         alert(id);
         let row = document.getElementById(id);
         row.parentNode.removeChild(row);
+        for (var i = 0; i < pedidos.length; i++) {
+            if (id == "Row" + pedidos[i].Codigo) {
+                pedidos.splice(i, 1);
+            }
+        }
     }
 
     function guardar() {
