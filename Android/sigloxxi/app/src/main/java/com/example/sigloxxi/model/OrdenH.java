@@ -9,6 +9,9 @@ public class OrdenH
     private int estado;
     private List<OrdenB> ordenBId;
     private Mesa mesaId;
+    private int documentoId;
+
+
 
     public OrdenH(int total, int estado, List<OrdenB> ordenBId, Mesa mesaId) {
         this.total = total;
@@ -16,6 +19,21 @@ public class OrdenH
         this.ordenBId = ordenBId;
         this.mesaId = mesaId;
     }
+
+    public OrdenH(int id, int total, int estado, int documentoId) {
+        this.total = total;
+        this.estado = estado;
+        this.id = id;
+        this.documentoId = documentoId;
+    }
+
+    public OrdenH() {
+
+    }
+
+    public int getDocumentoId() { return documentoId; }
+
+    public void setDocumentoId(int documentoId) { this.documentoId = documentoId; }
 
     public int getId() {
         return id;
@@ -56,6 +74,29 @@ public class OrdenH
     public void setMesaId(Mesa mesaId) {
         this.mesaId = mesaId;
     }
+
+    public int existeOrdenBConCiertoPlatillo(int id)
+    {
+        for (OrdenB od: ordenBId ) {
+            if(od.getPlatilloId().getId() == id)
+            {
+                return 1;
+            }
+        }
+        return 0;
+    }
+
+    public OrdenB OrdenBByIdConCiertoPlatillo(int id)
+    {
+        for (OrdenB od: ordenBId ) {
+            if(od.getPlatilloId().getId() == id)
+            {
+                return od;
+            }
+        }
+        return new OrdenB();
+    }
+
 
 
 }

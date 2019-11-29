@@ -7,12 +7,30 @@ public class OrdenB
     private int cantidad;
     private int subtotal;
     private Platillo platilloId;
+    private int ordenHId;
+
+
 
     public OrdenB(int cantidad, int subtotal, Platillo platilloId) {
         this.cantidad = cantidad;
         this.subtotal = subtotal;
         this.platilloId = platilloId;
     }
+
+    public OrdenB(int cantidad, int subtotal, Platillo platilloId,int ordenHId) {
+        this.cantidad = cantidad;
+        this.subtotal = subtotal;
+        this.platilloId = platilloId;
+        this.ordenHId = ordenHId;
+    }
+
+    public OrdenB() {
+
+    }
+
+    public int getOrdenHId() { return ordenHId; }
+
+    public void setOrdenHId(int ordenHId) { this.ordenHId = ordenHId; }
 
     public int getId() {
         return id;

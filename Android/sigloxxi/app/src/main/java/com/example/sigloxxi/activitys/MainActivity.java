@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.sigloxxi.R;
 import com.example.sigloxxi.adapters.PlatilloAdapter;
+import com.example.sigloxxi.helpers.OrdenHIdSQLiteHelper;
 import com.example.sigloxxi.helpers.ServiceGenerator;
 import com.example.sigloxxi.helpers.carritoSQLiteHelper;
 import com.example.sigloxxi.helpers.platilloSQLiteHelper;
@@ -34,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Platillo> platillos = new ArrayList<Platillo>();
     private SQLiteDatabase db;
     private SQLiteDatabase db1;
+    private SQLiteDatabase db2;
+
 
 
     @Override
@@ -47,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
         db = plaSQLiteHelper.getWritableDatabase();
         final carritoSQLiteHelper caSQLiteHelper = new carritoSQLiteHelper(this,"dbtest1",null,1);
         db1 = caSQLiteHelper.getWritableDatabase();
-
-
+        final OrdenHIdSQLiteHelper ordenSQLiteHelper = new OrdenHIdSQLiteHelper(this, "dbtest3",null,1);
+        db2 = ordenSQLiteHelper.getWritableDatabase();
 
 
         if(tokenKey.getAccess_token() == null)
@@ -75,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+
         if(plaSQLiteHelper.getAllPlatillos(db).size() == 0)
         {
             final iPlatillo pl = ServiceGenerator.createService(iPlatillo.class,tokenKey.getAccess_token());
@@ -91,8 +96,7 @@ public class MainActivity extends AppCompatActivity {
                             {
                                 plaSQLiteHelper.insertPlatillo(pla,db);
                             }
-                            // platillos.add(pla);
-                        };
+                        }
                     }
                 }
 
@@ -122,8 +126,6 @@ public class MainActivity extends AppCompatActivity {
         PlatilloAdapter Adapter1 = new PlatilloAdapter(this,R.layout.platillo_layout,platillos);
 
         lv.setAdapter(Adapter1);
-
-        //plaSQLiteHelper.deletePlatillo(db);
         caSQLiteHelper.carritoDelete(db1);
 
     }

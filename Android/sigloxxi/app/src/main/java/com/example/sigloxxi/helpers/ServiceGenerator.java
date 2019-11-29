@@ -8,7 +8,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceGenerator {
-    public static final String API_BASE_URL = "http://weasdf.ddns.net:8084";
+    public static final String API_BASE_URL = "http://weasdf.ddns.net:8082";
 
     private static OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
