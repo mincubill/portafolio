@@ -43,7 +43,7 @@ namespace SigloXXI.Data
         public List<Mesas> ObtenerMesas()
         {
             JsonHelper<Mesas>.Token = this.Token;
-            var result = JsonHelper<Mesas>.GetList("/mesas/obtener-mesas");
+            var result = JsonHelper<Mesas>.GetListNoToke("/mesas/obtener-mesas");
             return result;
         }
 

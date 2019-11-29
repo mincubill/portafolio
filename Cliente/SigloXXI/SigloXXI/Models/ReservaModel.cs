@@ -20,6 +20,7 @@ namespace SigloXXI.Models
         [Display(Name = "Cantidad de personas: ")]
         public int cantidadPersonas { get; set; }
         public int clienteId { get; set; }
+        public Clientes Cliente { get; set; }
         public int mesaId { get; set; }
     }
 }

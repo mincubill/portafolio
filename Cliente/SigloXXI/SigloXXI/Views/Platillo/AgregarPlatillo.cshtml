@@ -2,9 +2,167 @@
 
 @{
     ViewBag.Title = "AgregarPlatillo";
+    var ingrediente = (List<SigloXXI.Data.Productos>)ViewData["Ingredientes"];
 }
 <link href="~/Content/css/administrador.css" rel="stylesheet" />
 <div class="container" style="background-color: white; border: solid 1px black; border-radius: 3px; opacity: 80%;  margin-top: 4%;">
     <h2>AgregarPlatillo</h2>
+    <div class="form">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" name="Nombre" id="nombre" class="form-control" />
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Tiempo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" name="Tiempo" id="tiempo" class="form-control" />
+                @Html.ValidationMessageFor(model => model.Tiempo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <h2>Productos a pedir</h2>
+
+        <div class="form-group">
+            <div class="row">
+                <label class="control-label col-md-2">Producto</label>
+                <div class="col-md-10">
+                    <select id="producto" class="form-control">
+                        @foreach (var i in ingrediente)
+                        {
+                            <option value="@i.id">@i.nombre</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <label class="control-label col-md-2">Cantidad</label>
+                <div class="col-md-10">
+                    <input type="number" min=1 class="form-control" id="cantidad" min="1" required />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-2 col-md-10">
+                    <button class="btn btn-primary" onclick="agregar()">Añadir a la lista</button>
+                </div>
+            </div>
+        </div>
+
+        <table class="table" id="productos">
+            <thead>
+                <tr>
+                    <th>Codigo</th>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Guardar" onclick="guardar()" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var ingredientes = [];
+        function agregar() {
+
+            //Variable de respaldo para saber si el objeto ya existe en la lista del pedido
+            let exist = false;
+
+            //Obtener informacion del objeto
+            let tabla = document.getElementById("productos");
+            let codigo = $("#producto option:selected").val();
+            let producto = $("#producto option:selected").html();
+            let cantidad = document.getElementById("cantidad").value;
+
+            //Iteracion para verificar si existe el codigo en la lista del pedido
+            ingredientes.forEach((e) => {
+                if (parseInt(e.Codigo) === parseInt(codigo)) {
+                    exist = true;
+                }
+            });
+
+            //Validacion de si el pedido existe en la lista de pedidos no lo agregara nuevamente
+            //O que tambien si la cantidad es valida, si no lo es, no lo agregara a la lista
+            if (exist || cantidad == "" || cantidad == null || cantidad == undefined)
+                return;
+
+            //Crear elementos html para agregarlo a la vista visible
+            let codigoCell = document.createElement("td");
+            let productoCell = document.createElement("td");
+            let cantidadCell = document.createElement("td");
+            let accionesCell = document.createElement("td");
+            let mas = document.createElement("a");
+            let row = document.createElement("tr");
+
+            //Poner datos en los elementos html
+            mas.innerHTML = "Quitar";
+            mas.id = codigo;
+            row.id = "Row"+codigo;
+            codigoCell.innerHTML = codigo;
+            productoCell.innerHTML = producto;
+            cantidadCell.innerHTML = cantidad;
+            mas.addEventListener('click', () => {
+                limpiarTabla(row.id);
+            });
+
+            //Insertar elementos html al documento html (document)
+            row.appendChild(codigoCell);
+            row.appendChild(productoCell);
+            row.appendChild(cantidadCell);
+            row.appendChild(accionesCell);
+            accionesCell.appendChild(mas);
+
+            //Agregar informacion del objeto a la lista de pedidos para enviar
+            tabla.appendChild(row);
+            let ingrediente = {
+                Cantidad: cantidad,
+                Producto: { Id: codigo }
+            };
+            ingredientes.push(ingrediente);
+        }
+
+        function limpiarTabla(id) {
+            let row = document.getElementById(id);
+            row.parentNode.removeChild(row);
+            for (var i = 0; i < pedidos.length; i++) {
+                if (id == "Row" + pedidos[i].Codigo) {
+                    pedidos.splice(i, 1);
+                }
+            }
+        }
+
+        function guardar() {
+            let nombre = document.getElementById("nombre").value;
+            let tiempo = document.getElementById("tiempo").value;
+            let platillo = {
+                Nombre: nombre,
+                Tiempo: tiempo,
+                Ingrediente: ingredientes,
+                   
+            };
+            let data = JSON.stringify(platillo);
+            console.log(data)
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("AgregarPlatillo", "Platillo")',
+                dataType: 'json',
+                data: { "data": data },
+                success: function (res) {
+                    window.location.href = res;
+                }
+            });
+        }
+    </script>
 </div>

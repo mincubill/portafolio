@@ -15,8 +15,8 @@ namespace SigloXXI.Data
     {
         public static string Token { get; set; }
 
-        //public static string Url { get; set; } = "http://192.168.1.13:8082";
-        public static string Url { get; set; } = "http://weasdf.ddns.net:8082";
+        public static string Url { get; set; } = "http://192.168.1.13:8082";
+        //public static string Url { get; set; } = "http://weasdf.ddns.net:8082";
 
         public static T Get(Dictionary<string, string> queryParams, string metodo)
         {
@@ -50,6 +50,30 @@ namespace SigloXXI.Data
             }
         }
 
+        public static T GetNoToken(Dictionary<string, string> queryParams, string metodo)
+        {
+            try
+            {
+                var cliente = new RestClient(Url + metodo);
+                var request = new RestRequest(Method.GET);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/x-www-form-urlencoded");
+                IRestResponse response = cliente.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    return JsonConvert.DeserializeObject<T>(response.Content);
+                }
+                else
+                {
+                    throw new ArgumentException("Error al obetener datos - respuesta: " + response.Content);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
         public static List<T> GetList(string metodo)
         {
             try
@@ -75,6 +99,32 @@ namespace SigloXXI.Data
                 {
                     throw new ArgumentException("No hay token disponible");
                 }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public static List<T> GetListNoToke(string metodo)
+        {
+            try
+            {
+
+                var cliente = new RestClient(Url + metodo);
+                var request = new RestRequest(Method.GET);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/json");
+                IRestResponse response = cliente.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    return JsonConvert.DeserializeObject<List<T>>(response.Content);
+                }
+                else
+                {
+                    throw new ArgumentException("Error al obetener datos - respuesta: " + response.Content);
+                }
+
             }
             catch (Exception ex)
             {
@@ -146,6 +196,36 @@ namespace SigloXXI.Data
                 {
                     throw new ArgumentException("No hay token");
                 }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public static T PostNoToken(object param, string metodo)
+        {
+            try
+            {
+
+                var cliente = new RestClient(Url + metodo);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/json");
+                request.RequestFormat = DataFormat.Json;
+                var data = JsonConvert.SerializeObject(param);
+                request.AddJsonBody(JsonConvert.SerializeObject(param));
+                IRestResponse response = cliente.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.Created)
+                {
+                    return JsonConvert.DeserializeObject<T>(response.Content);
+                    //return true;
+                }
+                else
+                {
+                    throw new ArgumentException("Error al ingresar datos - respuesta: " + response.Content);
+                }
+
             }
             catch (Exception ex)
             {

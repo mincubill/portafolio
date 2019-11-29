@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "VerDetalleReserva";
+    var data = (SigloXXI.Data.Reserva)ViewData["Detalle"];
+}
+
+<h2>Ver Detalle Reserva</h2>
+
+<label>Codigo reserva</label> @data.id
+<label>Cliente</label>
+<label>RUT</label> @data.clienteId.rut &nbsp; @data.clienteId.dv
+<label>Nombre</label>@data.clienteId.nombre &nbsp; @data.clienteId.apellido
+<label>Correo</label>@data.clienteId.correo
+<label>Mesa</label>@data.mesaId.numero
+<label>Fecha</label>@data.fecha
+<label>Hora</label>@data.hora

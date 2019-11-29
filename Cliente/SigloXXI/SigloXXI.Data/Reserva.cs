@@ -21,7 +21,7 @@ namespace SigloXXI.Data
         {
             JsonHelper<Reserva>.Token = this.Token;
             reserva.mesaId = SeleccionMesa(reserva.cantidadPersonas);
-            return JsonHelper<Reserva>.Post(reserva, "/reservas/crear-reserva");
+            return JsonHelper<Reserva>.PostNoToken(reserva, "/reservas/crear-reserva");
         }
 
         public List<Reserva> ObtenerReservas()
@@ -59,7 +59,7 @@ namespace SigloXXI.Data
 
         private Mesas SeleccionMesa(int cantPersonas)
         {
-            Mesas mesa = new Mesas() { Token = this.Token };
+            Mesas mesa = new Mesas();
             mesa = mesa.ObtenerMesas().OrderBy(m => m.capacidad).FirstOrDefault(m => m.capacidad >= cantPersonas && m.estado == EstadoMesa.Disponible);
             return mesa;
         }
