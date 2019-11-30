@@ -84,8 +84,9 @@ namespace SigloXXI.Controllers
                 hora = model.hora,
                 estado = EstadoReserva.NoOcupada,
             };
-            _reserva = reserva.CrearReserva(reserva);
-            return RedirectToAction("VerDetalleReserva");
+            var res = reserva.CrearReserva(reserva);
+            TempData["Reserva"] = res;
+            return RedirectToAction("VerDetalleReserva", "Reserva");
         }
         public ActionResult EditarReserva(int id)
         {
@@ -162,9 +163,10 @@ namespace SigloXXI.Controllers
 
         }
 
-        public ActionResult VerDetalleReserva(Reserva reserva)
+        public ActionResult VerDetalleReserva()
         {
-            ViewData["Detalle"] = _reserva;
+            var res = (Reserva)TempData["Reserva"];
+            ViewData["Detalle"] = res;
             return View("VerDetalleReserva");
         }
     }

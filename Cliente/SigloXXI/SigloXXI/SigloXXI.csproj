@@ -94,10 +94,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap\bootstrap.css" />
+    <Content Include="Content\bootstrap\bootstrap.min.css" />
     <Content Include="Content\css\administrador.css" />
     <Content Include="Content\css\bartender.css" />
     <Content Include="Content\css\bodega.css" />
@@ -105,14 +105,16 @@
     <Content Include="Content\css\finanzas.css" />
     <Content Include="Content\css\index.css" />
     <Content Include="Content\css\login.css" />
+    <Content Include="Content\css\mainNew.css" />
     <Content Include="Content\css\mesero.css" />
+    <Content Include="Content\css\Site.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\img\aceituna.jpg" />
     <Content Include="Content\img\aderezo.jpg" />
     <Content Include="Content\img\arroz.png" />
     <Content Include="Content\img\arrozconcarneyaceitunas.jpg" />
     <Content Include="Content\img\bar.jpg" />
-    <Content Include="Content\img\bebidas.jfif" />
+    <Content Include="Content\img\bebidas.jpg" />
     <Content Include="Content\img\carneconarrozytocino.jpg" />
     <Content Include="Content\img\carnedevacuno.jpg" />
     <Content Include="Content\img\cazuela.jpg" />
@@ -150,21 +152,19 @@
     <Content Include="Content\img\tallarin.jpg" />
     <Content Include="Content\img\tiempo.jpg" />
     <Content Include="Content\img\tocino.jpg" />
-    <Content Include="Content\img\tomate.jfif" />
+    <Content Include="Content\img\tomate.jpg" />
     <Content Include="Content\img\trago.jpg" />
     <Content Include="Content\img\trigo.jpg" />
     <Content Include="Content\img\vienesas.jpg" />
-    <Content Include="Content\mainNew.css" />
-    <Content Include="Content\img\PMBOX6ED.pdf" />
-    <Content Include="Content\img\PMOInformatica Plantilla de Plan de gestion de interesados.doc" />
-    <None Include="Content\mainOld.css_" />
-    <Content Include="Content\Site.css" />
-    <Content Include="Content\style.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Fakes Include="Fakes\SigloXXI.Data.fakes" />
+    <Content Include="Content\bootstrap\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap\bootstrap.css.map" />
+    <Content Include="Content\bootstrap\bootstrap.min.css.map" />
     <None Include="Properties\PublishProfiles\CustomProfile2.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -217,10 +217,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />

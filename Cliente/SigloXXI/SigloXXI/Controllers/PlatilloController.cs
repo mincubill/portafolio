@@ -60,7 +60,7 @@ namespace SigloXXI.Controllers
                    }).ToList(),
             };
             platillo.CrearPlatillo(platillo);
-            return RedirectToAction("VerPlatillos");
+            return Json(Url.Action("VerPlatillos","Platillo"));
         }
 
         [HttpGet]
