@@ -70,65 +70,47 @@
             {
                 @Html.AntiForgeryToken()
                 <div class="form">
-
-                    <div class="form-group">
-                        <lablel>Rut: </lablel>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Cliente.rut);
+                    <div class="row"> 
+                        <div class="form-group col-sm-8">
+                            @Html.TextBoxFor(model => model.Cliente.rut, new { @class = "form-control", @type = "number", 
+                                @placeholder = "Rut del cliente sin digito verificador", @title = "Rut del cliente sin digito verificador"})
+                        </div>
+                        <div class="form-group col-sm-4">
+                            @Html.TextBoxFor(model => model.Cliente.dv, new { @class = "form-control", 
+                                @placeholder = "Digito verficador", @title = "Digito verificador" })
                         </div>
                     </div>
                     <div class="form-group">
-                        <lablel>Dv: </lablel>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Cliente.dv);
-                        </div>
+                        @Html.TextBoxFor(model => model.Cliente.nombre, new { @class = "form-control", 
+                            @placeholder = "Nombre cliente", @title = "Nombre cliente" })
                     </div>
                     <div class="form-group">
-                        <lablel>Nombre: </lablel>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Cliente.nombre);
-                        </div>
+                        @Html.TextBoxFor(model => model.Cliente.apellido, new { @class = "form-control", 
+                            @placeholder = "Apellido cliente", @title = "Apellido cliente" })
                     </div>
                     <div class="form-group">
-                        <lablel>Apellido: </lablel>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Cliente.apellido);
-                        </div>
+                        @Html.TextBoxFor(model => model.Cliente.telefono, new { @class = "form-control", @type = "number", 
+                            @placeholder = "Numero de telefono", @title = "Numero de telefono" })
                     </div>
                     <div class="form-group">
-                        <lablel>Telefono: </lablel>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Cliente.telefono);
-                        </div>
+                        @Html.TextBoxFor(model => model.Cliente.correo, new { @class = "form-control", @type = "email", 
+                            @placeholder = "Correo del cliente", @title = "Correo del cliente" })
                     </div>
                     <div class="form-group">
-                        <lablel>Correo: </lablel>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Cliente.correo);
-                        </div>
+                        <input type="date" name="fecha" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" min="@DateTime.Now.ToString("dd/MM/yyyy")" required 
+                               placeholder="Fecha de la reserva" title="Fecha de la reserva"/>
+                        @Html.ValidationMessageFor(model => model.fecha, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(model => model.fecha, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            <input type="date" name="fecha" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" min="@DateTime.Now.ToString("dd/MM/yyyy")" required />
-                            @Html.ValidationMessageFor(model => model.fecha, "", new { @class = "text-danger" })
-                        </div>
+                        <input type="time" name="hora" class="form-control" value="@DateTime.Now.ToString("HH:mm")" min="@DateTime.Now.ToString("HH:mm")" required 
+                               placeholder="Hora de la reserva" title="Hora de la reserva"/>
+                        @Html.ValidationMessageFor(model => model.hora, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(model => model.hora, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            <input type="time" name="hora" class="form-control" value="@DateTime.Now.ToString("HH:mm")" min="@DateTime.Now.ToString("HH:mm")" required />
-                            @Html.ValidationMessageFor(model => model.hora, "", new { @class = "text-danger" })
-                        </div>
+                        @Html.TextBoxFor(model => model.cantidadPersonas, new { @class = "form-control", @type = "number", 
+                            @placeholder = "Cantidad de personas asistentes", @title = "Cantidad de personas asistentes" })
+                        @Html.ValidationMessageFor(model => model.cantidadPersonas, "", new { @class = "text-danger" })
                     </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.cantidadPersonas, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.cantidadPersonas);
-                            @Html.ValidationMessageFor(model => model.cantidadPersonas, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <input type="submit" value="Guardar" class="btn btn-primary" />

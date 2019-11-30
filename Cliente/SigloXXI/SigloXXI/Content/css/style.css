@@ -198,7 +198,8 @@ background:#8a2be2;
     width:100%;
 }
 
-input[type=text], input[type=password], input[type=number], input[type=email], select {
+input[type=text], input[type=password], input[type=number],
+input[type=email], input[type=date], select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
