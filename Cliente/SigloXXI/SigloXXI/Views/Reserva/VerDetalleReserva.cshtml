@@ -3,14 +3,37 @@
     ViewBag.Title = "VerDetalleReserva";
     var data = (SigloXXI.Data.Reserva)ViewData["Detalle"];
 }
+<link href="~/Content/css/administrador.css" rel="stylesheet" />
 
 <h2>Ver Detalle Reserva</h2>
+<div class="container" style="border: solid 1px black; border-radius: 5px; background-color: white; opacity: 80%">
+    <div class="row">
+        <h2>Detalles del cliente</h2>
+        <div >
+            <table class="table table-bordered">
+                <tr>
+                    <td>RUT</td>
+                    <td>@data.clienteId.rut-@data.clienteId.dv</td>
+                </tr>
+                <tr>
+                    <td>Nombre</td>
+                    <td>@data.clienteId.nombre &nbsp; @data.clienteId.apellido</td>
+                </tr>
+                <tr>
+                    <td>Correo</td>
+                    <td>@data.clienteId.correo</td>
+                </tr>
+                <tr>
+                    <td>Mesa numero:</td>
+                    <td>@data.mesaId.numero</td>
+                </tr>
+                <tr>
+                    <td>>@data.fecha &nbsp; @data.hora</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
 
-<label>Codigo reserva</label> @data.id
-<label>Cliente</label>
-<label>RUT</label> @data.clienteId.rut &nbsp; @data.clienteId.dv
-<label>Nombre</label>@data.clienteId.nombre &nbsp; @data.clienteId.apellido
-<label>Correo</label>@data.clienteId.correo
-<label>Mesa</label>@data.mesaId.numero
-<label>Fecha</label>@data.fecha
-<label>Hora</label>@data.hora
+

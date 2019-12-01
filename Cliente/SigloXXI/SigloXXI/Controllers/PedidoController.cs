@@ -81,7 +81,7 @@ namespace SigloXXI.Controllers
                 
             };
             var doc = documento.CrearDocumento(documento);
-            var wea = "";
+            
 
             return Json(Url.Action("VerDocumento", "Documento", new { id = doc.id }));
         }

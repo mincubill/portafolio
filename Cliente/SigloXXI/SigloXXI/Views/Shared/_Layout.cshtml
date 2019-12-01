@@ -29,209 +29,217 @@
                     <a class="navbar-brand" href="#myPage">Logo</a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
-                    @if (Session["Rol"].ToString() == "1")
+                    @if (string.IsNullOrEmpty(Session["Rol"].ToString()) || string.IsNullOrWhiteSpace(Session["Rol"].ToString()))
                     {
-                        <ul class="nav navbar-nav">
-                            <!-- ayuda  a derivar a otras paginas, con el fin de que al administrador pueda ver toda funcion de otros trabajadores -->
-                            <li>
-                                <a onclick="document.getElementById('id01').style.display='block'" style="color:white;"><span class="glyphicon glyphicon-th-list"></span> Administracion</a>
-                            </li>
-                            <li>
-                                @Html.ActionLink("Nueva Reserva", "AgregarReserva", "Reserva", new { area = "" }, new { @class = "glyphicon glyphicon-check" })
+                        @Url.Action("Index");
+                    }
+                    else
+                    {
+                        if (Session["Rol"].ToString() == "1")
+                        {
+                            <ul class="nav navbar-nav">
+                                <!-- ayuda  a derivar a otras paginas, con el fin de que al administrador pueda ver toda funcion de otros trabajadores -->
+                                <li>
+                                    <a onclick="document.getElementById('id01').style.display='block'" style="color:white;"><span class="glyphicon glyphicon-th-list"></span> Administracion</a>
+                                </li>
+                                <li>
+                                    @Html.ActionLink("Nueva Reserva", "AgregarReserva", "Reserva", new { area = "" }, new { @class = "glyphicon glyphicon-check" })
 
-                                @*<a onclick="document.getElementById('id02').style.display='block'" style="color:white;"><span class="glyphicon glyphicon-search"></span>Ver reservas</a>*@
-                            </li>
-                            <!-- Se pueden administrar las reservas existentes -->
-                            <li>
-                                @Html.ActionLink("Ver reservas", "VerReservas", "Reserva", new { area = "" }, new { @class = "glyphicon glyphicon-search" })
-                                @*<a onclick="document.getElementById('id03').style.display='block'" style="color:white;"><span class="glyphicon glyphicon-check"></span> Administrar reservas </a>*@
-                            </li>
-                            <!-- Se pueden ver los reportes de ingreso -->
-                            <li>
-                                <a onclick="document.getElementById('id04').style.display='block'" style="color:white;"><span class="glyphicon glyphicon-search"></span> Ver reportes de ingreso </a>
-                            </li>
-                            <!-- Contacto -->
-                            <li>
-                                @Html.ActionLink("Clientes", "VerClientes", "Cliente", new { area = "" }, new { @class = "glyphicon glyphicon-user" })
+                                    @*<a onclick="document.getElementById('id02').style.display='block'" style="color:white;"><span class="glyphicon glyphicon-search"></span>Ver reservas</a>*@
+                                </li>
+                                <!-- Se pueden administrar las reservas existentes -->
+                                <li>
+                                    @Html.ActionLink("Ver reservas", "VerReservas", "Reserva", new { area = "" }, new { @class = "glyphicon glyphicon-search" })
+                                    @*<a onclick="document.getElementById('id03').style.display='block'" style="color:white;"><span class="glyphicon glyphicon-check"></span> Administrar reservas </a>*@
+                                </li>
+                                <!-- Se pueden ver los reportes de ingreso -->
+                                <li>
+                                    <a onclick="document.getElementById('id04').style.display='block'" style="color:white;"><span class="glyphicon glyphicon-search"></span> Ver reportes de ingreso </a>
+                                </li>
+                                <!-- Contacto -->
+                                <li>
+                                    @Html.ActionLink("Clientes", "VerClientes", "Cliente", new { area = "" }, new { @class = "glyphicon glyphicon-user" })
 
-                                @*<a onclick="document.getElementById('id05').style.display='block'" style="color:white;"><span class="glyphicon">&#xe182;</span> Clientes</a>*@
-                            </li>
-                        </ul>
-                        <div id="id01" class="modal">
-                            <div class="modal-content animate">
-                                <div class="imgcontainer">
-                                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                                </div>
-                                <div class="container" style="padding-left: 35px">
-                                    <div class="row">
-                                        <ul class="col-md-3">
-                                            <li class="dropdown">
-                                                Clientes
-                                                <a style="color:white;" class="dropbtn">
-                                                    <div class="dropdown-content">
-                                                       <ul>
-                                                           <li>
-                                                                @Html.ActionLink("Nuevo", "AgregarCliente", "Cliente", new { area = "" }, new { @class = "dropdown-item" })
-                                                           </li>
-                                                       </ul>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <br />
-                                            <li class="dropdown">
-                                                Productos
-                                                <a style="color:white;" class="dropbtn">
-                                                    <div class="dropdown-content">
-                                                        <ul>
-                                                            <li>
-                                                                @Html.ActionLink("Ingresar", "AgregarProductos", "Producto", new { area = "" }, new { @class = "dropdown-item" })
-                                                            </li>
-                                                            <li>
-                                                                @Html.ActionLink("Listado", "VerProductos", "Producto", new { area = "" }, new { @class = "dropdown-item" })
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <br />
-                                            <li class="dropdown">
-                                                Proveedores
-                                                <a style="color:white;" class="dropbtn">
-                                                    <div class="dropdown-content">
-                                                        <ul>
-                                                            <li>
-                                                                @Html.ActionLink("Nuevo", "AgregarProveedores", "Proveedor", new { area = "" }, new { @class = "dropdown-item" })
-                                                            </li>
-                                                            <li>
-                                                                @Html.ActionLink("Listado", "VerProveedores", "Proveedor", new { area = "" }, new { @class = "dropdown-item" })
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <br />
-                                            <li class="dropdown">
-                                                Caja
-                                                <a style="color:white;" class="dropbtn">
-                                                    <div class="dropdown-content">
-                                                        <ul>
-                                                            <li>
-                                                                @Html.ActionLink("Registrar pago", "VerOrdenesSinPago", "Caja", new { area = "" }, new { @class = "dropdown-item" })
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <ul class="col-md-3">
-                                            <li class="dropdown">
-                                                Platillos
-                                                <a style="color:white;" class="dropbtn">
-                                                    <div class="dropdown-content">
-                                                        <ul>
-                                                            <li>
-                                                                @Html.ActionLink("Ingresar Platillos", "AgregarPlatillo", "Platillo", new { area = "" }, new { @class = "dropdown-item" })
-                                                            </li>
-                                                            <li>
-                                                                @Html.ActionLink("Ver de Platillos", "VerPlatillos", "Platillo", new { area = "" }, new { @class = "dropdown-item" })
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li class="dropdown">
-                                                Pedidos Prov.
-                                                <a style="color:white;" class="dropbtn">
-                                                    <div class="dropdown-content">
-                                                        <ul>
-                                                            <li>
-                                                                @Html.ActionLink("Ingresar Pedidos", "AgregarPedido", "Pedido", new { area = "" }, new { @class = "dropdown-item" })
-                                                            </li>
-                                                            <li>
-                                                                @Html.ActionLink("Lista de Pedido", "VerPedidos", "Pedido", new { area = "" }, new { @class = "dropdown-item" })
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li class="dropdown">
-                                                Ordenes Clien.
-                                                <a style="color:white;" class="dropbtn">
-                                                    <div class="dropdown-content">
-                                                        <ul>
-                                                            @*<li>
-                                                                @Html.ActionLink("Ingresar Orden", "AgregarOrden", "Orden", new { area = "" }, new { @class = "dropdown-item" })
-                                                            </li>*@
-                                                            <li>
-                                                                @Html.ActionLink("Lista de Ordenes", "VerOrdenes", "Orden", new { area = "" }, new { @class = "dropdown-item" })
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li class="dropdown">
-                                                Mesas
-                                                <a style="color:white;" class="dropbtn">
-                                                    <div class="dropdown-content">
-                                                        <ul>
-                                                            @Html.ActionLink("Agregar mesas", "AgregarMesa", "Mesas", new { area = "" }, new { @class = "dropdown-item" })
-                                                        </ul>
-                                                        <ul>
-                                                            @Html.ActionLink("Ver mesas", "VerMesasDisponibles", "Mesas", new { area = "" }, new { @class = "dropdown-item" })
-                                                        </ul>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            
-                                        </ul>
-                                        <ul class="col-md-3">
-                                            <li class="dropdown">
-                                                Usuarios
-                                                <a style="color:white;" class="dropbtn">
-                                                    <div class="dropdown-content">
-                                                        <ul>
-                                                            <li>
-                                                                @Html.ActionLink("Agregar Usuario", "AgregarUsuario", "Usuario", new { area = "" }, new { @class = "dropdown-item" })
-                                                            </li>
-                                                            <li>
-                                                                @Html.ActionLink("Ver usuarios", "VerUsuarios", "Usuario", new { area = "" }, new { @class = "dropdown-item" })
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        </ul>
+                                    @*<a onclick="document.getElementById('id05').style.display='block'" style="color:white;"><span class="glyphicon">&#xe182;</span> Clientes</a>*@
+                                </li>
+                            </ul>
+                            <div id="id01" class="modal">
+                                <div class="modal-content animate">
+                                    <div class="imgcontainer">
+                                        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                                    </div>
+                                    <div class="container" style="padding-left: 35px">
+                                        <div class="row">
+                                            <ul class="col-md-3">
+                                                <li class="dropdown">
+                                                    Clientes
+                                                    <a style="color:white;" class="dropbtn">
+                                                        <div class="dropdown-content">
+                                                            <ul>
+                                                                <li>
+                                                                    @Html.ActionLink("Nuevo", "AgregarCliente", "Cliente", new { area = "" }, new { @class = "dropdown-item" })
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <br />
+                                                <li class="dropdown">
+                                                    Productos
+                                                    <a style="color:white;" class="dropbtn">
+                                                        <div class="dropdown-content">
+                                                            <ul>
+                                                                <li>
+                                                                    @Html.ActionLink("Ingresar", "AgregarProductos", "Producto", new { area = "" }, new { @class = "dropdown-item" })
+                                                                </li>
+                                                                <li>
+                                                                    @Html.ActionLink("Listado", "VerProductos", "Producto", new { area = "" }, new { @class = "dropdown-item" })
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <br />
+                                                <li class="dropdown">
+                                                    Proveedores
+                                                    <a style="color:white;" class="dropbtn">
+                                                        <div class="dropdown-content">
+                                                            <ul>
+                                                                <li>
+                                                                    @Html.ActionLink("Nuevo", "AgregarProveedores", "Proveedor", new { area = "" }, new { @class = "dropdown-item" })
+                                                                </li>
+                                                                <li>
+                                                                    @Html.ActionLink("Listado", "VerProveedores", "Proveedor", new { area = "" }, new { @class = "dropdown-item" })
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <br />
+                                                <li class="dropdown">
+                                                    Caja
+                                                    <a style="color:white;" class="dropbtn">
+                                                        <div class="dropdown-content">
+                                                            <ul>
+                                                                <li>
+                                                                    @Html.ActionLink("Registrar pago", "VerOrdenesSinPago", "Caja", new { area = "" }, new { @class = "dropdown-item" })
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <ul class="col-md-3">
+                                                <li class="dropdown">
+                                                    Platillos
+                                                    <a style="color:white;" class="dropbtn">
+                                                        <div class="dropdown-content">
+                                                            <ul>
+                                                                <li>
+                                                                    @Html.ActionLink("Ingresar Platillos", "AgregarPlatillo", "Platillo", new { area = "" }, new { @class = "dropdown-item" })
+                                                                </li>
+                                                                <li>
+                                                                    @Html.ActionLink("Ver de Platillos", "VerPlatillos", "Platillo", new { area = "" }, new { @class = "dropdown-item" })
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="dropdown">
+                                                    Pedidos Prov.
+                                                    <a style="color:white;" class="dropbtn">
+                                                        <div class="dropdown-content">
+                                                            <ul>
+                                                                <li>
+                                                                    @Html.ActionLink("Ingresar Pedidos", "AgregarPedido", "Pedido", new { area = "" }, new { @class = "dropdown-item" })
+                                                                </li>
+                                                                <li>
+                                                                    @Html.ActionLink("Lista de Pedido", "VerPedidos", "Pedido", new { area = "" }, new { @class = "dropdown-item" })
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="dropdown">
+                                                    Ordenes Clien.
+                                                    <a style="color:white;" class="dropbtn">
+                                                        <div class="dropdown-content">
+                                                            <ul>
+                                                                @*<li>
+                                                                        @Html.ActionLink("Ingresar Orden", "AgregarOrden", "Orden", new { area = "" }, new { @class = "dropdown-item" })
+                                                                    </li>*@
+                                                                <li>
+                                                                    @Html.ActionLink("Lista de Ordenes", "VerOrdenes", "Orden", new { area = "" }, new { @class = "dropdown-item" })
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="dropdown">
+                                                    Mesas
+                                                    <a style="color:white;" class="dropbtn">
+                                                        <div class="dropdown-content">
+                                                            <ul>
+                                                                @Html.ActionLink("Agregar mesas", "AgregarMesa", "Mesas", new { area = "" }, new { @class = "dropdown-item" })
+                                                            </ul>
+                                                            <ul>
+                                                                @Html.ActionLink("Ver mesas", "VerMesasDisponibles", "Mesas", new { area = "" }, new { @class = "dropdown-item" })
+                                                            </ul>
+                                                        </div>
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+                                            <ul class="col-md-3">
+                                                <li class="dropdown">
+                                                    Usuarios
+                                                    <a style="color:white;" class="dropbtn">
+                                                        <div class="dropdown-content">
+                                                            <ul>
+                                                                <li>
+                                                                    @Html.ActionLink("Agregar Usuario", "AgregarUsuario", "Usuario", new { area = "" }, new { @class = "dropdown-item" })
+                                                                </li>
+                                                                <li>
+                                                                    @Html.ActionLink("Ver usuarios", "VerUsuarios", "Usuario", new { area = "" }, new { @class = "dropdown-item" })
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    }
+                        }
 
-                    @if (Session["Rol"].ToString() == "2")
-                    {
-                        <ul class="nav navbar-nav">
-                            <li>
-                                <!-- Gestionar orden de compra -->
-                                <a onclick="document.getElementById('id01').style.display='block'" style="color:white;"><span class="glyphicon glyphicon-credit-card"></span> Gestionar orden de compra </a>
-                            </li>
-                            <li>
-                                <!-- Revisar boletas -->
-                                <a onclick="document.getElementById('id02').style.display='block'" style="color:white;"> <span class="glyphicon glyphicon-list-alt"></span> Revisar boletas </a>
-                            </li>
-                            <li>
-                                <!-- Ver reportes -->
-                                <a onclick="document.getElementById('id03').style.display='block'" style="color:white;"><span class="glyphicon glyphicon-search"></span> Ver reportes</a>
-                            </li>
-                            <li>
-                                <!-- Gestionar notas -->
-                                <a onclick="document.getElementById('id04').style.display='block'" style="color:white;"><span class="glyphicon glyphicon-file"></span> Gestionar notas</a>
-                            </li>
-                            <li>
-                                <!-- Contacto -->
-                                <a onclick="document.getElementById('id05').style.display='block'" style="color:white;"> <span class="glyphicon">&#xe182;</span> Contacto</a>
-                            </li>
+                        if (Session["Rol"].ToString() == "2")
+                        {
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <!-- Gestionar orden de compra -->
+                                    <a onclick="document.getElementById('id01').style.display='block'" style="color:white;"><span class="glyphicon glyphicon-credit-card"></span> Gestionar orden de compra </a>
+                                </li>
+                                <li>
+                                    <!-- Revisar boletas -->
+                                    <a onclick="document.getElementById('id02').style.display='block'" style="color:white;"> <span class="glyphicon glyphicon-list-alt"></span> Revisar boletas </a>
+                                </li>
+                                <li>
+                                    <!-- Ver reportes -->
+                                    <a onclick="document.getElementById('id03').style.display='block'" style="color:white;"><span class="glyphicon glyphicon-search"></span> Ver reportes</a>
+                                </li>
+                                <li>
+                                    <!-- Gestionar notas -->
+                                    <a onclick="document.getElementById('id04').style.display='block'" style="color:white;"><span class="glyphicon glyphicon-file"></span> Gestionar notas</a>
+                                </li>
+                                <li>
+                                    <!-- Contacto -->
+                                    <a onclick="document.getElementById('id05').style.display='block'" style="color:white;"> <span class="glyphicon">&#xe182;</span> Contacto</a>
+                                </li>
 
-                        </ul>
+                            </ul>
+                        }
+
                     }
                     <ul class="nav navbar-nav navbar-right">
                         <li>
@@ -248,6 +256,7 @@
                         </li>
 
                     </ul>
+
                 </div>
             </div>
 
