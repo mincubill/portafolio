@@ -102,6 +102,7 @@
     <Content Include="Content\css\bartender.css" />
     <Content Include="Content\css\bodega.css" />
     <Content Include="Content\css\cocina.css" />
+    <Content Include="Content\css\detalle-reserva.css" />
     <Content Include="Content\css\finanzas.css" />
     <Content Include="Content\css\index.css" />
     <Content Include="Content\css\login.css" />
@@ -121,6 +122,7 @@
     <Content Include="Content\img\choclo.jpg" />
     <Content Include="Content\img\completo.jpg" />
     <Content Include="Content\img\completo1.jpg" />
+    <Content Include="Content\img\detalle-reserva.png" />
     <Content Include="Content\img\fideosconjamonyqueso.jpg" />
     <Content Include="Content\img\fondo2.jpg" />
     <Content Include="Content\img\fondo3.jpg" />
