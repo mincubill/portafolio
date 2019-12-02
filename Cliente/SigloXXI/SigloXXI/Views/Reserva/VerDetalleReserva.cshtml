@@ -2,11 +2,13 @@
 @{
     ViewBag.Title = "VerDetalleReserva";
     var data = (SigloXXI.Data.Reserva)ViewData["Detalle"];
+
 }
 <link href="~/Content/css/administrador.css" rel="stylesheet" />
+<link href="~/Content/css/detalle-reserva.css" rel="stylesheet" />
 
 <h2>Ver Detalle Reserva</h2>
-<div class="container" style="border: solid 1px black; border-radius: 5px; background-color: white; opacity: 80%">
+@*<div class="container" style="border: solid 1px black; border-radius: 5px; background-color: white; opacity: 80%">
     <div class="row">
         <h2>Detalles del cliente</h2>
         <div >
@@ -34,6 +36,28 @@
             </table>
         </div>
     </div>
+</div>*@
+
+<div class="detalle-reserva">
+    <div class="card-container">
+        <img class="card-image" src="~/Content/img/detalle-reserva.png" alt="logo reserva" />
+        <div class="card-body">
+            <h5 class="sub-title">
+                @data.clienteId.rut-@data.clienteId.dv
+            </h5>
+            <h3 class="title">
+                @data.clienteId.nombre @data.clienteId.apellido
+            </h3>
+            <p class="text">
+                Su reserva ha sido registrada para el dia @data.fecha.ToString().Substring(0,10) 
+                a las @data.hora.
+            </p>
+            <p class="relevant-text">
+                Numero de mesa: @data.mesaId.numero
+            </p>
+        </div>
+        <footer class="card-footer">
+            ¡Gracias por su preferencia!
+        </footer>
+    </div>
 </div>
-
-
