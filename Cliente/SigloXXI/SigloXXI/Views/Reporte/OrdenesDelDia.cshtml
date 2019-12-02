@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "OrdenesDelDia";
+    var data = (List<SigloXXI.Data.Documentos>)ViewData["ordenes"];
+}
+
+<h2>Ordenes Del Dia</h2>
+<form  method="post">
+    <input type="date" name="fecha"/>
+    <input type="submit" />
+</form>
+
+@*@{Html.RenderAction("OrdenesDelDia")};*@

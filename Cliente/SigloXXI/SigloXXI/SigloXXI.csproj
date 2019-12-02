@@ -261,6 +261,9 @@
     <Content Include="Views\Common\Finazas.cshtml" />
     <Content Include="Views\Common\Mesero.cshtml" />
     <Content Include="Views\Reserva\VerDetalleReserva.cshtml" />
+    <Content Include="Views\Reporte\MesMayorIngreso.cshtml" />
+    <Content Include="Views\Reporte\OrdenesDelDia.cshtml" />
+    <Content Include="Views\Reporte\_OrdenesDelDia.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -271,7 +274,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Ingrediente\" />
-    <Folder Include="Views\Reporte\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SigloXXI.Data\SigloXXI.Data.csproj">
