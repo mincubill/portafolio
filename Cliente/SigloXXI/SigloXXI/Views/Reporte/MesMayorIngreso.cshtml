@@ -1,0 +1,9 @@
+﻿
+@{
+    ViewBag.Title = "MesMayorIngreso";
+    var data = (SigloXXI.Data.Reportes)ViewData["reporte"];
+}
+
+<h2>Mes Mayor Ingreso</h2>
+@data.ingresoMensual
+@data.mesMayorIngreso

@@ -22,5 +22,23 @@ namespace SigloXXI.Tests
             reporte = reporte.ObtenerMesConMasIngreso();
             Assert.IsNotNull(reporte);
         }
+
+        [TestMethod]
+        public void MovimientosDelDia()
+        {
+            ObtenerToken("ADMINISTRADOR", "ASDF");
+            var reporte = new Reportes { Token = _token };
+            var res = reporte.MovimientosDelDia("2019-11-28");
+            Assert.IsNotNull(reporte);
+        }
+
+        [TestMethod]
+        public void PlatilloMasPedidoDelMes()
+        {
+            ObtenerToken("ADMINISTRADOR", "ASDF");
+            var reporte = new Reportes { Token = _token };
+            var res = reporte.PlatilloMasConsumidoPorMes(11, 2019);
+            Assert.IsNotNull(reporte);
+        }
     }
 }
