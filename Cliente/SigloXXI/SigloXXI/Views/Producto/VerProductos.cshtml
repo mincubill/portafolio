@@ -6,7 +6,7 @@
 <link href="~/Content/css/administrador.css" rel="stylesheet" />
 <div class="container" style="margin-top: 2%;">
     <h2>Ver Productos</h2>
-    <table class="table table-bordered" style="background-color: white; opacity: 80%;">
+    <table class="table table-bordered" style="background-color: white; opacity: 0.8;">
         <thead>
             <tr>
                 <th>Codigo</th>
@@ -31,9 +31,9 @@
                     <td>@producto.categoria</td>
                     <td>
                         @Html.ActionLink(" ", "EditarProductos", "Producto",
-                           new { id = producto.id }, new { @class = "glyphicon glyphicon-edit" })
+                           new { id = producto.id }, new { @class = "glyphicon glyphicon-edit", @title = "Editar producto" })
                         @Html.ActionLink(" ", "EliminarProductos", "Producto",
-                           new { id = producto.id }, new { @class = "glyphicon glyphicon-remove" })
+                           new { id = producto.id }, new { @class = "glyphicon glyphicon-remove", @title = "Eliminar producto" })
                     </td>
                 </tr>
             }

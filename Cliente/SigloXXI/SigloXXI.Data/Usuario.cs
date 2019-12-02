@@ -43,7 +43,7 @@ namespace SigloXXI.Data
                 {"password",  usuario.PassWord},
                 {"nombre",  usuario.Nombre},
                 {"apellido",  usuario.Apellido},
-                {"rol",  usuario.rol.ToString() },
+                {"rol",  ((int)(usuario.rol)).ToString() },
                 {"correo",  usuario.Correo},
                 {"fechaNacimiento",  usuario.FechaNacimiento.ToString("yyyy-MM-dd") },
             };
@@ -60,7 +60,7 @@ namespace SigloXXI.Data
                 {"password",  usuario.PassWord},
                 {"nombre",  usuario.Nombre},
                 {"apellido",  usuario.Apellido},
-                {"rol",  usuario.rol.ToString() },
+                {"rol",  ((int)(usuario.rol)).ToString() },
                 {"correo",  usuario.Correo},
                 {"fechaNacimiento",  usuario.FechaNacimiento.ToString("yyyy-MM-dd") },
             };

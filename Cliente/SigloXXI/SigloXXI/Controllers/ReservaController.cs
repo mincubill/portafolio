@@ -55,13 +55,16 @@ namespace SigloXXI.Controllers
                 Token = _token,
                 cantidadPersonas = model.cantidadPersonas,
                 clienteId = new Clientes { Token = _token }.ObtenerCliente(model.clienteId),
-                mesaId = new Mesas { Token = _token }.ObtenerMesa(model.mesaId),
+                //mesaId = new Mesas { Token = _token }.ObtenerMesa(model.mesaId),
                 fecha = model.fecha,
                 hora = model.hora,
                 estado = EstadoReserva.NoOcupada,
             };
-            _reserva = reserva.CrearReserva(reserva);
-            return RedirectToAction("VerDetalleReserva");
+            //_reserva = reserva.CrearReserva(reserva);
+            //return RedirectToAction("VerDetalleReserva");
+            var res = reserva.CrearReserva(reserva);
+            TempData["Reserva"] = res;
+            return RedirectToAction("VerDetalleReserva", "Reserva");
         }
         [HttpPost]
         public ActionResult AgregarReservaSinClienteRegistrado(ReservaModel model)

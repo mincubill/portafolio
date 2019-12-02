@@ -5,7 +5,7 @@
 }
 
 <link href="~/Content/css/administrador.css" rel="stylesheet" />
-<div class="container" style="background-color: white; border: solid 1px black; border-radius: 3px; opacity: 80%; margin-top: 4%;">
+<div class="container" style="background-color: white; border: solid 1px black; border-radius: 3px; opacity: 0.8; margin-top: 4%;">
     <h2>Agregar Proveedor</h2>
     @using (Html.BeginForm())
     {
@@ -16,14 +16,26 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Rut, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Rut, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.TextBoxFor(model => model.Rut, new
+                    {
+                        @class = "form-control",
+                        @type = "text",
+                        @placeholder = "Ingresar rut del proveedor sin puntos",
+                        @title = "Ingresar rut del proveedor sin puntos"
+                    })
                     @Html.ValidationMessageFor(model => model.Rut, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
                 @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.TextBoxFor(model => model.Nombre, new
+                    {
+                        @class = "form-control",
+                        @type = "text",
+                        @placeholder = "Ingresar nombre del proveedor",
+                        @title = "Ingresar nombre del proveedor"
+                    })
                     @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -31,7 +43,13 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Correo, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.TextBoxFor(model => model.Correo, new
+                    {
+                        @class = "form-control",
+                        @type = "email",
+                        @placeholder = "Ingresar correo del proveedor",
+                        @title = "Ingresar correo del proveedor"
+                    })
                     @Html.ValidationMessageFor(model => model.Correo, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -39,7 +57,13 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Direccion, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Direccion, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.TextBoxFor(model => model.Direccion, new
+                    {
+                        @class = "form-control",
+                        @type = "text",
+                        @placeholder = "Ingresar direccion del proveedor",
+                        @title = "Ingresar direccion del proveedor"
+                    })
                     @Html.ValidationMessageFor(model => model.Direccion, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -47,7 +71,13 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.TextBoxFor(model => model.Telefono, new
+                    {
+                        @class = "form-control",
+                        @type = "number",
+                        @placeholder = "Ingresar telefono del proveedor",
+                        @title = "Ingresar telefono del proveedor"
+                    })
                     @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
                 </div>
             </div>
