@@ -7,7 +7,7 @@
 <link href="~/Content/css/administrador.css" rel="stylesheet" />
 <div class="container" style="margin-top: 2%;">
     <h2>Ver Pedidos</h2>
-    <table class="table table-bordered" style="background-color: white; opacity: 80%;">
+    <table class="table table-bordered" style="background-color: white; opacity: 0.8;">
         <thead>
             <tr>
                 <th>Codigo pedido</th>
@@ -30,16 +30,17 @@
                     <td>@pedido.total</td>
                     <td>
                         @Html.ActionLink(" ", "VerDetalles", "Pedido",
-                           new { id = pedido.id }, new { @class = "glyphicon glyphicon-list-alt" })
+                           new { id = pedido.id }, new { @class = "glyphicon glyphicon-list-alt", @title = "Ver detalles del pedido" })
+
                         @if (pedido.estado == SigloXXI.Data.EstadoPedido.NoRecibido)
                         {
                             @Html.ActionLink(" ", "ValidarPedido", "Pedido",
-                            new { id = pedido.id }, new { @class = "glyphicon glyphicon-ok" })
+                            new { id = pedido.id }, new { @class = "glyphicon glyphicon-ok", @title = "Verificacion de que el pedido fue recibido" })
                         }
                         @Html.ActionLink(" ", "EditarPedido", "Pedido",
-                           new { id = pedido.id }, new { @class = "glyphicon glyphicon-edit" })
+                           new { id = pedido.id }, new { @class = "glyphicon glyphicon-edit", @title = "Editar pedido" })
                         @Html.ActionLink(" ", "EliminarPedido", "Pedido",
-                           new { id = pedido.id }, new { @class = "glyphicon glyphicon-remove" })
+                           new { id = pedido.id }, new { @class = "glyphicon glyphicon-remove", @title = "Eliminar pedido" })
                     </td>
                 </tr>
             }

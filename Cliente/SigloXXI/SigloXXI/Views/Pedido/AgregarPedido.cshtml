@@ -4,6 +4,7 @@
     ViewBag.Title = "AgregarPedido";
     var proveedores = (List<SigloXXI.Data.Proveedores>)ViewData["Proveedores"];
     var productos = (List<SigloXXI.Data.Productos>)ViewData["Productos"];
+    Model.Fecha = DateTime.Now.ToString();
 }
 
 <link href="~/Content/css/administrador.css" rel="stylesheet" />
@@ -15,7 +16,13 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="datetime" name="Fecha" id="fecha" value="@DateTime.Now" class="form-control" />
+                @Html.TextBoxFor(model => model.Fecha, new
+                   {
+                       @class = "form-control",
+                       @type = "datetime",
+                       @placeholder = "Ingresar la fecha del documento",
+                       @title = "Ingresar la fecha del documento"
+                   })
                 @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -23,7 +30,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Proveedores, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <select name="ProveedorRut" id="proveedor" class="form-control">
+                <select name="ProveedorRut" id="proveedor" class="form-control" title="Seleccionar proveedor">
                     @foreach (var p in proveedores)
                     {
                         <option value="@p.rut">@p.nombre</option>
@@ -39,7 +46,7 @@
             <div class="row">
                 <label class="control-label col-md-2">Producto</label>
                 <div class="col-md-10">
-                    <select name="ProveedorRut" id="producto" class="form-control">
+                    <select name="ProveedorRut" id="producto" class="form-control" title="Seleccionar producto">
                         @foreach (var p in productos)
                         {
                             <option value="@p.id">@p.nombre</option>
@@ -50,14 +57,16 @@
             <div class="row">
                 <label class="control-label col-md-2">Cantidad</label>
                 <div class="col-md-10">
-                    <input type="number" min=1 class="form-control" id="cantidad" min="1" required />
+                    <input type="number" class="form-control" id="cantidad" min=1 required 
+                           title="Ingresar la cantidad del producto seleccionado" 
+                           placeholder="Ingresar la cantidad del producto seleccionado"/>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-offset-2 col-md-10">
                     <button class="btn btn-primary" onclick="agregar()">Añadir a la lista</button>
                 </div>
-            </div>            
+            </div>
         </div>
 
         <table class="table" id="productos">
@@ -100,7 +109,7 @@
             });
 
             //Validacion de si el pedido existe en la lista de pedidos no lo agregara nuevamente
-            //O que tambien si la cantidad es valida, si no lo es, no lo agregara a la lista 
+            //O que tambien si la cantidad es valida, si no lo es, no lo agregara a la lista
             if (exist || cantidad == "" || cantidad == null || cantidad == undefined)
                 return;
 
@@ -115,6 +124,7 @@
             //Poner datos en los elementos html
             mas.innerHTML = "Quitar";
             mas.id = codigo;
+            mas.title = "Eliminar Elemento de la lista";
             row.id = "Row"+codigo;
             codigoCell.innerHTML = codigo;
             productoCell.innerHTML = producto;
@@ -151,7 +161,7 @@
         }
 
         function guardar() {
-            let fecha = document.getElementById("fecha").value;
+            let fecha = document.getElementById("Fecha").value;
             let proveedor = $("#proveedor option:selected").val();
             let documento = {
                 Fecha: fecha,
@@ -173,4 +183,4 @@
             });
         }
     </script>
- </div>
+</div>

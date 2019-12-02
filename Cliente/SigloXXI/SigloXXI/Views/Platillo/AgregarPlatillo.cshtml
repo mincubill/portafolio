@@ -5,7 +5,7 @@
     var ingrediente = (List<SigloXXI.Data.Productos>)ViewData["Ingredientes"];
 }
 <link href="~/Content/css/administrador.css" rel="stylesheet" />
-<div class="container" style="background-color: white; border: solid 1px black; border-radius: 3px; opacity: 80%;  margin-top: 4%;">
+<div class="container" style="background-color: white; border: solid 1px black; border-radius: 3px; opacity: 0.8;  margin-top: 4%;">
     <h2>AgregarPlatillo</h2>
     <div class="form">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -13,7 +13,13 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="text" name="Nombre" id="nombre" class="form-control" />
+                @Html.TextBoxFor(model => model.Nombre, new
+                   {
+                       @class = "form-control",
+                       @type = "text",
+                       @placeholder = "Ingresar nombre del platillo",
+                       @title = "Ingresar nombre del platillo"
+                   })
                 @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -21,7 +27,13 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Tiempo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="text" name="Tiempo" id="tiempo" class="form-control" />
+                @Html.TextBoxFor(model => model.Tiempo, new
+                  {
+                      @class = "form-control",
+                      @type = "number",
+                      @placeholder = "Ingresar tiempo de preparacion del platillo",
+                      @title = "Ingresar tiempo de preparacion del platillo en minutos"
+                  })
                 @Html.ValidationMessageFor(model => model.Tiempo, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -32,7 +44,7 @@
             <div class="row">
                 <label class="control-label col-md-2">Producto</label>
                 <div class="col-md-10">
-                    <select id="producto" class="form-control">
+                    <select id="producto" class="form-control" title="Seleccionar ingrediente">
                         @foreach (var i in ingrediente)
                         {
                             <option value="@i.id">@i.nombre</option>
@@ -43,7 +55,9 @@
             <div class="row">
                 <label class="control-label col-md-2">Cantidad</label>
                 <div class="col-md-10">
-                    <input type="number" min=1 class="form-control" id="cantidad" min="1" required />
+                    <input type="number" class="form-control" id="cantidad" min=1 required
+                           placeholder="Ingresar la cantidad a utilizar del producto seleccionado"
+                           title="Ingresar la cantidad a utilizar del producto seleccionado" />
                 </div>
             </div>
             <div class="row">
@@ -108,7 +122,8 @@
             //Poner datos en los elementos html
             mas.innerHTML = "Quitar";
             mas.id = codigo;
-            row.id = "Row"+codigo;
+            mas.title = "Eliminar producto de la lista";
+            row.id = "Row" + codigo;
             codigoCell.innerHTML = codigo;
             productoCell.innerHTML = producto;
             cantidadCell.innerHTML = cantidad;
@@ -143,13 +158,13 @@
         }
 
         function guardar() {
-            let nombre = document.getElementById("nombre").value;
-            let tiempo = document.getElementById("tiempo").value;
+            let nombre = document.getElementById("Nombre").value;
+            let tiempo = document.getElementById("Tiempo").value;
             let platillo = {
                 Nombre: nombre,
                 Tiempo: tiempo,
                 Ingrediente: ingredientes,
-                   
+
             };
             let data = JSON.stringify(platillo);
             console.log(data)
