@@ -4,6 +4,21 @@
     var data = (SigloXXI.Data.Reportes)ViewData["reporte"];
 }
 
-<h2>Mes Mayor Ingreso</h2>
-@data.ingresoMensual
-@data.mesMayorIngreso
+<link href="~/Content/css/administrador.css" rel="stylesheet" />
+<link href="~/Content/css/style.css" rel="stylesheet" />
+<link href="~/Content/css/reportes.css" rel="stylesheet" />
+
+<div class="container" style="background-color: white; border: solid 1px black; border-radius: 3px; opacity: 0.8; margin-top: 4%;">
+
+    
+    <div class="report-image-container">
+        <h2 class="texto-superior">Mes Mayor Ingreso</h2>
+        <img class="report-image" src="~/Content/img/calendar-stats.jpg" alt="Imagen"/>
+        <div class="texto-inferior">
+            <strong>$ @data.ingresoMensual.ToString("0,0")</strong>
+        </div>
+        <div class="centrado">
+            @data.mesMayorIngreso
+        </div>
+    </div>
+</div>
