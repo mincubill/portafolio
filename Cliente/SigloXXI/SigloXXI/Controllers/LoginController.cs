@@ -21,10 +21,15 @@ namespace SigloXXI.Controllers
         [HttpPost]
         public ActionResult Login(LoginModel model)
         {
+            if (Session["Rol"] == null)
+            {
+                Session["Rol"] = "";
+            }
             if (ModelState.IsValid)
             {
                 //Here we are checking the values with hardcoded admin and admin
                 //You can check these values from a database
+
                 var user = new Usuario();
                 var tempUser = user.IniciarSesion(model.UserName, model.Password);
                 if (tempUser != null)
@@ -68,7 +73,7 @@ namespace SigloXXI.Controllers
                     {
                         return RedirectToAction("Index", "Home");
                     }
-                    
+
                 }
                 else
                 {

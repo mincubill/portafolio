@@ -303,6 +303,36 @@ namespace SigloXXI.Data
                 throw;
             }
         }
+        public static T PutNoToken(object param, string metodo)
+        {
+            try
+            {
+
+                var cliente = new RestClient(Url + metodo);
+                var request = new RestRequest(Method.PUT);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/json");
+                request.RequestFormat = DataFormat.Json;
+                var data = JsonConvert.SerializeObject(param);
+                request.AddJsonBody(JsonConvert.SerializeObject(param));
+                IRestResponse response = cliente.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.Created)
+                {
+                    return JsonConvert.DeserializeObject<T>(response.Content);
+                    //return true;
+                }
+                else
+                {
+                    throw new ArgumentException("Error al actualizar datos - respuesta: " + response.Content);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
         public static bool Delete(Dictionary<string, string> param, string metodo)
         {
             try
