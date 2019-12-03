@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "VerPlatillos";
+    var data = (List<SigloXXI.Data.Platillo>)ViewData["Platillo"];
+}
+<link href="~/Content/css/administrador.css" rel="stylesheet" />
+<div class="container" style="margin-top: 2%;">
+    <h2>Ver Platillos</h2>
+    <table class="table table-bordered" style="background-color: white; opacity: 0.8;">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Tiempo de preparacion</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var platillo in data)
+            {
+                <tr>
+                    <td>@platillo.nombre</td>
+                    <td>@platillo.tiempo</td>
+                    <td>
+                        @Html.ActionLink(" ", "VerDetalles", "Platillo",
+                           new { id = platillo.id }, new { @class = "glyphicon glyphicon-list-alt", @title = "Ver los detalles del platillo" })
+                        @Html.ActionLink(" ", "EditarPlatillo", "Platillo",
+                           new { id = platillo.id }, new { @class = "glyphicon glyphicon-edit", @title = "Editar el platillo" })
+                        @Html.ActionLink(" ", "EliminarPlatillo", "Platillo",
+                           new { id = platillo.id }, new { @class = "glyphicon glyphicon-remove", @title = "Eliminar el platillo" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

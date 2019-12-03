@@ -10,25 +10,39 @@ namespace SigloXXI.Controllers
 {
     public class UsuarioController : Controller
     {
+        private string _token;
+        public UsuarioController()
+        {
+        }
         [HttpGet]
         public ActionResult AgregarUsuario()
         {
+            _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
         [HttpPost]
         public ActionResult AgregarUsuario(UsuarioModel model)
         {
-            var user = new Users
+            _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
             {
-                Url = "http://weasdf.ddns.net:8082",
+                RedirectToAction("Index", "Home");
+            }
+            var user = new Usuario
+            {
+                Token = _token,
                 Apellido = model.Apellido,
                 Correo = model.Correo,
                 Dv = model.Dv,
                 FechaNacimiento = model.FechaNacimiento,
                 Nombre = model.Nombre,
                 PassWord = model.Password,
-                rol = (int)model.Rol,
+                rol = (SigloXXI.Data.RolUsuario)model.Rol,
                 Rut = model.Rut,
                 UserName = model.UserName,
             };
@@ -39,7 +53,8 @@ namespace SigloXXI.Controllers
         [HttpGet]
         public ActionResult VerUsuarios()
         {
-            var user = new Users() { Url = "http://weasdf.ddns.net:8082" };
+            _token = Session["Token"].ToString();
+            var user = new Usuario() { Token = _token };
             ViewData["Usuarios"] = user.ObtenerUsuarios();
             return View();
         }
@@ -47,18 +62,24 @@ namespace SigloXXI.Controllers
         [HttpGet]
         public ActionResult EditarUsuarios(string rut)
         {
-            var user = new Users() { Url = "http://weasdf.ddns.net:8082" };
+            _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
+            var user = new Usuario();
             user = user.ObtenerUsuario(int.Parse(rut));
             ViewData["Usuario"] = user;
             UsuarioModel model = new UsuarioModel()
             {
+                
                 Apellido = user.Apellido,
                 Correo = user.Correo,
                 Dv = user.Dv,
                 FechaNacimiento = user.FechaNacimiento,
                 Nombre = user.Nombre,
                 Password = user.PassWord,
-                Rol = (Rol)user.rol,
+                Rol = (SigloXXI.Models.RolUsuario)user.rol,
                 Rut = user.Rut,
                 UserName = user.UserName,
             };
@@ -68,16 +89,16 @@ namespace SigloXXI.Controllers
         [HttpPost]
         public ActionResult EditarUsuarios(UsuarioModel model)
         {
-            var user = new Users
+            var user = new Usuario
             {
-                Url = "http://weasdf.ddns.net:8082",
+                Token = _token,
                 Apellido = model.Apellido,
                 Correo = model.Correo,
                 Dv = model.Dv,
                 FechaNacimiento = model.FechaNacimiento,
                 Nombre = model.Nombre,
                 PassWord = model.Password,
-                rol = (int)model.Rol,
+                rol = (SigloXXI.Data.RolUsuario)model.Rol,
                 Rut = model.Rut,
                 UserName = model.UserName,
             };
@@ -85,10 +106,15 @@ namespace SigloXXI.Controllers
             return RedirectToAction("VerUsuarios");
         }
 
-        
+
         public ActionResult EliminarUsuarios(string rut)
         {
-            var user = new Users() { Url = "http://weasdf.ddns.net:8082" };
+            _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
+            var user = new Usuario() { Token = _token};
             user.EliminarUsuario(int.Parse(rut));
             return RedirectToAction("VerUsuarios");
 

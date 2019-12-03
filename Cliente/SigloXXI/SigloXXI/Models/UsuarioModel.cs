@@ -29,7 +29,7 @@ namespace SigloXXI.Models
         public string Apellido { get; set; }
         [Required(ErrorMessage = "Campo obligatorio")]
         [Display(Name = "Rol: ")]
-        public Rol Rol { get; set; }
+        public RolUsuario Rol { get; set; }
         [Required(ErrorMessage = "Campo obligatorio")]
         [Display(Name = "Correo: ")]
         [DataType(DataType.EmailAddress)]
@@ -39,9 +39,13 @@ namespace SigloXXI.Models
         [DataType(DataType.Date)]
         public DateTime FechaNacimiento { get; set; }
     }
-    public enum Rol
+    public enum RolUsuario
     {
-        Admin = 1,
-        Bodega = 2,
+        administrador = 1,
+        finanzas = 2,
+        bodega = 3,
+        cocina = 4,
+        bartender = 5,
+        mesero = 6,
     }
 }

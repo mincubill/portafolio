@@ -14,16 +14,23 @@ namespace SigloXXI.Controllers
         public ActionResult Login()
         {
             Session["Access"] = "";
+            if (Session["Token"] == null)
+                Session["Token"] = "";
             return View();
         }
         [HttpPost]
         public ActionResult Login(LoginModel model)
         {
+            if (Session["Rol"] == null)
+            {
+                Session["Rol"] = "";
+            }
             if (ModelState.IsValid)
             {
                 //Here we are checking the values with hardcoded admin and admin
                 //You can check these values from a database
-                var user = new Users();
+
+                var user = new Usuario();
                 var tempUser = user.IniciarSesion(model.UserName, model.Password);
                 if (tempUser != null)
                 {
@@ -35,14 +42,43 @@ namespace SigloXXI.Controllers
                     model.Apellido = tempUser.Apellido;
                     //Store the Username in session
                     Session["UserName"] = tempUser.UserName;
-                    Session["Rol"] = tempUser.rol;
+                    Session["Rol"] = (int)tempUser.rol;
+                    Session["Token"] = tempUser.Token;
                     //Then redirect to the Index Action method of Home Controller
-                    return RedirectToAction("Index", "Home");
+                    if (tempUser.rol == Data.RolUsuario.administrador)
+                    {
+                        return RedirectToAction("Administrador", "Common");
+                    }
+                    else if (tempUser.rol == Data.RolUsuario.bartender)
+                    {
+                        return RedirectToAction("Bartender", "Common");
+                    }
+                    else if (tempUser.rol == Data.RolUsuario.bodega)
+                    {
+                        return RedirectToAction("Bodega", "Common");
+                    }
+                    else if (tempUser.rol == Data.RolUsuario.cocina)
+                    {
+                        return RedirectToAction("Cocina", "Common");
+                    }
+                    else if (tempUser.rol == Data.RolUsuario.finanzas)
+                    {
+                        return RedirectToAction("Finazas", "Common");
+                    }
+                    else if (tempUser.rol == Data.RolUsuario.mesero)
+                    {
+                        return RedirectToAction("Mesero", "Common");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Invalid User Name or Password");
-                    return View(model);
+                    ModelState.AddModelError("", "Nombre de usuario o contraseña incorrecto");
+                    return View();
                 }
             }
             else
@@ -55,6 +91,7 @@ namespace SigloXXI.Controllers
         {
             Session["UserName"] = null;
             Session["Rol"] = null;
+            Session["Token"] = null;
             return RedirectToAction("Index", "Home");
         }
     }

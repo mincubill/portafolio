@@ -1,0 +1,17 @@
+﻿@{
+    var data = (List<SigloXXI.Data.Documentos>)ViewData["ordenes"];
+}
+
+@foreach (var d in data)
+{
+    <label>ID</label> @d.id
+    <label>hora</label>@d.hora
+    foreach (var o in d.ordenHId)
+    {
+        <label>mesa</label>@o.mesaId.numero
+        <label>cantidad de pedido</label>@o.ordenBId.Count
+        <label>total</label> @o.total
+        <label>estado</label> @o.estado
+    }
+}
+
