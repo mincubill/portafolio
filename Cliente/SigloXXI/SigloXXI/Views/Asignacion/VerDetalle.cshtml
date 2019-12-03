@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "VerDetalle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var data = (SigloXXI.Data.Mesas)ViewData["Detallae"];
+}
+
+<h2>Ver Detalle</h2>
+<label>mesa</label> @data.numero
+<label>Capacidad</label> @data.capacidad
+

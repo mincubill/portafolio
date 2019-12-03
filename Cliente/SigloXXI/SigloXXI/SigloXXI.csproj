@@ -180,6 +180,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AsignacionController.cs" />
     <Compile Include="Controllers\CajaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
@@ -271,6 +272,8 @@
     <Content Include="Views\Reporte\PlatillosMasConsumidosDelMes.cshtml" />
     <Content Include="Views\Reporte\_PedidosDelDia.cshtml" />
     <Content Include="Views\Orden\VerOrdenesDelDia.cshtml" />
+    <Content Include="Views\Asignacion\Index.cshtml" />
+    <Content Include="Views\Asignacion\VerDetalle.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
