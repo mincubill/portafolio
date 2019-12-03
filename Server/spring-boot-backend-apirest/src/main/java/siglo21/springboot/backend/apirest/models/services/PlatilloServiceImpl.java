@@ -5,11 +5,17 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import siglo21.springboot.backend.apirest.models.dao.IIngredienteDao;
+import siglo21.springboot.backend.apirest.models.dao.IPlatilloDao;
+import siglo21.springboot.backend.apirest.models.dao.IProductoDao;
 import siglo21.springboot.backend.apirest.models.entity.Ingrediente;
 import siglo21.springboot.backend.apirest.models.entity.Platillo;
 
 @Service
 public class PlatilloServiceImpl implements IPlatilloService {
+
 	@Autowired
 	private IPlatilloDao platilloDao;
 	

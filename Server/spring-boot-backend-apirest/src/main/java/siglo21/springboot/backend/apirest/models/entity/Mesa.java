@@ -53,8 +53,6 @@ public class Mesa implements Serializable {
 		this.capacidad = capacidad;
 	}
 
-<<<<<<< HEAD:Server/spring-boot-backend-apirest/src/main/java/siglo21/springboot/backend/apirest/models/entity/Mesa.java
-=======
 	public int getEstado() {
 		return estado;
 	}
@@ -63,5 +61,4 @@ public class Mesa implements Serializable {
 		this.estado = estado;
 	}
 
->>>>>>> QA:Server/spring-boot-backend-apirest/src/main/java/com/siglo21/springboot/backend/apirest/models/entity/Mesa.java
 }

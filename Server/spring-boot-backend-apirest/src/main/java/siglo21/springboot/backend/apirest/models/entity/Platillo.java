@@ -24,13 +24,16 @@ public class Platillo implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(name = "NOMBRE")
+	@Column(name = "NOMBRE", length = 70, nullable = false)
 	private String nombre;
 
-	@Column(name = "TIEMPO")
+	@Column(name = "TIEMPO", nullable = false)
 	private int tiempo;
 
-	@OneToMany(mappedBy = "platilloId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@Column(name = "PRECIO", nullable = true)
+	private int precio;
+
+	@OneToMany(mappedBy = "platilloId", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
 	private List<Ingrediente> ingredienteId;
 
 	public int getId() {
@@ -63,6 +66,14 @@ public class Platillo implements Serializable {
 
 	public void setIngredienteId(List<Ingrediente> ingredienteId) {
 		this.ingredienteId = ingredienteId;
+	}
+
+	public int getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(int precio) {
+		this.precio = precio;
 	}
 
 }
