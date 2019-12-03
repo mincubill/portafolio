@@ -3,9 +3,16 @@
     ViewBag.Title = "OrdenesDelDia";
 }
 
-<h2>Ordenes Del Dia</h2>
-<form  method="post">
-    <input type="date" name="fecha" value="@DateTime.Now.ToString("yyyy-MM-dd")"/>
-    <input type="submit" />
-</form>
+<link href="~/Content/css/administrador.css" rel="stylesheet" />
+<link href="~/Content/css/style.css" rel="stylesheet" />
+
+<div class="container" style="background-color: white; border: solid 1px black; border-radius: 3px; opacity: 0.8; margin-top: 4%;">
+    <h2>Ordenes Del Dia</h2>
+    <form method="post">
+        <div class="form-group">
+            <input type="date" name="fecha" value="@DateTime.Now.ToString("yyyy-MM-dd")" class="form-control"/>
+            <input type="submit" class="btn btn-primary"/>
+        </div>
+    </form>
+</div>
 

@@ -1,0 +1,46 @@
+﻿.report-image-container {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}
+
+.report-image {
+    width: 50%;
+    border-radius: 20px;
+}
+
+.texto-superior {
+    position: absolute;
+    left: 38%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+    font-size: 30px;
+}
+
+.texto-inferior {
+    position: absolute;
+    bottom: 10px;
+    left: 43%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+    font-size: 30px;
+}
+
+.texto-inferior:hover {
+    box-shadow: 0 0 15px 4px black;
+}
+
+.centrado {
+    position: absolute;
+    top: 57%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 150px;
+}
+
+.primer-lugar:hover {
+    box-shadow: 0 0 15px 4px black;
+}

@@ -2,16 +2,38 @@
     var data = (List<SigloXXI.Data.Documentos>)ViewData["ordenes"];
 }
 
-@foreach (var d in data)
-{
-    <label>ID</label> @d.id
-    <label>hora</label>@d.hora
-    foreach (var o in d.ordenHId)
-    {
-        <label>mesa</label>@o.mesaId.numero
-        <label>cantidad de pedido</label>@o.ordenBId.Count
-        <label>total</label> @o.total
-        <label>estado</label> @o.estado
-    }
-}
+<link href="~/Content/css/administrador.css" rel="stylesheet" />
+<link href="~/Content/css/style.css" rel="stylesheet" />
+
+<div class="container" style="background-color: white; border: solid 1px black; border-radius: 3px; opacity: 0.8; margin-top: 4%;">
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Codigo</th>
+                <th>Hora</th>
+                <th>Numero de la mesa</th>
+                <th>Cantidad de platillos</th>
+                <th>Valor total</th>
+                <th>Estado de la orden</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var d in data)
+            {
+                foreach (var o in d.ordenHId)
+                {
+                    <tr>
+                        <th scope="col">@d.id</th>
+                        <th>@d.hora</th>
+                        <th>@o.mesaId.numero</th>
+                        <th>@o.ordenBId.Count</th>
+                        <th>@o.total</th>
+                        <th>@o.estado</th>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
 
