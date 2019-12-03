@@ -39,4 +39,25 @@ public class MesaServiceImpl implements IMesaService {
 		mesaDao.deleteById(id);
 	}
 
+	@Override
+	@Transactional
+	public Mesa changeStatusAvailable(int id) {
+		Mesa mesa = mesaDao.findById(id).orElse(null);
+		if(mesa != null) {
+			mesa.setEstado(1);
+			return mesaDao.save(mesa);
+		}
+		return mesa;
+	}
+
+	@Override
+	@Transactional
+	public Mesa changeStatusNotAvailable(int id) {
+		Mesa mesa = mesaDao.findById(id).orElse(null);
+		if(mesa != null) {
+			mesa.setEstado(2);
+			return mesaDao.save(mesa);
+		}
+		return mesa;
+	}
 }

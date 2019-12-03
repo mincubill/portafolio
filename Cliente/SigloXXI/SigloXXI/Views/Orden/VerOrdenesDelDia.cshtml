@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "VerOrdenesDelDia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var data = (List<SigloXXI.Data.OrdenHeader>)ViewData["Ordenes"];
+}
+
+<h2>Ver Ordenes Del Dia</h2>
+<link href="~/Content/css/administrador.css" rel="stylesheet" />
+<div class="container" style="margin-top: 2%;">
+    <h2>Ver Ordenes</h2>
+
+    <table class="table table-bordered" style="background-color: white; opacity: 80%;">
+        <thead>
+            <tr>
+                <th>Codigo pedido</th>
+                <th>Estado</th>
+                <th>Nº Mesa</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var orden in data)
+            {
+                <tr>
+                    <td>@orden.id</td>
+                    <td>@orden.mesaId.numero</td>
+                    <td>@orden.total</td>
+                    <td>
+                        @Html.ActionLink(" ", "VerDetalles", "Orden",
+                           new { id = orden.id }, new { @class = "glyphicon glyphicon-list-alt" })
+                        
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -31,13 +31,25 @@ namespace SigloXXI.Data
         {
             var queryParams = new Dictionary<string, string>
             {
-                {"id", mesa.id.ToString() },
-                { "numero",  mesa.numero.ToString() },
-                {"capacidad",  mesa.capacidad.ToString() },
-                { "estado",  mesa.estado.ToString() },
+                { "id", mesa.id.ToString() },
+                { "numero", mesa.numero.ToString() },
+                { "capacidad", mesa.capacidad.ToString() },
+                { "estado", ((int)mesa.estado).ToString() },
             };
             JsonHelper<Mesas>.Token = this.Token;
             return JsonHelper<Mesas>.Put(queryParams, "/mesas/actualizar-mesa/" + mesa.id);
+        }
+
+        public Mesas ActualizarMesaNoToken(Mesas mesa)
+        {
+            var queryParams = new Dictionary<string, string>
+            {
+                { "id", mesa.id.ToString() },
+                { "numero",  mesa.numero.ToString() },
+                { "capacidad",  mesa.capacidad.ToString() },
+                { "estado",  ((int)mesa.estado).ToString() },
+            };
+            return JsonHelper<Mesas>.PutNoToken(queryParams, "/mesas/actualizar-mesa/" + mesa.id);
         }
 
         public List<Mesas> ObtenerMesas()
@@ -61,10 +73,10 @@ namespace SigloXXI.Data
             var queryParams = new Dictionary<string, string>();
             return JsonHelper<Mesas>.Delete(queryParams, "/mesas/eliminar-mesa/" + id.ToString());
         }
-        
+
         public bool MarcarMesa(int id)
         {
-            if(ObtenerMesa(id).estado == EstadoMesa.Disponible)
+            if (ObtenerMesa(id).estado == EstadoMesa.Disponible)
             {
                 var queryParams = new Dictionary<string, string>();
                 JsonHelper<Mesas>.Get(queryParams, "/mesas/cambiar-estado-no-disponible/" + id.ToString());
@@ -77,6 +89,18 @@ namespace SigloXXI.Data
                 return true;
 
             }
+        }
+
+        public Mesas SeleccionMesa(int cantPersonas)
+        {
+            Mesas mesa = new Mesas();
+            var queryParams = new Dictionary<string, string>();
+            mesa = mesa.ObtenerMesas().OrderBy(m => m.capacidad).FirstOrDefault(m => m.capacidad >= cantPersonas && m.estado == EstadoMesa.Disponible);
+            mesa.estado = EstadoMesa.Ocupada;
+            var res = ActualizarMesaNoToken(mesa);
+            JsonHelper<Mesas>.GetNoToken(queryParams, "/mesas/cambiar-estado-no-disponible/" + res.id.ToString());
+
+            return res;
         }
     }
 

@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "PlatillosMasConsumidosDelMes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var data = (Dictionary<string, int>)ViewData["platillos"];
+}
+
+<h2>Platillos Mas Consumidos Del Mes</h2>
+@foreach(var p in data)
+{
+    <label>platillo: </label> @p.Key
+    <lable>cantidad: </lable> @p.Value
+}
+
+

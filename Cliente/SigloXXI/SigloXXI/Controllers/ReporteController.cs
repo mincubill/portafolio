@@ -40,6 +40,12 @@ namespace SigloXXI.Controllers
             return View("_OrdenesDelDia");
         }
 
+        [HttpGet]
+        public ActionResult PedidosDelDia()
+        {
+            return View();
+        }
+        [HttpPost]
         public ActionResult PedidosDelDia(string fecha)
         {
             _token = Session["Token"].ToString();
@@ -47,21 +53,21 @@ namespace SigloXXI.Controllers
             {
                 RedirectToAction("Index", "Home");
             }
-            var ordenes = new Reportes { Token = _token }.PedidosProveedoresDelDia(fecha);
-            ViewData["ordenes"] = ordenes;
-            return View();
+            var pedidos = new Reportes { Token = _token }.PedidosProveedoresDelDia(fecha);
+            ViewData["pedidos"] = pedidos;
+            return View("_PedidosDelDia");
         }
 
-        public ActionResult PlatillosMasConsumidosDelMes(string fecha)
+        public ActionResult PlatillosMasConsumidosDelMes()
         {
-            DateTime fec = DateTime.Parse(fecha);
+            DateTime fec = DateTime.Now;
             _token = Session["Token"].ToString();
             if (string.IsNullOrEmpty(_token))
             {
                 RedirectToAction("Index", "Home");
             }
             var platillos = new Reportes { Token = _token }.PlatilloMasConsumidoPorMes(fec.Month, fec.Year);
-            ViewData["Reporte"] = platillos;
+            ViewData["platillos"] = platillos;
             return View();
         }
 
