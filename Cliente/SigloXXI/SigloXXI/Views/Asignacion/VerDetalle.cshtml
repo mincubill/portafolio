@@ -5,7 +5,21 @@
     var data = (SigloXXI.Data.Mesas)ViewData["Detallae"];
 }
 
-<h2>Ver Detalle</h2>
-<label>mesa</label> @data.numero
-<label>Capacidad</label> @data.capacidad
+<link href="~/Content/css/administrador.css" rel="stylesheet" />
+<link href="~/Content/css/detalle-reserva.css" rel="stylesheet" />
 
+<h2>Ver Detalle Reserva</h2>
+
+<div class="detalle-reserva">
+    <div class="card-container">
+        <img class="card-image" src="~/Content/img/detalle-reserva.png" alt="logo reserva" />
+        <div class="card-body">
+            <p class="relevant-text">
+                Numero de mesa: @data.numero
+            </p>
+        </div>
+        <footer class="card-footer">
+            ¡Gracias por su preferencia!
+        </footer>
+    </div>
+</div>
