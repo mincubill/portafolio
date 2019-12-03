@@ -11,6 +11,7 @@ namespace SigloXXI.Controllers
     public class ReservaController : Controller
     {
         string _token;
+        Reserva _reserva;
         // GET: Reserva
         public ActionResult VerReservas()
         {
@@ -26,6 +27,7 @@ namespace SigloXXI.Controllers
         [HttpGet]
         public ActionResult AgregarReserva()
         {
+            ViewData["error"] = "";
             _token = Session["Token"].ToString();
             if (string.IsNullOrEmpty(_token))
             {
@@ -42,6 +44,8 @@ namespace SigloXXI.Controllers
         public ActionResult AgregarReserva(ReservaModel model)
         {
             _token = Session["Token"].ToString();
+            var clientes = new Clientes { Token = _token };
+            ViewData["Clientes"] = clientes.ObtenerClientes();
             if (string.IsNullOrEmpty(_token))
             {
                 RedirectToAction("Index", "Home");
@@ -51,14 +55,41 @@ namespace SigloXXI.Controllers
                 Token = _token,
                 cantidadPersonas = model.cantidadPersonas,
                 clienteId = new Clientes { Token = _token }.ObtenerCliente(model.clienteId),
-                mesaId = new Mesas { Token = _token }.ObtenerMesa(model.mesaId),
+                //mesaId = new Mesas { Token = _token }.ObtenerMesa(model.mesaId),
                 fecha = model.fecha,
                 hora = model.hora,
                 estado = EstadoReserva.NoOcupada,
             };
-            reserva.CrearReserva(reserva);
-            return RedirectToAction("VerReservas");
-
+            //_reserva = reserva.CrearReserva(reserva);
+            //return RedirectToAction("VerDetalleReserva");
+            var res = reserva.CrearReserva(reserva);
+            TempData["Reserva"] = res;
+            return RedirectToAction("VerDetalleReserva", "Reserva");
+        }
+        [HttpPost]
+        public ActionResult AgregarReservaSinClienteRegistrado(ReservaModel model)
+        {
+            var reserva = new Reserva
+            {
+                Token = _token,
+                cantidadPersonas = model.cantidadPersonas,
+                clienteId = new Clientes
+                {
+                    apellido = model.Cliente.apellido,
+                    correo = model.Cliente.correo,
+                    dv = model.Cliente.dv,
+                    nombre = model.Cliente.nombre,
+                    rut = model.Cliente.rut,
+                    telefono = model.Cliente.telefono,
+                },
+               
+                fecha = model.fecha,
+                hora = model.hora,
+                estado = EstadoReserva.NoOcupada,
+            };
+            var res = reserva.CrearReserva(reserva);
+            TempData["Reserva"] = res;
+            return RedirectToAction("VerDetalleReserva", "Reserva");
         }
         public ActionResult EditarReserva(int id)
         {
@@ -89,6 +120,11 @@ namespace SigloXXI.Controllers
             if (string.IsNullOrEmpty(_token))
             {
                 RedirectToAction("Index", "Home");
+            }
+            if (DateTime.Parse(model.fecha) < DateTime.Now)
+            {
+                ViewData["error"] = "Fecha no puede ser menor a la actual";
+                return View(model);
             }
             var reserva = new Reserva()
             {
@@ -128,6 +164,13 @@ namespace SigloXXI.Controllers
             reserva.ValidarReserva(id);
             return RedirectToAction("VerReservas");
 
+        }
+
+        public ActionResult VerDetalleReserva()
+        {
+            var res = (Reserva)TempData["Reserva"];
+            ViewData["Detalle"] = res;
+            return View("VerDetalleReserva");
         }
     }
 }

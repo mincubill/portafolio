@@ -15,7 +15,7 @@ namespace SigloXXI.Data
         public string correo { get; set; }
         public string telefono { get; set; }
         public string Token { get; set; }
-        public bool CrearCliente(Clientes cliente)
+        public Clientes CrearCliente(Clientes cliente)
         {
             var queryParams = new Dictionary<string, string>
             {
@@ -30,7 +30,7 @@ namespace SigloXXI.Data
             return JsonHelper<Clientes>.Post(queryParams, "/clientes/crear-cliente");
         }
 
-        public bool ActualizarClientes(Clientes cliente)
+        public Clientes ActualizarClientes(Clientes cliente)
         {
             var queryParams = new Dictionary<string, string>
             {
@@ -48,7 +48,7 @@ namespace SigloXXI.Data
         public List<Clientes> ObtenerClientes()
         {
             JsonHelper<Clientes>.Token = this.Token;
-            var result = JsonHelper<Clientes>.GetList("/clientes/obtener-clientes");
+            var result = JsonHelper<Clientes>.GetListNoToke("/clientes/obtener-clientes");
             return result;
         }
 
@@ -56,7 +56,7 @@ namespace SigloXXI.Data
         {
             JsonHelper<Clientes>.Token = this.Token;
             var queryParams = new Dictionary<string, string>();
-            var res = JsonHelper<Clientes>.Get(queryParams, "/clientes/buscar-cliente/" + rut.ToString());
+            var res = JsonHelper<Clientes>.GetNoToken(queryParams, "/clientes/buscar-cliente/" + rut.ToString());
             return res;
         }
 

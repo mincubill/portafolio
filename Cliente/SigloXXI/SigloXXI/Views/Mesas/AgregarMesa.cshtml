@@ -3,35 +3,49 @@
 @{
     ViewBag.Title = "Agregar Mesa";
 }
+<link href="~/Content/css/administrador.css" rel="stylesheet" />
+<div class="container" style="background-color: white; border: solid 1px black; border-radius: 3px; opacity: 0.8; margin-top: 4%;">
+    <h2>Agregar Mesa</h2>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-<h2>Agregar Mesa</h2>
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+        <div class="form">
 
-    <div class="form">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        
-        <div class="form-group">
-            @Html.LabelFor(model => model.Numero, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Numero, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Numero, new
+                    {
+                        @class = "form-control",
+                        @type = "number",
+                        @placeholder = "Ingresar numero de la mesa",
+                        @title = "Ingresar numero de la mesa"
+                    })
+                    @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Capacidad, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Capacidad, new
+                    {
+                        @class = "form-control",
+                        @type = "number",
+                        @placeholder = "Ingresar la capacidad de la mesa",
+                        @title = "Ingresar la capacidad de la mesa"
+                    })
+                    @Html.ValidationMessageFor(model => model.Capacidad, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Capacidad, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Capacidad, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Capacidad, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Guardar" class="btn btn-primary" />
-            </div>
-        </div>
-    </div>
-}
+    }
+</div>

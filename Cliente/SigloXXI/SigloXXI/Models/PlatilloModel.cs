@@ -17,5 +17,7 @@ namespace SigloXXI.Models
         [Required(ErrorMessage = "Campo obligatorio")]
         [Display(Name = "Tiempo: ")]
         public int Tiempo { get; set; }
+
+        public List<IngredienteModel> Ingrediente { get; set; }
     }
 }

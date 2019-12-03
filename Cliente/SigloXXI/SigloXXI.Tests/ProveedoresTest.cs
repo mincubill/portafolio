@@ -45,8 +45,8 @@ namespace SigloXXI.Tests
                 rut = "12345678-9",
                 telefono = "6666969"
             };
-            bool res = prove.CrearProveedor(prove);
-            Assert.AreEqual(true, res);
+            var res = prove.CrearProveedor(prove);
+            Assert.IsNotNull(res);
         }
                 
         [TestMethod]
@@ -62,8 +62,8 @@ namespace SigloXXI.Tests
                 rut = "12345678-9",
                 telefono = "3216547"
             };
-            bool res = prove.ActualizarProveedor(prove);
-            Assert.AreEqual(true, res);
+            var res = prove.ActualizarProveedor(prove);
+            Assert.IsNull(res);
         }
 
         [TestMethod]

@@ -109,5 +109,20 @@ namespace SigloXXI.Controllers
             return RedirectToAction("VerMesasDisponibles");
         }
 
+        public ActionResult VerResumen(Mesas mesa)
+        {
+            var model = new MesaModel
+            {
+                Capacidad = mesa.capacidad,
+                Id = mesa.id,
+                Numero = mesa.numero
+            };
+            return View(model);
+        }
+
+        public ActionResult SeleccionarMesa()
+        {
+            return View();
+        }
     }
 }

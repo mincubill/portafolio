@@ -53,7 +53,7 @@ namespace SigloXXI.Data
             {
                 foreach(var p in pedidoBId)
                 {
-                    total += p.cantidad * p.total;
+                    total += p.cantidad * p.subtotal;
                 }
             }
         }

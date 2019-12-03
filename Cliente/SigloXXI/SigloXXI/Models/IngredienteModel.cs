@@ -18,6 +18,6 @@ namespace SigloXXI.Models
         public int Platillo_Id { get; set; }
         [Required(ErrorMessage = "Campo obligatorio")]
         [Display(Name = "Id producto: ")]
-        public int Producto_Id { get; set; }
+        public ProductoModel Producto { get; set; }
     }
 }

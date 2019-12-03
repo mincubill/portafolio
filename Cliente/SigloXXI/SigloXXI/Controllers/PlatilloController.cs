@@ -5,6 +5,7 @@ using System.Web;
 using SigloXXI.Data;
 using SigloXXI.Models;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 
 namespace SigloXXI.Controllers
 {
@@ -13,11 +14,11 @@ namespace SigloXXI.Controllers
         string _token;
         public ActionResult VerPlatillos()
         {
-            _token = Session["Token"].ToString();
             if (string.IsNullOrEmpty(_token))
             {
                 RedirectToAction("Index", "Home");
             }
+            _token = Session["Token"].ToString();
             var plat = new Platillo() { Token = _token };
             ViewData["Platillo"] = plat.ObtenerPlatillos();
             return View();
@@ -26,37 +27,50 @@ namespace SigloXXI.Controllers
         [HttpGet]
         public ActionResult AgregarPlatillo()
         {
-            _token = Session["Token"].ToString();
             if (string.IsNullOrEmpty(_token))
             {
                 RedirectToAction("Index", "Home");
             }
+            _token = Session["Token"].ToString();
+            var ingredientes = new Productos { Token = _token }.ObtenerProductos().
+                Where(i => i.categoria.ToUpper() == "INGREDIENTE").ToList();
+            ViewData["Ingredientes"] = ingredientes;
             return View();
         }
 
         [HttpPost]
-        public ActionResult AgregarPlatillo(PlatilloModel model)
+        public ActionResult AgregarPlatillo(string data)
         {
             _token = Session["Token"].ToString();
-            var plat = new Platillo()
+            var platilloModel = JsonConvert.DeserializeObject<PlatilloModel>(data);
+
+            Platillo platillo = new Platillo()
             {
                 Token = _token,
-                id = model.Id,
-                nombre = model.Nombre,
-                tiempo = model.Tiempo,
+                nombre = platilloModel.Nombre,
+                tiempo = platilloModel.Tiempo,
+                ingredienteId = platilloModel.Ingrediente.Select(i =>
+                   new Ingredientes
+                   {
+                       cantidad = i.Cantidad,
+                       productoId = new Productos
+                       {
+                           id = i.Producto.Id,
+                       }
+                   }).ToList(),
             };
-            plat.CrearPlatillo(plat);
-            return RedirectToAction("VerPlatillos");
+            platillo.CrearPlatillo(platillo);
+            return Json(Url.Action("VerPlatillos","Platillo"));
         }
 
         [HttpGet]
         public ActionResult EditarPlatillo(int id)
         {
-            _token = Session["Token"].ToString();
             if (string.IsNullOrEmpty(_token))
             {
                 RedirectToAction("Index", "Home");
             }
+            _token = Session["Token"].ToString();
             var plat = new Platillo() { Token = _token };
             plat = plat.ObtenerPlatillo(id);
             PlatilloModel model = new PlatilloModel

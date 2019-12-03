@@ -14,14 +14,10 @@ namespace SigloXXI.Models
         public int Id { get; set; }
         [Required(ErrorMessage = "Campo obligatorio")]
         [Display(Name = "Fecha: ")]
-        public DateTime Fecha { get; set; }
+        public string Fecha { get; set; }
         public TipoDocumento Tipo { get; set; }
-        public string ProveedorRut { get; set; }
-        public PedidoHeader Pedido { get; set; }
-        public PedidoBody PedidoDetalle { get; set; }
-        public List<Productos> Productos { get; set; }
-        public List<PedidoHeader> Pedidos { get; set; }
-        public List<OrdenHeader> Ordenes { get; set; }
+        public List<PedidoHeaderModel> Pedidos { get; set; }
+        public List<OrdenHeaderModel> Ordenes { get; set; }
         public List<Proveedores> Proveedores { get; set; }
     }
     public enum TipoDocumento

@@ -16,7 +16,7 @@ namespace SigloXXI.Data
         public string categoria { get; set; }
         public string Token { get; set; }
 
-        public bool CrearProducto(Productos producto)
+        public Productos CrearProducto(Productos producto)
         {
             var queryParams = new Dictionary<string, string>
             {
@@ -32,7 +32,7 @@ namespace SigloXXI.Data
             return JsonHelper<Productos>.Post(queryParams, "/productos/crear-producto");
         }
 
-        public bool ActualizarProducto(Productos producto)
+        public Productos ActualizarProducto(Productos producto)
         {
             var queryParams = new Dictionary<string, string>
             {
@@ -44,7 +44,7 @@ namespace SigloXXI.Data
                 {"categoria",  categoria},
             };
             JsonHelper<Productos>.Token = this.Token;
-            return JsonHelper<Usuario>.Put(queryParams, "/productos/actualizar-producto/" + producto.id);
+            return JsonHelper<Productos>.Put(queryParams, "/productos/actualizar-producto/" + producto.id);
         }
 
         public List<Productos> ObtenerProductos()

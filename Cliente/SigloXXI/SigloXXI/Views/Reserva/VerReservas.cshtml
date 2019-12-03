@@ -4,41 +4,45 @@
     var data = (List<SigloXXI.Data.Reserva>)ViewData["Reservas"];
 }
 
-<h2>Ver Reservas</h2>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>N. Reserva</th>
-            <th>Nombre Cliente</th>
-            <th>Telefono</th>
-            <th>Correo</th>
-            <th>N. Mesa</th>
-            <th>Cant. Personas</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var reserva in data)
-        {
-            <tr class="@(reserva.estado == SigloXXI.Data.EstadoReserva.NoOcupada ? "table-warning" : "table-success")">
-                <td>@reserva.id</td>
-                <td>@reserva.clienteId.rut-@reserva.clienteId.dv</td>
-                <td>@reserva.clienteId.telefono</td>
-                <td>@reserva.clienteId.correo</td>
-                <td>@reserva.mesaId.numero</td>
-                <td>@reserva.cantidadPersonas</td>
-                <td>
-                    @if (reserva.estado == SigloXXI.Data.EstadoReserva.NoOcupada)
-                    {
-                        @Html.ActionLink(" ", "ValidarReserva", "Reserva",
-                        new { id = reserva.id }, new { @class = "fa fa-check" })
-                    }
-                    @Html.ActionLink(" ", "EditarReserva", "Reserva",
-                       new { id = reserva.id }, new { @class = "far fa-edit" })
-                    @Html.ActionLink(" ", "EliminarReserva", "Reserva",
-                       new { id = reserva.id }, new { @class = "far fa-trash-alt" })
-                </td>
+
+<link href="~/Content/css/administrador.css" rel="stylesheet" />
+<div class="container" style="margin-top: 2%;">
+    <h2>Ver Reservas</h2>
+    <table class="table table-bordered" style="background-color: white; opacity: 80%;">
+        <thead>
+            <tr>
+                <th>N. Reserva</th>
+                <th>Nombre Cliente</th>
+                <th>Telefono</th>
+                <th>Correo</th>
+                <th>N. Mesa</th>
+                <th>Cant. Personas</th>
+                <th>Acciones</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var reserva in data)
+            {
+                <tr class="@(reserva.estado == SigloXXI.Data.EstadoReserva.NoOcupada ? "table-warning" : "table-success")">
+                    <td>@reserva.id</td>
+                    <td>@reserva.clienteId.rut-@reserva.clienteId.dv</td>
+                    <td>@reserva.clienteId.telefono</td>
+                    <td>@reserva.clienteId.correo</td>
+                    <td>@reserva.mesaId.numero</td>
+                    <td>@reserva.cantidadPersonas</td>
+                    <td>
+                        @if (reserva.estado == SigloXXI.Data.EstadoReserva.NoOcupada)
+                        {
+                            @Html.ActionLink(" ", "ValidarReserva", "Reserva",
+                            new { id = reserva.id }, new { @class = "glyphicon glyphicon-check" , @title = "Validar reserva" })
+                        }
+                        @Html.ActionLink(" ", "EditarReserva", "Reserva",
+                           new { id = reserva.id }, new { @class = "glyphicon glyphicon-edit", @title = "Editar reserva" })
+                        @Html.ActionLink(" ", "EliminarReserva", "Reserva",
+                           new { id = reserva.id }, new { @class = "glyphicon glyphicon-remove", @title = "Eliminar reserva" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

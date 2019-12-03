@@ -34,8 +34,8 @@ namespace SigloXXI.Tests
                 FechaNacimiento = new DateTime(1987, 8, 23),
                 rol = Data.RolUsuario.administrador,
             };
-            bool res = user.CrearUsuario(user);
-            Assert.AreEqual(true, res);
+            var res = user.CrearUsuario(user);
+            Assert.IsNotNull(res);
         }
         [TestMethod]
         public void ActualizarUsuario()
@@ -54,8 +54,8 @@ namespace SigloXXI.Tests
                 FechaNacimiento = new DateTime(1987, 8, 23),
                 rol = Data.RolUsuario.finanzas,
             };
-            bool res = user.ActualizarUsuario(user);
-            Assert.AreEqual(true, res);
+            var res = user.ActualizarUsuario(user);
+            Assert.IsNotNull(res);
         }
         [TestMethod]
         public void EliminarUsuario()

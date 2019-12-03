@@ -15,8 +15,8 @@ namespace SigloXXI.Data
     {
         public static string Token { get; set; }
 
-        public static string Url { get; set; } = "http://192.168.1.13:8084";
-        //public static string Url { get; set; } = "http://weasdf.ddns.net:8084";
+        public static string Url { get; set; } = "http://192.168.1.13:8082";
+        //public static string Url { get; set; } = "http://weasdf.ddns.net:8082";
 
         public static T Get(Dictionary<string, string> queryParams, string metodo)
         {
@@ -47,6 +47,30 @@ namespace SigloXXI.Data
             else
             {
                 throw new ArgumentException("No hay token disponible");
+            }
+        }
+
+        public static T GetNoToken(Dictionary<string, string> queryParams, string metodo)
+        {
+            try
+            {
+                var cliente = new RestClient(Url + metodo);
+                var request = new RestRequest(Method.GET);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/x-www-form-urlencoded");
+                IRestResponse response = cliente.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    return JsonConvert.DeserializeObject<T>(response.Content);
+                }
+                else
+                {
+                    throw new ArgumentException("Error al obetener datos - respuesta: " + response.Content);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
         }
 
@@ -82,7 +106,33 @@ namespace SigloXXI.Data
             }
         }
 
-        public static bool Post(Dictionary<string, string> param, string metodo)
+        public static List<T> GetListNoToke(string metodo)
+        {
+            try
+            {
+
+                var cliente = new RestClient(Url + metodo);
+                var request = new RestRequest(Method.GET);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/json");
+                IRestResponse response = cliente.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    return JsonConvert.DeserializeObject<List<T>>(response.Content);
+                }
+                else
+                {
+                    throw new ArgumentException("Error al obetener datos - respuesta: " + response.Content);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public static T Post(Dictionary<string, string> param, string metodo)
         {
             try
             {
@@ -98,7 +148,8 @@ namespace SigloXXI.Data
                     IRestResponse response = cliente.Execute(request);
                     if (response.StatusCode == System.Net.HttpStatusCode.Created)
                     {
-                        return true;
+                        return JsonConvert.DeserializeObject<T>(response.Content);
+                        //return true;
                     }
                     else
                     {
@@ -116,7 +167,7 @@ namespace SigloXXI.Data
             }
         }
 
-        public static bool Post(object param, string metodo)
+        public static T Post(object param, string metodo)
         {
             try
             {
@@ -133,7 +184,8 @@ namespace SigloXXI.Data
                     IRestResponse response = cliente.Execute(request);
                     if (response.StatusCode == System.Net.HttpStatusCode.Created)
                     {
-                        return true;
+                        return JsonConvert.DeserializeObject<T>(response.Content);
+                        //return true;
                     }
                     else
                     {
@@ -151,7 +203,37 @@ namespace SigloXXI.Data
             }
         }
 
-        public static bool Put(Dictionary<string, string> param, string metodo)
+        public static T PostNoToken(object param, string metodo)
+        {
+            try
+            {
+
+                var cliente = new RestClient(Url + metodo);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/json");
+                request.RequestFormat = DataFormat.Json;
+                var data = JsonConvert.SerializeObject(param);
+                request.AddJsonBody(JsonConvert.SerializeObject(param));
+                IRestResponse response = cliente.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.Created)
+                {
+                    return JsonConvert.DeserializeObject<T>(response.Content);
+                    //return true;
+                }
+                else
+                {
+                    throw new ArgumentException("Error al ingresar datos - respuesta: " + response.Content);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public static T Put(Dictionary<string, string> param, string metodo)
         {
             try
             {
@@ -168,7 +250,8 @@ namespace SigloXXI.Data
                     IRestResponse response = cliente.Execute(request);
                     if (response.StatusCode == System.Net.HttpStatusCode.Created)
                     {
-                        return true;
+                        return JsonConvert.DeserializeObject<T>(response.Content);
+                        //return true;
                     }
                     else
                     {
@@ -185,7 +268,7 @@ namespace SigloXXI.Data
                 throw;
             }
         }
-        public static bool Put(object param, string metodo)
+        public static T Put(object param, string metodo)
         {
             try
             {
@@ -202,7 +285,8 @@ namespace SigloXXI.Data
                     IRestResponse response = cliente.Execute(request);
                     if (response.StatusCode == System.Net.HttpStatusCode.Created)
                     {
-                        return true;
+                        return JsonConvert.DeserializeObject<T>(response.Content);
+                        //return true;
                     }
                     else
                     {
@@ -231,7 +315,7 @@ namespace SigloXXI.Data
                     request.AddHeader("content-type", "application/json");
                     request.AddHeader("Authorization", $"Bearer {Token}");
                     IRestResponse response = cliente.Execute(request);
-                    if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         return true;
                     }
@@ -265,7 +349,6 @@ namespace SigloXXI.Data
                 IRestResponse response = cliente.Execute(request);
                 var data = (JObject)JsonConvert.DeserializeObject(response.Content);
                 Token = data["access_token"].ToString();
-
                 if (!string.IsNullOrEmpty(Token))
                     return true;
                 else
@@ -273,6 +356,7 @@ namespace SigloXXI.Data
             }
             catch (Exception ex)
             {
+                return false;
                 throw;
             }
         }

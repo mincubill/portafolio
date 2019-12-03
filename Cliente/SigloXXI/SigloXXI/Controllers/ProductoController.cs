@@ -42,6 +42,11 @@ namespace SigloXXI.Controllers
             {
                 RedirectToAction("Index", "Home");
             }
+            if(model.Precio < 0)
+            {
+                ViewData["error"] = "El precio debe ser mayor a 0";
+                return View(model);
+            }
             var prod = new Productos()
             {
                 Token = _token,
@@ -84,6 +89,11 @@ namespace SigloXXI.Controllers
             if (string.IsNullOrEmpty(_token))
             {
                 RedirectToAction("Index", "Home");
+            }
+            if (model.Precio < 0)
+            {
+                ViewData["error"] = "El precio debe ser mayor a 0";
+                return View(model);
             }
             var prod = new Productos()
             {

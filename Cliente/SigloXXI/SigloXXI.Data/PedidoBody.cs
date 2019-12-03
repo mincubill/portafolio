@@ -10,7 +10,7 @@ namespace SigloXXI.Data
     {
         public int id { get; set; }
         public int cantidad { get; set; }
-        public int total { get; set; }
+        public int subtotal { get; set; }
         public Productos productoId { get; set; }
         public string Token { get; set; }
 
@@ -18,7 +18,7 @@ namespace SigloXXI.Data
         {
             if(productoId != null)
             {
-                total = cantidad * productoId.precio;
+                subtotal = cantidad * productoId.precio;
             }
         }
     }

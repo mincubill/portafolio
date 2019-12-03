@@ -47,6 +47,9 @@
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -91,18 +94,79 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\img\background.jpg" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\main.css" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\bootstrap\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap\bootstrap.css" />
+    <Content Include="Content\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\css\administrador.css" />
+    <Content Include="Content\css\bartender.css" />
+    <Content Include="Content\css\bodega.css" />
+    <Content Include="Content\css\cocina.css" />
+    <Content Include="Content\css\detalle-reserva.css" />
+    <Content Include="Content\css\finanzas.css" />
+    <Content Include="Content\css\index.css" />
+    <Content Include="Content\css\login.css" />
+    <Content Include="Content\css\mainNew.css" />
+    <Content Include="Content\css\mesero.css" />
+    <Content Include="Content\css\Site.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\img\aceituna.jpg" />
+    <Content Include="Content\img\aderezo.jpg" />
+    <Content Include="Content\img\arroz.png" />
+    <Content Include="Content\img\arrozconcarneyaceitunas.jpg" />
+    <Content Include="Content\img\bar.jpg" />
+    <Content Include="Content\img\bebidas.jpg" />
+    <Content Include="Content\img\carneconarrozytocino.jpg" />
+    <Content Include="Content\img\carnedevacuno.jpg" />
+    <Content Include="Content\img\cazuela.jpg" />
+    <Content Include="Content\img\choclo.jpg" />
+    <Content Include="Content\img\completo.jpg" />
+    <Content Include="Content\img\completo1.jpg" />
+    <Content Include="Content\img\detalle-reserva.png" />
+    <Content Include="Content\img\fideosconjamonyqueso.jpg" />
+    <Content Include="Content\img\fondo2.jpg" />
+    <Content Include="Content\img\fondo3.jpg" />
+    <Content Include="Content\img\fondo4.jpg" />
+    <Content Include="Content\img\fondo4.png" />
+    <Content Include="Content\img\fondo5.jpg" />
+    <Content Include="Content\img\fondo6.jpg" />
+    <Content Include="Content\img\fondo7.jpg" />
+    <Content Include="Content\img\fondo8.jpg" />
+    <Content Include="Content\img\humitas.jpg" />
+    <Content Include="Content\img\imagen1.jpg" />
+    <Content Include="Content\img\imagen2.jpg" />
+    <Content Include="Content\img\imagen3.jpg" />
+    <Content Include="Content\img\imagen4.jpg" />
+    <Content Include="Content\img\imagen5.jpg" />
+    <Content Include="Content\img\jamon.png" />
+    <Content Include="Content\img\mapa.jpg" />
+    <Content Include="Content\img\menu.jpg" />
+    <Content Include="Content\img\pago.jpg" />
+    <Content Include="Content\img\palta.jpg" />
+    <Content Include="Content\img\paltatomate.jpg" />
+    <Content Include="Content\img\pandecompleto.jpg" />
+    <Content Include="Content\img\papascocidas.jpg" />
+    <Content Include="Content\img\pollo.jpg" />
+    <Content Include="Content\img\polloconpapas.jpg" />
+    <Content Include="Content\img\queso.jpg" />
+    <Content Include="Content\img\restaurante.jpg" />
+    <Content Include="Content\img\restaurante2.jpg" />
+    <Content Include="Content\img\tallarin.jpg" />
+    <Content Include="Content\img\tiempo.jpg" />
+    <Content Include="Content\img\tocino.jpg" />
+    <Content Include="Content\img\tomate.jpg" />
+    <Content Include="Content\img\trago.jpg" />
+    <Content Include="Content\img\trigo.jpg" />
+    <Content Include="Content\img\vienesas.jpg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Fakes Include="Fakes\SigloXXI.Data.fakes" />
+    <Content Include="Content\bootstrap\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap\bootstrap.css.map" />
+    <Content Include="Content\bootstrap\bootstrap.min.css.map" />
     <None Include="Properties\PublishProfiles\CustomProfile2.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -117,6 +181,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CajaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\DocumentoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IngredienteController.cs" />
@@ -127,6 +192,7 @@
     <Compile Include="Controllers\PlatilloController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\ProveedorController.cs" />
+    <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Controllers\ReservaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -139,6 +205,7 @@
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MesaModel.cs" />
     <Compile Include="Models\OrdenHeaderModel.cs" />
+    <Compile Include="Models\PedidoBodyModel.cs" />
     <Compile Include="Models\PedidoHeaderModel.cs" />
     <Compile Include="Models\PlatilloModel.cs" />
     <Compile Include="Models\ProductoModel.cs" />
@@ -153,10 +220,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -191,6 +254,18 @@
     <Content Include="Views\Reserva\VerReservas.cshtml" />
     <Content Include="Views\Reserva\AgregarReserva.cshtml" />
     <Content Include="Views\Reserva\EditarReserva.cshtml" />
+    <Content Include="Views\Documento\VerDocumento.cshtml" />
+    <Content Include="Views\Mesas\VerResumen.cshtml" />
+    <Content Include="Views\Common\Administrador.cshtml" />
+    <Content Include="Views\Common\Bartender.cshtml" />
+    <Content Include="Views\Common\Bodega.cshtml" />
+    <Content Include="Views\Common\Cocina.cshtml" />
+    <Content Include="Views\Common\Finazas.cshtml" />
+    <Content Include="Views\Common\Mesero.cshtml" />
+    <Content Include="Views\Reserva\VerDetalleReserva.cshtml" />
+    <Content Include="Views\Reporte\MesMayorIngreso.cshtml" />
+    <Content Include="Views\Reporte\OrdenesDelDia.cshtml" />
+    <Content Include="Views\Reporte\_OrdenesDelDia.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -200,7 +275,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Documento\" />
     <Folder Include="Views\Ingrediente\" />
   </ItemGroup>
   <ItemGroup>

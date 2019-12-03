@@ -3,38 +3,40 @@
     ViewBag.Title = "VerProductos";
     var data = (List<SigloXXI.Data.Productos>)ViewData["Productos"];
 }
-
-<h2>Ver Productos</h2>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Codigo</th>
-            <th>Nombre</th>
-            <th>Descripcion</th>
-            <th>Cantidad</th>
-            <th>Precio</th>
-            <th>Categoria</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        
-        @foreach (var producto in data)
-        {
+<link href="~/Content/css/administrador.css" rel="stylesheet" />
+<div class="container" style="margin-top: 2%;">
+    <h2>Ver Productos</h2>
+    <table class="table table-bordered" style="background-color: white; opacity: 0.8;">
+        <thead>
             <tr>
-                <td>@producto.id</td>
-                <td>@producto.nombre</td>
-                <td>@producto.descripcion</td>
-                <td>@producto.cantidad</td>
-                <td>@producto.precio</td>
-                <td>@producto.categoria</td>
-                <td>
-                    @Html.ActionLink(" ", "EditarProductos", "Producto",
-                       new { id = producto.id }, new { @class = "far fa-edit" })
-                    @Html.ActionLink(" ", "EliminarProductos", "Producto",
-                       new { id = producto.id }, new { @class = "far fa-trash-alt" })
-                </td>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Categoria</th>
+                <th>Acciones</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+
+            @foreach (var producto in data)
+            {
+                <tr>
+                    <td>@producto.id</td>
+                    <td>@producto.nombre</td>
+                    <td>@producto.descripcion</td>
+                    <td>@producto.cantidad</td>
+                    <td>@producto.precio</td>
+                    <td>@producto.categoria</td>
+                    <td>
+                        @Html.ActionLink(" ", "EditarProductos", "Producto",
+                           new { id = producto.id }, new { @class = "glyphicon glyphicon-edit", @title = "Editar producto" })
+                        @Html.ActionLink(" ", "EliminarProductos", "Producto",
+                           new { id = producto.id }, new { @class = "glyphicon glyphicon-remove", @title = "Eliminar producto" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -17,10 +17,11 @@ namespace SigloXXI.Data
         public EstadoReserva estado { get; set; }
         public string Token { get; set; }
 
-        public bool CrearReserva(Reserva reserva)
+        public Reserva CrearReserva(Reserva reserva)
         {
             JsonHelper<Reserva>.Token = this.Token;
-            return JsonHelper<Reserva>.Post(reserva, "/reservas/crear-reserva");
+            reserva.mesaId = SeleccionMesa(reserva.cantidadPersonas);
+            return JsonHelper<Reserva>.PostNoToken(reserva, "/reservas/crear-reserva");
         }
 
         public List<Reserva> ObtenerReservas()
@@ -36,7 +37,7 @@ namespace SigloXXI.Data
             return JsonHelper<Reserva>.Get(queryParams, "/reservas/buscar-reserva/" + id.ToString());
         }
 
-        public bool ActualizarReserva(Reserva reserva)
+        public Reserva ActualizarReserva(Reserva reserva)
         {
             JsonHelper<Reserva>.Token = this.Token;
             return JsonHelper<Reserva>.Put(reserva, "/reservas/actualizar-reserva/" + id.ToString());
@@ -54,6 +55,13 @@ namespace SigloXXI.Data
             JsonHelper<Reserva>.Token = this.Token;
             var queryParams = new Dictionary<string, string>();
             return JsonHelper<Reserva>.Get(queryParams, "/reservas/cambiar-estado-reserva/" + id.ToString());
+        }
+
+        private Mesas SeleccionMesa(int cantPersonas)
+        {
+            Mesas mesa = new Mesas();
+            mesa = mesa.ObtenerMesas().OrderBy(m => m.capacidad).FirstOrDefault(m => m.capacidad >= cantPersonas && m.estado == EstadoMesa.Disponible);
+            return mesa;
         }
     }
     public enum EstadoReserva

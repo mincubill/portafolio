@@ -33,7 +33,7 @@ namespace SigloXXI.Data
             return null;
         }
 
-        public bool CrearUsuario (Usuario usuario)
+        public Usuario CrearUsuario (Usuario usuario)
         {
             var queryParams = new Dictionary<string, string>
             {
@@ -43,14 +43,14 @@ namespace SigloXXI.Data
                 {"password",  usuario.PassWord},
                 {"nombre",  usuario.Nombre},
                 {"apellido",  usuario.Apellido},
-                {"rol",  usuario.rol.ToString() },
+                {"rol",  ((int)(usuario.rol)).ToString() },
                 {"correo",  usuario.Correo},
                 {"fechaNacimiento",  usuario.FechaNacimiento.ToString("yyyy-MM-dd") },
             };
             return JsonHelper<Usuario>.Post(queryParams, "/usuarios/crear-usuario");
         }
 
-        public bool ActualizarUsuario(Usuario usuario)
+        public Usuario ActualizarUsuario(Usuario usuario)
         {
             var queryParams = new Dictionary<string, string>
             {
@@ -60,7 +60,7 @@ namespace SigloXXI.Data
                 {"password",  usuario.PassWord},
                 {"nombre",  usuario.Nombre},
                 {"apellido",  usuario.Apellido},
-                {"rol",  usuario.rol.ToString() },
+                {"rol",  ((int)(usuario.rol)).ToString() },
                 {"correo",  usuario.Correo},
                 {"fechaNacimiento",  usuario.FechaNacimiento.ToString("yyyy-MM-dd") },
             };

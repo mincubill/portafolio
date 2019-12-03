@@ -1,0 +1,66 @@
+﻿/* paleta defs colores 
+    neutro y versatil       pulido y acogedor   Encanto clasico     Claro y natural     Morados nebulosos
+        #626d71                 #eae2d6             #fcc875             #688b8a             #a49592
+        #cdcdc0                 #d5c3aa             #baa896             #a0b084             #727077
+        #ddbc95                 #867666             #e6ccb5             #faefd4             #eed8c9
+        #b38867                 #e1b80d             #e38b75             #a57c65             #e99787
+*/
+
+.detalle-reserva {
+    display: flex;
+    align-items: center;
+}
+
+.card-container {
+    width: 40%;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    text-align: center;
+    border-radius: 6px;
+    background-color: white;
+    border: solid 2px gray;
+}
+
+.card-container:hover {
+    box-shadow: 0 0 15px 4px black;
+}
+
+.card-footer {
+    background-color: #B38867;
+    position: relative;
+    bottom: 0px;
+    width: 100%;
+    height: 20%;
+    color: white;
+}
+
+.card-image {
+    max-width: 100%;
+}
+
+.sub-title {
+    width: 100%;
+    color: gray;
+    padding: 3px 0px 3px 0px;
+}
+
+.title {
+    width: 100%;
+    color: black;
+    padding: 4px 0px 4px 0px;
+}
+
+.text {
+    max-width: 100%;
+    padding: 4px 0px 4px 0px;
+}
+
+.relevant-text {
+    width: 100%;
+    margin: 0px;
+    padding-top: 6px;
+    background-color: #CDCDC0;
+}
+
+
+

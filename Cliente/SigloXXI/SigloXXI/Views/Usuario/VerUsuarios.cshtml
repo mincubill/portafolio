@@ -1,41 +1,45 @@
 ﻿
 @{
+    /**/
+
     ViewBag.Title = "VerUsuarios";
-    var data = (List<SigloXXI.Data.Users>)ViewData["Usuarios"];
+    var data = (List<SigloXXI.Data.Usuario>)ViewData["Usuarios"];
 }
+<link href="~/Content/css/administrador.css" rel="stylesheet" />
+<div class="container" style="margin-top: 2%;">
+    <h2>Ver Usuarios</h2>
 
-<h2>Ver Usuarios</h2>
-
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Correo</th>
-            <th>Usuario</th>
-            <th>Rol</th>
-            <th>Fecha de nacimiendo</th>
-            <th>Acciones</th>
-
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var usuario in data)
-        {
+    <table class="table table-bordered" style="background-color: white; opacity: 80%;">
+        <thead>
             <tr>
-                <td>@usuario.Nombre</td>
-                <td>@usuario.Apellido</td>
-                <td>@usuario.Correo</td>
-                <td>@usuario.UserName</td>
-                <td>@usuario.rol</td>
-                <td>@usuario.FechaNacimiento.ToShortDateString()</td>
-                <td>
-                    @Html.ActionLink(" ", "EditarUsuarios", "Usuario", 
-                       new { rut = usuario.Rut }, new { @class = "far fa-edit" })
-                    @Html.ActionLink(" ", "EliminarUsuarios", "Usuario",
-                       new { rut = usuario.Rut }, new { @class = "far fa-trash-alt" })
-                </td>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Correo</th>
+                <th>Usuario</th>
+                <th>Rol</th>
+                <th>Fecha de nacimiendo</th>
+                <th>Acciones</th>
+
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var usuario in data)
+            {
+                <tr>
+                    <td>@usuario.Nombre</td>
+                    <td>@usuario.Apellido</td>
+                    <td>@usuario.Correo</td>
+                    <td>@usuario.UserName</td>
+                    <td>@usuario.rol</td>
+                    <td>@usuario.FechaNacimiento.ToShortDateString()</td>
+                    <td>
+                        @Html.ActionLink(" ", "EditarUsuarios", "Usuario",
+                           new { rut = usuario.Rut }, new { @class = "glyphicon glyphicon-edit" })
+                        @Html.ActionLink(" ", "EliminarUsuarios", "Usuario",
+                           new { rut = usuario.Rut }, new { @class = "glyphicon glyphicon-remove" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
