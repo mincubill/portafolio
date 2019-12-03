@@ -54,7 +54,7 @@
                                 </li>
                                 <!-- Se pueden ver los reportes de ingreso -->
                                 <li>
-                                    <a onclick="document.getElementById('id04').style.display='block'" style="color:white;"><span class="glyphicon glyphicon-search"></span> Ver reportes de ingreso </a>
+                                    <a onclick="document.getElementById('id02').style.display='block'" style="color:white;"><span class="glyphicon glyphicon-search"></span> Ver reportes de ingreso </a>
                                 </li>
                                 <!-- Contacto -->
                                 <li>
@@ -166,8 +166,8 @@
                                                         <div class="dropdown-content">
                                                             <ul>
                                                                 @*<li>
-                                                                        @Html.ActionLink("Ingresar Orden", "AgregarOrden", "Orden", new { area = "" }, new { @class = "dropdown-item" })
-                                                                    </li>*@
+                                                        @Html.ActionLink("Ingresar Orden", "AgregarOrden", "Orden", new { area = "" }, new { @class = "dropdown-item" })
+                                                    </li>*@
                                                                 <li>
                                                                     @Html.ActionLink("Lista de Ordenes", "VerOrdenes", "Orden", new { area = "" }, new { @class = "dropdown-item" })
                                                                 </li>
@@ -211,6 +211,40 @@
                                     </div>
                                 </div>
                             </div>
+                            <div id="id02" class="modal">
+                                <div class="modal-content animate">
+                                    <div class="imgcontainer">
+                                        <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+                                    </div>
+                                    <div class="container" style="padding-left: 35px">
+                                        <div class="row">
+                                            <ul class="col-md-4">
+                                                <li class="dropdown">
+                                                    Reportes
+                                                    <a style="color:white;" class="dropbtn">
+                                                        <div class="dropdown-content">
+                                                            <ul>
+                                                                <li>
+                                                                    @Html.ActionLink("Mayor ingreso", "MesMayorIngreso", "Reporte", new { area = "" }, new { @class = "dropdown-item" })
+                                                                </li>
+                                                                <li>
+                                                                    @Html.ActionLink("Ordenes del dia", "OrdenesDelDia", "Reporte", new { area = "" }, new { @class = "dropdown-item" })
+                                                                </li>
+                                                                <li>
+                                                                    @Html.ActionLink("Peidos del dia", "PedidosDelDia", "Reporte", new { area = "" }, new { @class = "dropdown-item" })
+                                                                </li>
+                                                                <li>
+                                                                    @Html.ActionLink("Platillos mas consumidos", "PlatillosMasConsumidosDelMes", "Reporte", new { area = "" }, new { @class = "dropdown-item" })
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         }
 
                         if (Session["Rol"].ToString() == "2")
@@ -218,28 +252,120 @@
                             <ul class="nav navbar-nav">
                                 <li>
                                     <!-- Gestionar orden de compra -->
-                                    <a onclick="document.getElementById('id01').style.display='block'" style="color:white;"><span class="glyphicon glyphicon-credit-card"></span> Gestionar orden de compra </a>
+                                    @Html.ActionLink("Lista de Pedido", "VerPedidos", "Pedido", new { area = "" }, new { @class = "glyphicon glyphicon-credit-card" })
+                                    @*<a onclick="document.getElementById('id01').style.display='block'" style="color:white;"><span class="glyphicon glyphicon-credit-card"></span> Gestionar orden de compra </a>*@
                                 </li>
                                 <li>
                                     <!-- Revisar boletas -->
-                                    <a onclick="document.getElementById('id02').style.display='block'" style="color:white;"> <span class="glyphicon glyphicon-list-alt"></span> Revisar boletas </a>
+                                    @Html.ActionLink("Ordenes del dia", "OrdenesDelDia", "Reporte", new { area = "" }, new { @class = "glyphicon glyphicon-list-alt" })
+                                    @*<a onclick="document.getElementById('id02').style.display='block'" style="color:white;"> <span class="glyphicon glyphicon-list-alt"></span> Revisar boletas </a>*@
                                 </li>
                                 <li>
                                     <!-- Ver reportes -->
-                                    <a onclick="document.getElementById('id03').style.display='block'" style="color:white;"><span class="glyphicon glyphicon-search"></span> Ver reportes</a>
+                                    <a onclick="document.getElementById('id02').style.display='block'" style="color:white;"><span class="glyphicon glyphicon-search"></span> Ver reportes</a>
+                                </li>
+                            </ul>
+                            <div id="id02" class="modal">
+                                <div class="modal-content animate">
+                                    <div class="imgcontainer">
+                                        <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+                                    </div>
+                                    <div class="container" style="padding-left: 35px">
+                                        <div class="row">
+                                            <ul class="col-md-4">
+                                                <li class="dropdown">
+                                                    Inventario
+                                                    <a style="color:white;" class="dropbtn">
+                                                        <div class="dropdown-content">
+                                                            <ul>
+                                                                <li>
+                                                                    @Html.ActionLink("Mayor ingreso", "MesMayorIngreso", "Reporte", new { area = "" }, new { @class = "dropdown-item" })
+                                                                </li>
+                                                                <li>
+                                                                    @Html.ActionLink("Pedidos del dia", "PedidosDelDia", "Reporte", new { area = "" }, new { @class = "dropdown-item" })
+                                                                </li>
+                                                                <li>
+                                                                    @Html.ActionLink("Platillos mas consumidos", "PlatillosMasConsumidosDelMes", "Reporte", new { area = "" }, new { @class = "dropdown-item" })
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        if (Session["Rol"].ToString() == "3")
+                        {
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <!-- Administrar inventario de productos -->
+                                    <a onclick="document.getElementById('id02').style.display='block'" style="color:white;"><span class="glyphicon glyphicon-check"></span> Administrar inventario </a>
                                 </li>
                                 <li>
-                                    <!-- Gestionar notas -->
-                                    <a onclick="document.getElementById('id04').style.display='block'" style="color:white;"><span class="glyphicon glyphicon-file"></span> Gestionar notas</a>
+                                    <!-- Seleccion de menu -->
+                                    @Html.ActionLink("Crear Platillo", "AgregarPlatillo", "Platillo", new { area = "" }, new { @class = "glyphicon glyphicon-pencil" })
                                 </li>
                                 <li>
-                                    <!-- Contacto -->
-                                    <a onclick="document.getElementById('id05').style.display='block'" style="color:white;"> <span class="glyphicon">&#xe182;</span> Contacto</a>
+                                    <!-- Ingresar orden de compra -->
+                                    @Html.ActionLink("Ingresar orden de compra", "AgregarPedido", "Pedido", new { area = "" }, new { @class = "glyphicon glyphicon-book" })
                                 </li>
-
+                            </ul>
+                            <div id="id02" class="modal">
+                                <div class="modal-content animate">
+                                    <div class="imgcontainer">
+                                        <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+                                    </div>
+                                    <div class="container" style="padding-left: 35px">
+                                        <div class="row">
+                                            <ul class="col-md-4">
+                                                <li class="dropdown">
+                                                    Inventario
+                                                    <a style="color:white;" class="dropbtn">
+                                                        <div class="dropdown-content">
+                                                            <ul>
+                                                                <li>
+                                                                    @Html.ActionLink("Ingresar", "AgregarProductos", "Producto", new { area = "" }, new { @class = "dropdown-item" })
+                                                                </li>
+                                                                <li>
+                                                                    @Html.ActionLink("Listado", "VerProductos", "Producto", new { area = "" }, new { @class = "dropdown-item" })
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        if (Session["Rol"].ToString() == "4")
+                        {
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    @Html.ActionLink("Lista de Ordenes", "VerOrdenesDelDia", "Orden", new { area = "" }, new { @class = "glyphicon glyphicon-search" })
+                                </li>
                             </ul>
                         }
-
+                        if (Session["Rol"].ToString() == "5")
+                        {
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    @Html.ActionLink("Lista de Ordenes", "VerOrdenesDelDia", "Orden", new { area = "" }, new { @class = "glyphicon glyphicon-search" })
+                                </li>
+                            </ul>
+                        }
+                        if (Session["Rol"].ToString() == "6")
+                        {
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    @Html.ActionLink("Lista de Ordenes", "VerOrdenesDelDia", "Orden", new { area = "" }, new { @class = "glyphicon glyphicon-search" })
+                                </li>
+                            </ul>
+                        }
                     }
                     <ul class="nav navbar-nav navbar-right">
                         <li>

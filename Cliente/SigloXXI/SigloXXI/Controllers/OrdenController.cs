@@ -29,6 +29,26 @@ namespace SigloXXI.Controllers
             ViewData["Ordenes"] = data;
             return View();
         }
+        public ActionResult VerOrdenesDelDia()
+        {
+            _token = Session["Token"].ToString();
+            if (string.IsNullOrEmpty(_token))
+            {
+                RedirectToAction("Index", "Home");
+            }
+            var reporte = new Reportes { Token = _token }.MovimientosDelDia(DateTime.Now.ToString("yyyy-MM-dd"));
+            var data = new List<OrdenHeader>();
+            var hoy = DateTime.Now.ToString("yyyy-MM-dd");
+            foreach (var r in reporte.Where(d => DateTime.Parse(d.fecha) == DateTime.Parse(hoy)))
+            {
+                foreach (var o in r.ordenHId.Where(o => o.estado == EstadoOrden.NoPagado))
+                {
+                    data.Add(o);
+                }
+            }
+            ViewData["Ordenes"] = data;
+            return View();
+        }
         [HttpGet]
         public ActionResult AgregarOrden()
         {

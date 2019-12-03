@@ -1,5 +1,9 @@
-﻿@{
-    var data = (List<SigloXXI.Data.Documentos>)ViewData["ordenes"];
+﻿
+@{
+    ViewBag.Title = "_PedidosDelDia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var data = (List<SigloXXI.Data.Documentos>)ViewData["pedidos"];
+
 }
 
 @foreach (var d in data)

@@ -167,6 +167,7 @@
     <Content Include="Content\bootstrap\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap\bootstrap.css.map" />
     <Content Include="Content\bootstrap\bootstrap.min.css.map" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile2.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -266,6 +267,10 @@
     <Content Include="Views\Reporte\MesMayorIngreso.cshtml" />
     <Content Include="Views\Reporte\OrdenesDelDia.cshtml" />
     <Content Include="Views\Reporte\_OrdenesDelDia.cshtml" />
+    <Content Include="Views\Reporte\PedidosDelDia.cshtml" />
+    <Content Include="Views\Reporte\PlatillosMasConsumidosDelMes.cshtml" />
+    <Content Include="Views\Reporte\_PedidosDelDia.cshtml" />
+    <Content Include="Views\Orden\VerOrdenesDelDia.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
