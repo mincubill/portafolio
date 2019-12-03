@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "VerProveedores";
+    var data = (List<SigloXXI.Data.Proveedores>)ViewData["Proveedores"];
+}
+
+<h2>Ver Proveedores</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Rut</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Direccion</th>
+            <th>Telefono</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var proveedor in data)
+        {
+            <tr>
+                <td>@proveedor.rut</td>
+                <td>@proveedor.nombre</td>
+                <td>@proveedor.correo</td>
+                <td>@proveedor.direccion</td>
+                <td>@proveedor.telefono</td>
+                <td>
+                    @Html.ActionLink(" ", "EditarMesa", "Mesas",
+                       new { rut = proveedor.rut }, new { @class = "far fa-edit" })
+                    @Html.ActionLink(" ", "EliminarMesa", "Mesas",
+                       new { rut = proveedor.rut }, new { @class = "far fa-trash-alt" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

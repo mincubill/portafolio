@@ -35,9 +35,9 @@ public class OrdenHController {
 		return ordenHService.findById(id);
 	}
 	
-	@GetMapping("/cambiar-estado-ordenh({id}")
+	@GetMapping("/cambiar-estado-ordenh/{id}")
 	public OrdenH CambiarEstadoOrdenH(@PathVariable int id) {
-		return ordenHService.changeStatus(id);
+		return ordenHService.changeStatusPaid(id);
 	}
 
 	@PostMapping("/crear-ordenh")

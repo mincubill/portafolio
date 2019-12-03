@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "VerPedidos";
+    var data = (List<SigloXXI.Data.PedidoHeader>)ViewData["Pedidos"];
+}
+
+<h2>Ver Pedidos</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Codigo pedido</th>
+            <th>Numero Doc</th>
+            <th>Estado</th>
+            <th>Proveedor</th>
+            <th>Total</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var pedido in data)
+        {
+            <tr class="@(pedido.estado == SigloXXI.Data.EstadoPedido.NoRecibido ? "table-warning" : "table-success")">
+                <td>@pedido.id</td>
+                <td>@pedido.documentoId</td>
+                <td>@(pedido.estado == SigloXXI.Data.EstadoPedido.NoRecibido ? "No Recibido" : "Recibido")</td>
+                <td>@pedido.proveedor.nombre</td>
+                <td>@pedido.total</td>
+                <td>
+                    @Html.ActionLink(" ", "VerDetalles", "Pedido",
+                       new { id = pedido.id }, new { @class = "far fa-list-alt" })
+                    @if (pedido.estado == SigloXXI.Data.EstadoPedido.NoRecibido)
+                    {
+                        @Html.ActionLink(" ", "ValidarPedido", "Pedido",
+                        new { id = pedido.id }, new { @class = "fa fa-check" })
+                    }
+                    @Html.ActionLink(" ", "EditarPedido", "Pedido",
+                       new { id = pedido.id }, new { @class = "far fa-edit" })
+                    @Html.ActionLink(" ", "EliminarPedido", "Pedido",
+                       new { id = pedido.id }, new { @class = "far fa-trash-alt" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

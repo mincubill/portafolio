@@ -8,78 +8,64 @@ namespace SigloXXI.Data
 {
     public class Productos
     {
-        public int Id { get; set; }
-        public string Nombre { get; set; }
-        public string Descripcion { get; set; }
-        public int Cantidad { get; set; }
-        public int Precio { get; set; }
-        public string Categoria { get; set; }
-        public string Url { get; set; }
-        public Productos()
-        {
-            Url = "http://weasdf.ddns.net:8082";
-        }
+        public int id { get; set; }
+        public string nombre { get; set; }
+        public string descripcion { get; set; }
+        public int cantidad { get; set; }
+        public int precio { get; set; }
+        public string categoria { get; set; }
+        public string Token { get; set; }
 
         public bool CrearProducto(Productos producto)
         {
-            var url = new UriBuilder(Url);
-            ConexionHelper.Cliente.BaseAddress = new Uri(Url);
-            JsonHelper<Users>.Url = Url;
             var queryParams = new Dictionary<string, string>
             {
-                {"id", producto.Id.ToString() },
-                {"nombre",  producto.Nombre},
-                {"descripcion",  producto.Descripcion},
-                {"cantidad",  producto.Cantidad.ToString()},
-                {"precio",  producto.Precio.ToString()},
-                {"categoria",  Categoria},
+                //{"id", producto.Id.ToString() },
+                {"nombre",  producto.nombre},
+                {"descripcion",  producto.descripcion},
+                {"cantidad",  producto.cantidad.ToString()},
+                {"precio",  producto.precio.ToString()},
+                {"categoria",  categoria},
                
             };
+            JsonHelper<Productos>.Token = this.Token;
             return JsonHelper<Productos>.Post(queryParams, "/productos/crear-producto");
         }
 
         public bool ActualizarProducto(Productos producto)
         {
-            var url = new UriBuilder(Url);
-            ConexionHelper.Cliente.BaseAddress = new Uri(Url);
-            JsonHelper<Users>.Url = Url;
             var queryParams = new Dictionary<string, string>
             {
-                {"id", producto.Id.ToString() },
-                {"nombre",  producto.Nombre},
-                {"descripcion",  producto.Descripcion},
-                {"cantidad",  producto.Cantidad.ToString()},
-                {"precio",  producto.Precio.ToString()},
-                {"categoria",  Categoria},
+                {"id", producto.id.ToString() },
+                {"nombre",  producto.nombre},
+                {"descripcion",  producto.descripcion},
+                {"cantidad",  producto.cantidad.ToString()},
+                {"precio",  producto.precio.ToString()},
+                {"categoria",  categoria},
             };
-            return JsonHelper<Users>.Put(queryParams, "/productos/actualizar-producto/" + producto.Id);
+            JsonHelper<Productos>.Token = this.Token;
+            return JsonHelper<Usuario>.Put(queryParams, "/productos/actualizar-producto/" + producto.id);
         }
 
         public List<Productos> ObtenerProductos()
         {
-            var url = new UriBuilder(Url);
-            ConexionHelper.Cliente.BaseAddress = new Uri(Url);
-            JsonHelper<Productos>.Url = Url;
+            JsonHelper<Productos>.Token = Token;
             var result = JsonHelper<Productos>.GetList("/productos/obtener-productos");
             return result;
         }
 
         public Productos ObtenerProducto(int id)
         {
-            var url = new UriBuilder(Url);
-            ConexionHelper.Cliente.BaseAddress = new Uri(Url);
-            JsonHelper<Productos>.Url = Url;
             var queryParams = new Dictionary<string, string>();
+            JsonHelper<Productos>.Token = Token;
             var res = JsonHelper<Productos>.Get(queryParams, "/productos/buscar-producto/" + id.ToString());
             return res;
         }
 
         public bool EliminarProducto(int id)
         {
-            var url = new UriBuilder(Url);
-            ConexionHelper.Cliente.BaseAddress = new Uri(Url);
-            JsonHelper<Productos>.Url = Url;
             var queryParams = new Dictionary<string, string>();
+            JsonHelper<Productos>.Token = Token;
             return JsonHelper<Productos>.Delete(queryParams, "/productos/eliminar-producto/" + id.ToString());
         }
     }

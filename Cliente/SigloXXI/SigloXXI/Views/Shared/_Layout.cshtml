@@ -19,9 +19,23 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/Home/Index">Inicio <span class="sr-only">(current)</span></a>
                     </li>
                     @*@if (Session["Rol"].ToString() == "1")*@
+
+                    @if (Session["Rol"].ToString() == "1")
+                    {
+                        <!-- Clientes -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Clientes
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @Html.ActionLink("Agregar Cliente", "AgregarCliente", "Cliente", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Ver Clientes", "VerClientes", "Cliente", new { area = "" }, new { @class = "dropdown-item" })
+                            </div>
+                        </li>
+                    }
                     @if (Session["Rol"].ToString() == "1")
                     {
                         <!-- Productos -->
@@ -34,49 +48,87 @@
                                 @Html.ActionLink("Lista de productos", "VerProductos", "Producto", new { area = "" }, new { @class = "dropdown-item" })
                             </div>
                         </li>
+                    }
+                    @if (Session["Rol"].ToString() == "1" || Session["Rol"].ToString() == "3")
+                    {
+                        <!-- Proveedores -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Proveedores
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @Html.ActionLink("Ingresar proveedor", "AgregarProveedores", "Proveedor", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Lista de proveedores", "VerProveedores", "Proveedor", new { area = "" }, new { @class = "dropdown-item" })
+                            </div>
+                        </li>
+                    }
+                    @if (Session["Rol"].ToString() == "1" || Session["Rol"].ToString() == "2" || Session["Rol"].ToString() == "6")
+                    {
                         <!-- Caja -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Caja
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="caja/caja_ingresar.html">Emitir boleta</a>
+                                @Html.ActionLink("Registrar pago", "VerOrdenesSinPago", "Caja", new { area = "" }, new { @class = "dropdown-item" })
                             </div>
                         </li>
+                    }
+                    @if (Session["Rol"].ToString() == "1" || Session["Rol"].ToString() == "3")
+                    {
                         <!-- Platillos -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Platillos
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="platillos/platillos_ingresar.html">Ingresar platillo</a>
-                                <a class="dropdown-item" href="platillos/platillos_actualizar.html">Actualizar platillo</a>
-                                <a class="dropdown-item" href="platillos/platillos_eliminar.html">Eliminar platillo</a>
-                                <a class="dropdown-item" href="platillos/platillos_lista.html">Lista de platillos</a>
+                                @Html.ActionLink("Ingresar Platillos", "AgregarPlatillo", "Platillo", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Ver de Platillos", "VerPlatillos", "Platillo", new { area = "" }, new { @class = "dropdown-item" })
+
                             </div>
                         </li>
-                        <!-- Pedidos prov. -->
+                    }
+                    @if (Session["Rol"].ToString() == "1" || Session["Rol"].ToString() == "3" || Session["Rol"].ToString() == "6")
+                    {
+                        <!-- Pedidos -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Pedidos prov.
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="pedidos_prov/pedidos_prov_ingresar.html">Emitir pedido</a>
-                                <a class="dropdown-item" href="pedidos_prov/pedidos_prov_lista.html">Lista de pedidos</a>
+                                @Html.ActionLink("Ingresar Pedidos", "AgregarPedido", "Pedido", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Lista de Pedido", "VerPedidos", "Pedido", new { area = "" }, new { @class = "dropdown-item" })
                             </div>
                         </li>
+                    }
+                    @if (Session["Rol"].ToString() == "1" || Session["Rol"].ToString() == "4" || Session["Rol"].ToString() == "5")
+                    {
+                        <!-- Ordenes -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Ordenes Clien.
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @Html.ActionLink("Ingresar Orden", "AgregarOrden", "Orden", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Lista de Ordenes", "VerOrdenes", "Orden", new { area = "" }, new { @class = "dropdown-item" })
+                            </div>
+                        </li>
+                    }
+                    @if (Session["Rol"].ToString() == "1")
+                    {
                         <!-- Mesas -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Mesas
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="mesas/mesas_ingresar.html">Ingresar mesas</a>
-                                <a class="dropdown-item" href="mesas/mesas_actualizar.html">Actualizar mesas</a>
-                                <a class="dropdown-item" href="mesas/mesas_eliminar.html">Eliminar mesas</a>
-                                <a class="dropdown-item" href="mesas/mesas_lista.html">Lista de mesas</a>
+                                @Html.ActionLink("Agregar mesas", "AgregarMesa", "Mesas", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Ver mesas", "VerMesasDisponibles", "Mesas", new { area = "" }, new { @class = "dropdown-item" })
                             </div>
                         </li>
+                    }
+                    @if (Session["Rol"].ToString() == "1")
+                    {
                         <!-- Usuarios -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -88,11 +140,36 @@
                             </div>
                         </li>
                     }
+                    @if (Session["Rol"].ToString() == "1")
+                    {
+                        <!-- Mesas -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Rerservas
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @Html.ActionLink("Agregar reserva", "AgregarReserva", "Reserva", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Ver reservas", "VerReservas", "Reserva", new { area = "" }, new { @class = "dropdown-item" })
+                            </div>
+                        </li>
+                    }
+                    @if (Session["Rol"].ToString() == "1" || Session["Rol"].ToString() == "2")
+                    {
+                        <!-- Reportes -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Reportes
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @Html.ActionLink("Flujo de caja", " ", " ", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Doc. Emitidos", " ", " ", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Flujo de productos", " ", " ", new { area = "" }, new { @class = "dropdown-item" })
+                            </div>
+                        </li>
+                    }
 
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                    @*<a href="login.html" class="btn btn-outline-primary my-2 my-sm-0">Login</a>*@
-                    @*@if (string.IsNullOrEmpty(Session["Rol"].ToString()))*@
                     @if (string.IsNullOrEmpty(Session["Rol"].ToString()))
                     {
                         @Html.ActionLink("Iniciar sesion", "Login", "Login",

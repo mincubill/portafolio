@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import siglo21.springboot.backend.apirest.models.dao.IPedidoBDao;
 import siglo21.springboot.backend.apirest.models.dao.IPedidoHDao;
 import siglo21.springboot.backend.apirest.models.dao.IProductoDao;
+import siglo21.springboot.backend.apirest.models.dao.IProveedorDao;
 import siglo21.springboot.backend.apirest.models.entity.PedidoB;
 import siglo21.springboot.backend.apirest.models.entity.PedidoH;
 import siglo21.springboot.backend.apirest.models.entity.Producto;
@@ -25,6 +26,9 @@ public class PedidoHServiceImpl implements IPedidoHService {
 	
 	@Autowired
 	private IProductoDao productoDao;
+	
+	@Autowired
+	private IProveedorDao proveedorDao;
 
 	@Override
 	@Transactional(readOnly = true)
@@ -41,16 +45,7 @@ public class PedidoHServiceImpl implements IPedidoHService {
 	@Override
 	@Transactional
 	public PedidoH save(PedidoH pedidoH) {
-		PedidoH pedido = new PedidoH();
-		pedido.setTotal(pedidoH.getTotal());
-		pedido.setEstado(pedidoH.getEstado());
-		pedido.setDocumentoId(pedidoH.getDocumentoId());
-		pedido.setProveedor(pedidoH.getProveedor());
-		pedido.setPedidoBId(new ArrayList<PedidoB>());
-		PedidoH pedidoHTemp = pedidoHDao.save(pedido);
-		if(pedidoH.getPedidoBId().size()!= 0)
-			AgregarPedido(pedidoH, pedidoHTemp.getId());
-		return pedidoHDao.save(pedidoH);
+		return pedidoH.getId() != 0 ? pedidoHDao.save(pedidoH) : AgregarPedido(pedidoH);
 	}
 
 	@Override
@@ -60,6 +55,7 @@ public class PedidoHServiceImpl implements IPedidoHService {
 	}
 	
 	@Override
+	@Transactional
 	public PedidoH changeStatus(int id) {
 		try {
 			PedidoH pedidoHTemp = pedidoHDao.findById(id).orElse(null);
@@ -76,21 +72,30 @@ public class PedidoHServiceImpl implements IPedidoHService {
 		return null;
 	}
 	
-	private boolean AgregarPedido(PedidoH pedidoH, int idPedidoH) {
+	private PedidoH AgregarPedido(PedidoH pedidoH) {
 		try {
-			for(PedidoB pedidoB : pedidoH.getPedidoBId()) {
-				PedidoB pb = new PedidoB();
-				pb.setCantidad(pedidoB.getCantidad());
-				pb.setSubtotal(pedidoB.getSubtotal());
-				pb.setPedidoHId(idPedidoH);
-				pb.setProductoId(pedidoB.getProductoId());
-				pedidoBDao.save(pb);
+			PedidoH pedidoHTemp = new PedidoH();
+			pedidoHTemp.setDocumentoId(pedidoH.getDocumentoId());
+			pedidoHTemp.setEstado(pedidoH.getEstado());
+			pedidoHTemp.setProveedor(proveedorDao.findById(pedidoH.getProveedor().getRut()).orElse(null));
+			pedidoHTemp.setTotal(pedidoH.getTotal());
+			pedidoHTemp.setPedidoBId(new ArrayList<PedidoB>());
+			pedidoHTemp = pedidoHDao.save(pedidoHTemp);
+			if(pedidoH.getPedidoBId().size() != 0 && pedidoH.getPedidoBId() != null) {
+				for(PedidoB pedidoB : pedidoH.getPedidoBId()) {
+					PedidoB pb = new PedidoB();
+					pb.setCantidad(pedidoB.getCantidad());
+					pb.setPedidoHId(pedidoHTemp.getId());
+					pb.setProductoId(productoDao.findById(pedidoB.getProductoId().getId()).orElse(null));
+					pb.setSubtotal(pedidoB.getSubtotal());
+					pedidoHTemp.getPedidoBId().add(pedidoBDao.save(pb));
+				}
 			}
-			return true;
+			return pedidoHTemp;
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		return false;
+		return null;
 	}
 	
 	private boolean ActualizarStock(int id, int cantidad) {
@@ -103,7 +108,7 @@ public class PedidoHServiceImpl implements IPedidoHService {
 			}
 			throw new Exception();
 		} catch (Exception e) {
-			
+			// TODO: handle exception
 		}
 		return false;
 	}

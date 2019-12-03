@@ -38,7 +38,7 @@ public class PlatilloController {
 	@PostMapping("/crear-platillo")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Platillo CrearPlatillo(@RequestBody Platillo platillo) {
-		return platilloService.save(platillo);
+		return platilloService.save(platillo, false);
 	}
 
 	@PutMapping("/actualizar-platillo/{id}")
@@ -47,7 +47,7 @@ public class PlatilloController {
 		Platillo platilloActual = platilloService.findById(id);
 		platilloActual.setNombre(platillo.getNombre());
 		platilloActual.setTiempo(platillo.getTiempo());
-		return platilloService.save(platilloActual);
+		return platilloService.save(platilloActual, true);
 	}
 
 	@DeleteMapping("/eliminar-platillo/{id}")

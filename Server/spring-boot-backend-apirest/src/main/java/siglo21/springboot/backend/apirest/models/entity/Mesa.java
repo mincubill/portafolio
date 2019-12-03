@@ -20,11 +20,14 @@ public class Mesa implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(name = "NUMERO")
+	@Column(name = "NUMERO", nullable = false)
 	private int numero;
 
-	@Column(name = "CAPACIDAD")
+	@Column(name = "CAPACIDAD", nullable = false)
 	private int capacidad;
+
+	@Column(name = "ESTADO", nullable = false)
+	private int estado;
 
 	public int getId() {
 		return id;
@@ -50,4 +53,15 @@ public class Mesa implements Serializable {
 		this.capacidad = capacidad;
 	}
 
+<<<<<<< HEAD:Server/spring-boot-backend-apirest/src/main/java/siglo21/springboot/backend/apirest/models/entity/Mesa.java
+=======
+	public int getEstado() {
+		return estado;
+	}
+
+	public void setEstado(int estado) {
+		this.estado = estado;
+	}
+
+>>>>>>> QA:Server/spring-boot-backend-apirest/src/main/java/com/siglo21/springboot/backend/apirest/models/entity/Mesa.java
 }

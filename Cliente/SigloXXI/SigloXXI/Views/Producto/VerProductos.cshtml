@@ -22,17 +22,17 @@
         @foreach (var producto in data)
         {
             <tr>
-                <td>@producto.Id</td>
-                <td>@producto.Nombre</td>
-                <td>@producto.Descripcion</td>
-                <td>@producto.Cantidad</td>
-                <td>@producto.Precio</td>
-                <td>@producto.Categoria</td>
+                <td>@producto.id</td>
+                <td>@producto.nombre</td>
+                <td>@producto.descripcion</td>
+                <td>@producto.cantidad</td>
+                <td>@producto.precio</td>
+                <td>@producto.categoria</td>
                 <td>
                     @Html.ActionLink(" ", "EditarProductos", "Producto",
-                       new { id = producto.Id }, new { @class = "far fa-edit" })
+                       new { id = producto.id }, new { @class = "far fa-edit" })
                     @Html.ActionLink(" ", "EliminarProductos", "Producto",
-                       new { id = producto.Id }, new { @class = "far fa-trash-alt" })
+                       new { id = producto.id }, new { @class = "far fa-trash-alt" })
                 </td>
             </tr>
         }
