@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ import retrofit2.Response;
 public class BoletaActivity extends AppCompatActivity {
 
 
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

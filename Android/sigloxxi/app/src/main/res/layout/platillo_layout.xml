@@ -11,7 +11,7 @@
         android:id="@+id/appIconIV"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        tools:srcCompat="@drawable/descarga" />
+        tools:srcCompat="@drawable/bar" />
 
     <TextView
         android:id="@+id/platilloNombretxt"

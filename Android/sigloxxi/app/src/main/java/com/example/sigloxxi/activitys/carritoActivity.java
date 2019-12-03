@@ -31,6 +31,7 @@ import com.example.sigloxxi.service.iOrdenB;
 import com.example.sigloxxi.service.iOrdenH;
 import com.example.sigloxxi.service.iToken;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -221,7 +222,8 @@ public class carritoActivity extends AppCompatActivity {
                     ArrayList<OrdenH> ordenList = new ArrayList<OrdenH>(){{add(ordenHeader);}};
                     ArrayList<PedidoH> pedidoList = new ArrayList<PedidoH>();
                     Date fecha = new Date();
-                    String fechaTemporal =  Calendar.getInstance().get(Calendar.YEAR)+"-"+(Calendar.getInstance().get(Calendar.MONTH)+1)+"-"+Calendar.getInstance().get(Calendar.DATE);
+                    DecimalFormat format = new DecimalFormat("00");
+                    String fechaTemporal =  Calendar.getInstance().get(Calendar.YEAR)+"-"+(Calendar.getInstance().get(Calendar.MONTH)+1)+"-"+format.format(Calendar.getInstance().get(Calendar.DATE));
                     String horaTemporal = Calendar.getInstance().get(Calendar.HOUR)+":"+Calendar.getInstance().get(Calendar.MINUTE);
                     Documento documento = new Documento(0,fechaTemporal,horaTemporal,1,ordenList,pedidoList);
 

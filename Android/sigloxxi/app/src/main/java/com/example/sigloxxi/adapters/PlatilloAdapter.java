@@ -104,7 +104,7 @@ public class PlatilloAdapter extends BaseAdapter
         //rellenamos
         holder.platilloNombreTextView.setText(platilloNombre);
         holder.platiloPrecioTextView.setText(platilloPrecio);
-        holder.platilloimageView.setImageResource(R.drawable.descarga);
+        holder.platilloimageView.setImageResource(R.drawable.bar);
 
 
         return convertView;

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.sigloxxi.R;
@@ -17,12 +18,10 @@ public class BoletaAdapter extends BaseAdapter
 {
     private Context context;
     private int layout;
-    private OrdenH boleta;
 
-    public BoletaAdapter(Context context, int layout, OrdenH boleta) {
+    public BoletaAdapter(Context context, int layout) {
         this.context = context;
         this.layout = layout;
-        this.boleta = boleta;
     }
 
     @Override
@@ -31,7 +30,7 @@ public class BoletaAdapter extends BaseAdapter
     }
 
     @Override
-    public Object getItem(int position) { return boleta.getOrdenBId().size(); }
+    public Object getItem(int position) { return 0; }
 
     @Override
     public long getItemId(int position) { return 0; }
@@ -45,29 +44,26 @@ public class BoletaAdapter extends BaseAdapter
         {
             //inflamos la vista que nos llega con nuestro loyout
             LayoutInflater layoutInflater = LayoutInflater.from(this.context);
-            convertView = layoutInflater.inflate(R.layout.boleta,null);
+            convertView = layoutInflater.inflate(R.layout.activity_boleta,null);
             holder = new ViewHolder();
 
-            holder.boletaName = (TextView) convertView.findViewById(R.id.BoletaName);
-            holder.boletaPrice= (TextView) convertView.findViewById(R.id.BoletaPrecio);
+            holder.boletaImageView = (ImageView) convertView.findViewById(R.id.imageView1);
             convertView.setTag(holder);
         }
         else{
             holder = (ViewHolder) convertView.getTag();
         }
 
-        String encabesado = boleta.getOrdenBId().get(position).getPlatilloId().getNombre()+" X "+ boleta.getOrdenBId().get(position).getCantidad();
-        String total = Integer.toString(boleta.getOrdenBId().get(position).getSubtotal());
-        holder.boletaName.setText(encabesado);
-        holder.boletaPrice.setText(total);
+
+
+        holder.boletaImageView.setImageResource(R.drawable.gracias);
 
         return convertView;
     }
 
     static class ViewHolder
     {
-        private TextView boletaName;
-        private TextView boletaPrice;
+        private ImageView boletaImageView;
     }
 
 }
