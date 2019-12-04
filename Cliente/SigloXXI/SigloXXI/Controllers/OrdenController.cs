@@ -21,7 +21,7 @@ namespace SigloXXI.Controllers
                 RedirectToAction("Index", "Home");
             }
             var orden = new OrdenHeader { Token = _token };
-            var data = orden.Obtenerordenes();
+            var data = orden.Obtenerordenes().OrderByDescending(o => o.id).ToList();
             foreach (var o in data)
             {
                 o.CalcularTotal();

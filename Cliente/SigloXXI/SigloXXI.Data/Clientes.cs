@@ -64,7 +64,7 @@ namespace SigloXXI.Data
         {
             JsonHelper<Clientes>.Token = this.Token;
             var queryParams = new Dictionary<string, string>();
-            return JsonHelper<Clientes>.Delete(queryParams, "/clientes/eliminar-clientes/" + rut);
+            return JsonHelper<Clientes>.Delete(queryParams, "/clientes/eliminar-cliente/" + rut);
         }
     }
 }

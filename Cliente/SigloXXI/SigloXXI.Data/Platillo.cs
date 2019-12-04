@@ -11,7 +11,9 @@ namespace SigloXXI.Data
         public int id { get; set; }
         public string nombre { get; set; }
         public int tiempo { get; set; }
+        public int precio { get; set; }
         public string Token { get; set; }
+
         public List<Ingredientes> ingredienteId { get; set; }
 
         public Platillo CrearPlatillo(Platillo platillo)

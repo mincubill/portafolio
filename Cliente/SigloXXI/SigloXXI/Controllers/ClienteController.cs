@@ -91,6 +91,7 @@ namespace SigloXXI.Controllers
                 correo = model.Correo,
                 dv = model.Dv,
                 nombre = model.Nombre,
+                apellido = model.Apellido,
                 rut = model.Rut,
                 telefono = model.Telefono,
             };

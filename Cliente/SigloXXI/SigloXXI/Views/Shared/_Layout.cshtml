@@ -26,7 +26,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#myPage">SigloXXI</a>
+                    <a class="navbar-brand" href="@Url.Action("Index", "Home")">SigloXXI</a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     @if (string.IsNullOrEmpty(Session["Rol"].ToString()) || string.IsNullOrWhiteSpace(Session["Rol"].ToString()))
@@ -77,6 +77,9 @@
                                                             <ul>
                                                                 <li>
                                                                     @Html.ActionLink("Nuevo", "AgregarCliente", "Cliente", new { area = "" }, new { @class = "dropdown-item" })
+                                                                </li>
+                                                                <li>
+                                                                    @Html.ActionLink("Listado ", "VerClientes", "Cliente", new { area = "" }, new { @class = "dropdown-item" })
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -165,8 +168,7 @@
                                                         <div class="dropdown-content">
                                                             <ul>
                                                                 @*<li>
-                                                        @Html.ActionLink("Ingresar Orden", "AgregarOrden", "Orden", new { area = "" }, new { @class = "dropdown-item" })
-                                                    </li>*@
+                                                                    </li>*@
                                                                 <li>
                                                                     @Html.ActionLink("Lista de Ordenes", "VerOrdenes", "Orden", new { area = "" }, new { @class = "dropdown-item" })
                                                                 </li>

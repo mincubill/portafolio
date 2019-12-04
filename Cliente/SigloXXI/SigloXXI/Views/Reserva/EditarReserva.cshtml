@@ -25,7 +25,8 @@
                         @class = "form-control",
                         @type = "number",
                         @placeholder = "Cantidad de personas asistentes",
-                        @title = "Cantidad de personas asistentes"
+                        @title = "Cantidad de personas asistentes",
+                        @required = true
                     })
                     @Html.ValidationMessageFor(model => model.cantidadPersonas, "", new { @class = "text-danger" })
                 </div>
@@ -41,20 +42,20 @@
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.hora, htmlAttributes: new { @class = "control-label col-md-2" })
+                <label class = "control-label col-md-2">Hora: </label>
+                @*@Html.LabelFor(model => model.hora, htmlAttributes: new { @class = "control-label col-md-2" })*@
                 <div class="col-md-10">
                     <input type="time" name="hora" class="form-control" value="@Model.hora" 
-                           min="@DateTime.Now.ToString("HH:mm")" required 
+                           required 
                            placeholder="Hora de la reserva"
                            title="Hora de la reserva"/>
-                    @Html.ValidationMessageFor(model => model.hora, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-2">Cliente</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" value="@cliente.nombre @cliente.apellido" readonly />
-                    <input type="text" class="form-control" name="clienteId" value="@cliente.rut-@cliente.dv" readonly/>
+                    <input type="text" class="form-control" name="clienteId" value="@cliente.rut" readonly/>
                 </div>
             </div>
 

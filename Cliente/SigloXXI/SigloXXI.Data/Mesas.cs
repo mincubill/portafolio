@@ -21,7 +21,7 @@ namespace SigloXXI.Data
                 { "id", mesa.id.ToString() },
                 { "numero",  mesa.numero.ToString() },
                 { "capacidad",  mesa.capacidad.ToString() },
-                { "estado",  mesa.estado.ToString() },
+                { "estado", ((int)mesa.estado).ToString() },
             };
             JsonHelper<Mesas>.Token = this.Token;
             return JsonHelper<Mesas>.Post(queryParams, "/mesas/crear-mesa");

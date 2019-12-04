@@ -23,7 +23,8 @@
                         @class = "form-control",
                         @type = "number",
                         @placeholder = "Ingresar cantidad de personas que asistiran",
-                        @title = "Ingresar cantidad de personas que asistiran"
+                        @title = "Ingresar cantidad de personas que asistiran",
+                        @required = true
                     })
                     @Html.ValidationMessageFor(model => model.cantidadPersonas, "", new { @class = "text-danger" })
                 </div>
@@ -46,7 +47,7 @@
                 @Html.LabelFor(model => model.hora, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     <input type="time" name="hora" class="form-control" value="@DateTime.Now.ToString("HH:mm")" 
-                           min="@DateTime.Now.ToString("HH:mm")" required 
+                           required 
                            placeholder="Ingresar hora de la reserva"
                            title="Ingresar hora de la reserva"/>
                     @if (!string.IsNullOrEmpty(error))

@@ -21,9 +21,10 @@
                     @class = "form-control",
                     @type = "text",
                     @placeholder = "Ingresar nombre del producto",
-                    @title = "Ingresar nombre del producto"
+                    @title = "Ingresar nombre del producto",
+                    @required = true
                 })
-                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
@@ -34,7 +35,8 @@
                         @class = "form-control",
                         @type = "text",
                         @placeholder = "Ingresar la descripcion del producto",
-                        @title = "Ingresar la descripcion del producto"
+                        @title = "Ingresar la descripcion del producto",
+                        @required = true
                     })
                     @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
                 </div>
@@ -47,7 +49,8 @@
                         @class = "form-control",
                         @type = "number",
                         @placeholder = "Ingresar la cantidad del producto en stock",
-                        @title = "Ingresar la cantidad del producto en stock"
+                        @title = "Ingresar la cantidad del producto en stock",
+                        @required = true
                     })
                     @Html.ValidationMessageFor(model => model.Cantidad, "", new { @class = "text-danger" })
                 </div>
@@ -60,7 +63,8 @@
                         @class = "form-control",
                         @type = "number",
                         @placeholder = "Ingresar el precio del producto",
-                        @title = "Ingresar el precio del producto"
+                        @title = "Ingresar el precio del producto",
+                        @required = true
                     })
                     @Html.ValidationMessageFor(model => model.Precio, "", new { @class = "text-danger" })
                 </div>
@@ -71,7 +75,7 @@
                     <select name="categoria" class="form-control" title="Seleccionar categoria del producto">
                         <option value="Ingrediente">Ingrediente</option>
                         <option value="Insumo">Insumo</option>
-                        <option value="Bebestibe">Bebestibe</option>
+                        <option value="Bebestible">Bebestible</option>
                     </select>
                 </div>
             </div>

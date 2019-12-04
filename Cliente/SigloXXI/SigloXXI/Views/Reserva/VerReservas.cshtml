@@ -35,11 +35,13 @@
                         {
                             @Html.ActionLink(" ", "ValidarReserva", "Reserva",
                             new { id = reserva.id }, new { @class = "glyphicon glyphicon-check" , @title = "Validar reserva" })
+                            @Html.ActionLink(" ", "EditarReserva", "Reserva",
+                            new { id = reserva.id }, new { @class = "glyphicon glyphicon-edit", @title = "Editar reserva" })
+                            @Html.ActionLink(" ", "EliminarReserva", "Reserva",
+                            new { id = reserva.id }, new { @class = "glyphicon glyphicon-remove", @title = "Eliminar reserva" })
                         }
-                        @Html.ActionLink(" ", "EditarReserva", "Reserva",
-                           new { id = reserva.id }, new { @class = "glyphicon glyphicon-edit", @title = "Editar reserva" })
-                        @Html.ActionLink(" ", "EliminarReserva", "Reserva",
-                           new { id = reserva.id }, new { @class = "glyphicon glyphicon-remove", @title = "Eliminar reserva" })
+
+
                     </td>
                 </tr>
             }

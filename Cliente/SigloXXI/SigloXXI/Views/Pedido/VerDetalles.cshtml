@@ -13,7 +13,7 @@
             <tr>
                 <th>Producto</th>
                 <th>Cantidad</th>
-                <th>Precio</th>
+                <th>Sub-Total</th>
             </tr>
         </thead>
         <tbody>
@@ -22,8 +22,8 @@
             {
                 <tr>
                     <td>@pedido.productoId.nombre</td>
-                    <td>@pedido.productoId.precio</td>
-                    <td>@pedido.productoId.cantidad</td>
+                    <td>@pedido.cantidad</td>
+                    <td>@pedido.subtotal</td>
                 </tr>
             }
         </tbody>

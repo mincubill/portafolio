@@ -45,6 +45,7 @@ namespace SigloXXI.Controllers
                 id = model.Id,
                 numero = model.Numero,
                 capacidad = model.Capacidad,
+                estado =  EstadoMesa.Disponible
             };
             mesa.CrearMesa(mesa);
             return RedirectToAction("VerMesasDisponibles");

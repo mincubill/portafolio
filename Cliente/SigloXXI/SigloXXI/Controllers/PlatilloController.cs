@@ -33,7 +33,7 @@ namespace SigloXXI.Controllers
             }
             _token = Session["Token"].ToString();
             var ingredientes = new Productos { Token = _token }.ObtenerProductos().
-                Where(i => i.categoria.ToUpper() == "INGREDIENTE").ToList();
+                Where(i => i.categoria.ToUpper() == "INGREDIENTE" || i.categoria.ToUpper() ==  "BEBESTIBLE").ToList();
             ViewData["Ingredientes"] = ingredientes;
             return View();
         }
@@ -49,6 +49,7 @@ namespace SigloXXI.Controllers
                 Token = _token,
                 nombre = platilloModel.Nombre,
                 tiempo = platilloModel.Tiempo,
+                precio = platilloModel.Precio,
                 ingredienteId = platilloModel.Ingrediente.Select(i =>
                    new Ingredientes
                    {
@@ -78,6 +79,7 @@ namespace SigloXXI.Controllers
                 Id = plat.id,
                 Nombre = plat.nombre,
                 Tiempo = plat.tiempo,
+                
             };
             return View(model);
         }
@@ -117,7 +119,7 @@ namespace SigloXXI.Controllers
                 RedirectToAction("Index", "Home");
             }
             var plat = new Platillo() { Token = _token };
-            var ingredientes = plat.ObtenerPlatillo(1).ingredienteId;
+            var ingredientes = plat.ObtenerPlatillo(id).ingredienteId;
             ViewData["Detalles"] = ingredientes;
             return View();
         }

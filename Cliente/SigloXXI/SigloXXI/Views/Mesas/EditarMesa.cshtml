@@ -21,7 +21,8 @@
                        @class = "form-control",
                        @type = "number",
                        @placeholder = "Ingresar numero de la mesa",
-                       @title = "Ingresar numero de la mesa"
+                       @title = "Ingresar numero de la mesa",
+                       @required = true
                    })
                     @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
                 </div>

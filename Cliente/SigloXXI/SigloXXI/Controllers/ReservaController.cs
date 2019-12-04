@@ -121,11 +121,8 @@ namespace SigloXXI.Controllers
             {
                 RedirectToAction("Index", "Home");
             }
-            if (DateTime.Parse(model.fecha) < DateTime.Now)
-            {
-                ViewData["error"] = "Fecha no puede ser menor a la actual";
-                return View(model);
-            }
+            model.Cliente = new Clientes { Token = _token }.ObtenerCliente(model.clienteId);
+            var mesas = new Mesas { Token = _token };
             var reserva = new Reserva()
             {
                 Token = _token,
@@ -135,7 +132,10 @@ namespace SigloXXI.Controllers
                 cantidadPersonas = model.cantidadPersonas,
                 mesaId = new Mesas { Token = _token }.ObtenerMesa(model.mesaId),
                 clienteId = new Clientes { Token = _token }.ObtenerCliente(model.clienteId),
+                estado = EstadoReserva.NoOcupada,
             };
+            ViewData["Mesas"] = mesas.ObtenerMesas().Where(m => m.estado == EstadoMesa.Disponible).ToList();
+            ViewData["Cliente"] = reserva.clienteId;
             reserva.ActualizarReserva(reserva);
             return RedirectToAction("VerReservas");
 

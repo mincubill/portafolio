@@ -23,7 +23,8 @@
                         @class = "form-control",
                         @type = "number",
                         @placeholder = "Ingresar rut del usuario sin punto ni digito verficador",
-                        @title = "Ingresar rut del usuario sin punto ni digito verificador"
+                        @title = "Ingresar rut del usuario sin punto ni digito verificador",
+                        @readonly = true
                     })
                     @Html.ValidationMessageFor(model => model.Rut, "", new { @class = "text-danger" })
                 </div>
@@ -36,7 +37,8 @@
                         @class = "form-control",
                         @type = "text",
                         @placeholder = "Ingresar digito verificador",
-                        @title = "Ingresar digito verificador"
+                        @title = "Ingresar digito verificador",
+                        @readonly = true
                     })
                     @Html.ValidationMessageFor(model => model.Dv, "", new { @class = "text-danger" })
                 </div>
@@ -49,7 +51,8 @@
                         @class = "form-control",
                         @type = "text",
                         @placeholder = "Ingrese el nombre de usuario de la cuenta",
-                        @title = "Ingresar el nombre de usuario de la cuenta"
+                        @title = "Ingresar el nombre de usuario de la cuenta",
+                        @readonly = true
                     })
                     @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
                 </div>
@@ -62,7 +65,8 @@
                         @class = "form-control",
                         @type = "password",
                         @placeholder = "Ingrese la contraseña de usuario de la cuenta",
-                        @title = "Ingresar la contraseña de usuario de la cuenta"
+                        @title = "Ingresar la contraseña de usuario de la cuenta",
+                        @required = true
                     })
                     @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                 </div>
@@ -109,13 +113,19 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.FechaNacimiento, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.FechaNacimiento, new
+                    <input type="date" 
+                           value="@Model.FechaNacimiento.ToString("yyyy-MM-dd")" 
+                           class="form-control" 
+                           placeholder = "Ingrese la fecha de nacimiento del usuario" 
+                           name= "FechaNacimiento" required />
+
+                    @*@Html.TextBoxFor(model => model.FechaNacimiento, new
                     {
                         @class = "form-control",
                         @type = "date",
                         @placeholder = "Ingrese la fecha de nacimiento del usuario",
                         @title = "Ingrese la fecha de nacimiento del usuario"
-                    })
+                    })*@
                     @Html.ValidationMessageFor(model => model.FechaNacimiento, "", new { @class = "text-danger" })
                 </div>
             </div>

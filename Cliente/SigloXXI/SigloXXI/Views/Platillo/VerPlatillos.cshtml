@@ -10,6 +10,7 @@
             <tr>
                 <th>Nombre</th>
                 <th>Tiempo de preparacion</th>
+                <th>Precio</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -20,11 +21,12 @@
                 <tr>
                     <td>@platillo.nombre</td>
                     <td>@platillo.tiempo</td>
+                    <td>@platillo.precio</td>
                     <td>
                         @Html.ActionLink(" ", "VerDetalles", "Platillo",
                            new { id = platillo.id }, new { @class = "glyphicon glyphicon-list-alt", @title = "Ver los detalles del platillo" })
-                        @Html.ActionLink(" ", "EditarPlatillo", "Platillo",
-                           new { id = platillo.id }, new { @class = "glyphicon glyphicon-edit", @title = "Editar el platillo" })
+                        @*@Html.ActionLink(" ", "EditarPlatillo", "Platillo",
+                           new { id = platillo.id }, new { @class = "glyphicon glyphicon-edit", @title = "Editar el platillo" })*@
                         @Html.ActionLink(" ", "EliminarPlatillo", "Platillo",
                            new { id = platillo.id }, new { @class = "glyphicon glyphicon-remove", @title = "Eliminar el platillo" })
                     </td>

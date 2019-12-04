@@ -25,7 +25,7 @@ namespace SigloXXI.Data
             var queryParams = new Dictionary<string, string>();
             JsonHelper<Documentos>.Token = this.Token;
             var ordenes = new Documentos { Token = this.Token }.ObtenerDocumentos().
-                Where(d => (d.ordenHId.Count > 0 || d.ordenHId != null) && DateTime.Parse(d.fecha) == fecha).ToList();
+                Where(d => (d.ordenHId.Count > 0 ) && DateTime.Parse(d.fecha) == fecha).ToList();
             return ordenes;
         }
 
@@ -35,7 +35,7 @@ namespace SigloXXI.Data
             var queryParams = new Dictionary<string, string>();
             JsonHelper<Documentos>.Token = this.Token;
             var pedidos = new Documentos { Token = this.Token }.ObtenerDocumentos().
-                Where(d => (d.pedidoH.Count > 0 || d.pedidoH != null) && DateTime.Parse(d.fecha) == fecha).ToList();
+                Where(d => (d.pedidoH.Count > 0 ) && DateTime.Parse(d.fecha) == fecha).ToList();
             return pedidos;
         }
 

@@ -23,11 +23,8 @@ namespace SigloXXI.Controllers
                 RedirectToAction("Index", "Home");
             }
             var pedido = new PedidoHeader() { Token = _token };
-            var data = pedido.ObtenerPedidos();
-            foreach (var p in data)
-            {
-                p.CalcularTotal();
-            }
+            var data = pedido.ObtenerPedidos().OrderByDescending(p => p.id).ToList();
+           
             ViewData["Pedidos"] = data;
             return View();
         }
@@ -74,12 +71,13 @@ namespace SigloXXI.Controllers
                         Token = _token,
                         cantidad = d.Cantidad,
                         productoId = new Productos { Token = _token }.ObtenerProducto(d.Codigo),
+                        subtotal = new Productos { Token = _token }.ObtenerProducto(d.Codigo).precio * d.Cantidad,
                     }).ToList(),
                     estado = EstadoPedido.NoRecibido,
                 }).ToList(),
                 tipo = Data.TipoDocumento.OrdenDeCompra,
-                
             };
+            documento.pedidoH[0].total = documento.pedidoH.Sum(p => p.pedidoBId.Sum(b => b.subtotal));
             var doc = documento.CrearDocumento(documento);
             
 

@@ -20,7 +20,9 @@
                         @class = "form-control",
                         @type = "number",
                         @placeholder = "Ingrese el rut del cliente sin digito verificador",
-                        @title = "Rut del cliente sin digito verificador"
+                        @title = "Rut del cliente sin digito verificador",
+                        @readonly = true
+
                     })
                     @Html.ValidationMessageFor(model => model.Rut, "", new { @class = "text-danger" })
                 </div>
@@ -33,7 +35,8 @@
                         @class = "form-control",
                         @type = "text",
                         @placeholder = "Ingrese el verificador",
-                        @title = "Ingrese el verificador"
+                        @title = "Ingrese el verificador",
+                        @readonly = true
                     })
                     @Html.ValidationMessageFor(model => model.Dv, "", new { @class = "text-danger" })
                 </div>
@@ -46,7 +49,8 @@
                         @class = "form-control",
                         @type = "text",
                         @placeholder = "Ingrese el nombre del cliente",
-                        @title = "Ingrese el nombre del cliente"
+                        @title = "Ingrese el nombre del cliente",
+                        @required = true
                     })
                     @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
                 </div>
@@ -59,7 +63,8 @@
                         @class = "form-control",
                         @type = "text",
                         @placeholder = "Ingrese el apellido del cliente",
-                        @title = "Ingrese el apellido del cliente"
+                        @title = "Ingrese el apellido del cliente",
+                        @required = true
                     })
                     @Html.ValidationMessageFor(model => model.Apellido, "", new { @class = "text-danger" })
                 </div>
@@ -72,7 +77,8 @@
                         @class = "form-control",
                         @type = "email",
                         @placeholder = "Ingrese el correo del cliente",
-                        @title = "Ingrese el correo del cliente"
+                        @title = "Ingrese el correo del cliente",
+                        @required = true
                     })
                     @Html.ValidationMessageFor(model => model.Correo, "", new { @class = "text-danger" })
                 </div>
@@ -85,7 +91,8 @@
                         @class = "form-control",
                         @type = "number",
                         @placeholder = "Ingresar telefono del cliente",
-                        @title = "Ingresar telefono del cliente"
+                        @title = "Ingresar telefono del cliente",
+                        @required = true
                     })
                     @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
                 </div>
