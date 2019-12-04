@@ -24,13 +24,13 @@
         <tbody>
             @foreach (var d in data)
             {
-                foreach (var o in d.ordenHId)
+                foreach (var o in d.pedidoH)
                 {
                     <tr>
                         <th scope="col">@d.id</th>
                         <th>@d.hora</th>
-                        <th>@o.mesaId.numero</th>
-                        <th>@o.ordenBId.Count</th>
+                        <th>@o.proveedor.nombre</th>
+                        <th>@o.pedidoBId.Count</th>
                         <th>@o.total</th>
                         <th>@o.estado</th>
                     </tr>
